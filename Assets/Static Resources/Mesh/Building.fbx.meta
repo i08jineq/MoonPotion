@@ -1,0 +1,262 @@
+fileFormatVersion: 2
+guid: e274fe852d634420b95a16d34a833540
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Book cage
+    100002: Book cage 2
+    100004: Book1
+    100006: Book2
+    100008: Book2.001
+    100010: Book2.002
+    100012: Book2.003
+    100014: Book2.004
+    100016: //RootNode
+    100018: Craft Bin
+    100020: Door
+    100022: Door wall
+    100024: Floor
+    100026: Floor.001
+    100028: Floor.002
+    100030: Flooring1
+    100032: Flooring2
+    100034: Ink
+    100036: Lamp
+    100038: note
+    100040: Pen
+    100042: Pen Putter
+    100044: Picture
+    100046: Pot
+    100048: Priest
+    100050: Share
+    100052: Table long
+    100054: Table office
+    100056: Table office.001
+    100058: Trash bin 1
+    100060: Trash bin 2
+    100062: Wall
+    100064: Wall Conrner
+    100066: Wall Middle
+    100068: Welcome
+    400000: Book cage
+    400002: Book cage 2
+    400004: Book1
+    400006: Book2
+    400008: Book2.001
+    400010: Book2.002
+    400012: Book2.003
+    400014: Book2.004
+    400016: //RootNode
+    400018: Craft Bin
+    400020: Door
+    400022: Door wall
+    400024: Floor
+    400026: Floor.001
+    400028: Floor.002
+    400030: Flooring1
+    400032: Flooring2
+    400034: Ink
+    400036: Lamp
+    400038: note
+    400040: Pen
+    400042: Pen Putter
+    400044: Picture
+    400046: Pot
+    400048: Priest
+    400050: Share
+    400052: Table long
+    400054: Table office
+    400056: Table office.001
+    400058: Trash bin 1
+    400060: Trash bin 2
+    400062: Wall
+    400064: Wall Conrner
+    400066: Wall Middle
+    400068: Welcome
+    2100000: No Name
+    2300000: Book cage
+    2300002: Book cage 2
+    2300004: Book1
+    2300006: Book2
+    2300008: Book2.001
+    2300010: Book2.002
+    2300012: Book2.003
+    2300014: Book2.004
+    2300016: Craft Bin
+    2300018: Door
+    2300020: Door wall
+    2300022: Floor
+    2300024: Floor.001
+    2300026: Floor.002
+    2300028: Flooring1
+    2300030: Flooring2
+    2300032: Ink
+    2300034: Lamp
+    2300036: note
+    2300038: Pen
+    2300040: Pen Putter
+    2300042: Picture
+    2300044: Pot
+    2300046: Priest
+    2300048: Share
+    2300050: Table long
+    2300052: Table office
+    2300054: Table office.001
+    2300056: Trash bin 1
+    2300058: Trash bin 2
+    2300060: Wall
+    2300062: Wall Conrner
+    2300064: Wall Middle
+    2300066: Welcome
+    3300000: Book cage
+    3300002: Book cage 2
+    3300004: Book1
+    3300006: Book2
+    3300008: Book2.001
+    3300010: Book2.002
+    3300012: Book2.003
+    3300014: Book2.004
+    3300016: Craft Bin
+    3300018: Door
+    3300020: Door wall
+    3300022: Floor
+    3300024: Floor.001
+    3300026: Floor.002
+    3300028: Flooring1
+    3300030: Flooring2
+    3300032: Ink
+    3300034: Lamp
+    3300036: note
+    3300038: Pen
+    3300040: Pen Putter
+    3300042: Picture
+    3300044: Pot
+    3300046: Priest
+    3300048: Share
+    3300050: Table long
+    3300052: Table office
+    3300054: Table office.001
+    3300056: Trash bin 1
+    3300058: Trash bin 2
+    3300060: Wall
+    3300062: Wall Conrner
+    3300064: Wall Middle
+    3300066: Welcome
+    4300000: Floor.002
+    4300002: Floor.001
+    4300004: Table office.001
+    4300006: Pot
+    4300008: Share
+    4300010: Book2.004
+    4300012: Book2.003
+    4300014: Book2.002
+    4300016: Book2.001
+    4300018: Book2
+    4300020: Book1
+    4300022: Lamp
+    4300024: Welcome
+    4300026: Flooring2
+    4300028: Flooring1
+    4300030: Craft Bin
+    4300032: Trash bin 2
+    4300034: Table long
+    4300036: Book cage
+    4300038: Book cage 2
+    4300040: Door
+    4300042: Door wall
+    4300044: Trash bin 1
+    4300046: note
+    4300048: Pen
+    4300050: Pen Putter
+    4300052: Ink
+    4300054: Table office
+    4300056: Picture
+    4300058: Wall Conrner
+    4300060: Priest
+    4300062: Wall
+    4300064: Wall Middle
+    4300066: Floor
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
