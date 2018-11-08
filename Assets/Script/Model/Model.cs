@@ -7,6 +7,9 @@ namespace DarkLordGame
     {
         public static Model instance;
         public GameEvent gameEvent = new GameEvent();//clear at the end of level
+        public SaveData saveData = new SaveData();
+
+        public int selectedSlotIndex = 0;
 
         public Model()
         {
@@ -19,6 +22,12 @@ namespace DarkLordGame
             {
                 instance = new Model();
             }
+        }
+
+
+        public void LoadSaveData(int slotIndex)
+        {
+            saveData = PersistenceData.LoadData<SaveData>("slot_" + slotIndex.ToString() + "saveName", new SaveData());
         }
     }
 }
