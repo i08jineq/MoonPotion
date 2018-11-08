@@ -15,7 +15,7 @@ namespace DarkLordGame
         {
             dayTimeCount = 0;
             currentTimeOfDay = startTimeOfDay;
-            Model.instance.gameEvent.onDayTimeChanged.Invoke(currentTimeOfDay);
+            Model.instance.events.onDayTimeChanged.Invoke(currentTimeOfDay);
         }
 
         public void OnUpdate(float deltaTime)
@@ -24,7 +24,7 @@ namespace DarkLordGame
             UpdateTimeOfDay();
             if(dayTimeCount >= secondPerDay)
             {
-                Model.instance.gameEvent.onDayEnded.Invoke();
+                Model.instance.events.onDayEnded.Invoke();
             }
         }
 
@@ -34,7 +34,7 @@ namespace DarkLordGame
             if(currentTimeOfDay != timeOfDay)
             {
                 currentTimeOfDay = timeOfDay;
-                Model.instance.gameEvent.onDayTimeChanged.Invoke(currentTimeOfDay);
+                Model.instance.events.onDayTimeChanged.Invoke(currentTimeOfDay);
             }
         }
     }

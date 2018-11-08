@@ -6,7 +6,7 @@ namespace DarkLordGame
     public class Model
     {
         public static Model instance;
-        public GameEvent gameEvent = new GameEvent();//clear at the end of level
+        public Events events = new Events();//clear at the end of level
         public List<int> savedSlotIndex = new List<int>();
         public List<SaveData> allSaveData = new List<SaveData>();
         public SaveData saveData = new SaveData();
@@ -18,7 +18,7 @@ namespace DarkLordGame
 
         public Model()
         {
-            gameEvent = new GameEvent();
+            events = new Events();
         }
 
         public static IEnumerator Init()
@@ -38,7 +38,7 @@ namespace DarkLordGame
             }
         }
 
-        #region saveslotdata
+        #region savesdata
         private void LoadSavedSlotIndex()
         {
             savedSlotIndex = PersistenceData.LoadData<List<int>>(saveSlotDataName, new List<int>());

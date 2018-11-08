@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace DarkLordGame
 {
-    public class GameEvent
+    public class Events
     {
         public Communicator onDayStarted = new Communicator();
         public Communicator onDayEnded = new Communicator();
