@@ -13,9 +13,9 @@ namespace DarkLordGame
             fadeLayer.ForceColor(Color.black);
         }
 
-        public void Start()
+        public IEnumerator Start()
 		{
-            Model.Init();
+            yield return Model.Init();
 
             fadeLayer.FadeIn();
 		}
