@@ -1,0 +1,291 @@
+fileFormatVersion: 2
+guid: 603601528b2ba413d91678cb18c426e1
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Bow
+    100002: //RootNode
+    100004: Crystal
+    100006: Cube
+    100008: Cube.001
+    100010: Cube.002
+    100012: Cube.003
+    100014: Cube.004
+    100016: Cube.005
+    100018: Cylinder
+    100020: Cylinder.001
+    100022: Cylinder.002
+    100024: Ground 1
+    100026: Ground 2
+    100028: Ground 3
+    100030: GroundCover
+    100032: GroundCover.001
+    100034: Paper
+    100036: Pillar
+    100038: PillarAccessary
+    100040: Stone1
+    100042: Stone2
+    100044: Stone3
+    100046: Stone4
+    100048: Stone5
+    100050: Wall Gredient
+    100052: Wall PureColor
+    100054: WallTable
+    100056: FloorSize
+    100058: FloorSize2
+    100060: Shair
+    100062: StoneGround
+    100064: Table
+    100066: Tank
+    100068: WallLayer
+    100070: WallRound
+    100072: WallRoundLayer
+    100074: GroundSisw
+    100076: WallLayer.001
+    100078: WallRoundSide
+    100080: WindowHole
+    400000: Bow
+    400002: //RootNode
+    400004: Crystal
+    400006: Cube
+    400008: Cube.001
+    400010: Cube.002
+    400012: Cube.003
+    400014: Cube.004
+    400016: Cube.005
+    400018: Cylinder
+    400020: Cylinder.001
+    400022: Cylinder.002
+    400024: Ground 1
+    400026: Ground 2
+    400028: Ground 3
+    400030: GroundCover
+    400032: GroundCover.001
+    400034: Paper
+    400036: Pillar
+    400038: PillarAccessary
+    400040: Stone1
+    400042: Stone2
+    400044: Stone3
+    400046: Stone4
+    400048: Stone5
+    400050: Wall Gredient
+    400052: Wall PureColor
+    400054: WallTable
+    400056: FloorSize
+    400058: FloorSize2
+    400060: Shair
+    400062: StoneGround
+    400064: Table
+    400066: Tank
+    400068: WallLayer
+    400070: WallRound
+    400072: WallRoundLayer
+    400074: GroundSisw
+    400076: WallLayer.001
+    400078: WallRoundSide
+    400080: WindowHole
+    2100000: Material
+    2300000: Bow
+    2300002: Crystal
+    2300004: Cube
+    2300006: Cube.001
+    2300008: Cube.002
+    2300010: Cube.003
+    2300012: Cube.004
+    2300014: Cube.005
+    2300016: Cylinder
+    2300018: Cylinder.001
+    2300020: Cylinder.002
+    2300022: Ground 1
+    2300024: Ground 2
+    2300026: Ground 3
+    2300028: GroundCover
+    2300030: GroundCover.001
+    2300032: Paper
+    2300034: Pillar
+    2300036: PillarAccessary
+    2300038: Stone1
+    2300040: Stone2
+    2300042: Stone3
+    2300044: Stone4
+    2300046: Stone5
+    2300048: Wall Gredient
+    2300050: Wall PureColor
+    2300052: WallTable
+    2300054: FloorSize
+    2300056: FloorSize2
+    2300058: Shair
+    2300060: StoneGround
+    2300062: Table
+    2300064: Tank
+    2300066: WallLayer
+    2300068: WallRound
+    2300070: WallRoundLayer
+    2300072: GroundSisw
+    2300074: WallLayer.001
+    2300076: WallRoundSide
+    2300078: WindowHole
+    3300000: Bow
+    3300002: Crystal
+    3300004: Cube
+    3300006: Cube.001
+    3300008: Cube.002
+    3300010: Cube.003
+    3300012: Cube.004
+    3300014: Cube.005
+    3300016: Cylinder
+    3300018: Cylinder.001
+    3300020: Cylinder.002
+    3300022: Ground 1
+    3300024: Ground 2
+    3300026: Ground 3
+    3300028: GroundCover
+    3300030: GroundCover.001
+    3300032: Paper
+    3300034: Pillar
+    3300036: PillarAccessary
+    3300038: Stone1
+    3300040: Stone2
+    3300042: Stone3
+    3300044: Stone4
+    3300046: Stone5
+    3300048: Wall Gredient
+    3300050: Wall PureColor
+    3300052: WallTable
+    3300054: FloorSize
+    3300056: FloorSize2
+    3300058: Shair
+    3300060: StoneGround
+    3300062: Table
+    3300064: Tank
+    3300066: WallLayer
+    3300068: WallRound
+    3300070: WallRoundLayer
+    3300072: GroundSisw
+    3300074: WallLayer.001
+    3300076: WallRoundSide
+    3300078: WindowHole
+    4300000: Cylinder.002
+    4300002: Paper
+    4300004: WallTable
+    4300006: Crystal
+    4300008: Cube.005
+    4300010: Cube.004
+    4300012: Cylinder.001
+    4300014: Cube.003
+    4300016: Cylinder
+    4300018: GroundCover.001
+    4300020: Cube.002
+    4300022: Cube.001
+    4300024: Ground 3
+    4300026: Ground 2
+    4300028: GroundCover
+    4300030: PillarAccessary
+    4300032: Pillar
+    4300034: Bow
+    4300036: Stone1
+    4300038: Stone5
+    4300040: Stone4
+    4300042: Stone3
+    4300044: Stone2
+    4300046: Cube
+    4300048: Wall PureColor
+    4300050: Wall Gredient
+    4300052: Ground 1
+    4300054: Tank
+    4300056: Table
+    4300058: Shair
+    4300060: WallRoundLayer
+    4300062: WallLayer
+    4300064: WallRound
+    4300066: FloorSize2
+    4300068: FloorSize
+    4300070: StoneGround
+    4300072: GroundSisw
+    4300074: WallLayer.001
+    4300076: WallRoundSide
+    4300078: WindowHole
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
