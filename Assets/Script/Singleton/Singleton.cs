@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace DarkLordGame
 {
-    public class Model
+    public class Singleton
     {
-        public static Model instance;
+        public static Singleton instance;
         public Events events = new Events();//clear at the end of level
         public List<int> savedSlotIndex = new List<int>();
         public List<SaveData> allSaveData = new List<SaveData>();
@@ -16,7 +16,7 @@ namespace DarkLordGame
 
         private const string saveSlotDataName = "savedslot";
 
-        public Model()
+        public Singleton()
         {
             events = new Events();
         }
@@ -25,7 +25,7 @@ namespace DarkLordGame
         {
             if (instance == null)
             {
-                instance = new Model();
+                instance = new Singleton();
                 instance.LoadSavedSlotIndex();
                 int numbers = instance.savedSlotIndex.Count;
                 for (int i = 0; i < numbers; i++)

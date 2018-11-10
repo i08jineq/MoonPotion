@@ -7,8 +7,9 @@ namespace DarkLordGame
     public class GameMain : MonoBehaviour
     {
         public FadeLayer fadeLayer;
-        private Day day;
+        public DayTimeManager day;
         private bool shouldExecuteDay = false;
+
         #region initialization
         private void Awake()
         {
@@ -17,14 +18,14 @@ namespace DarkLordGame
 
         public IEnumerator Start()
         {
-            yield return Model.Init();
+            yield return Singleton.Init();
 
             fadeLayer.FadeIn();
         }
 
         private void SetupDay()
         {
-            day = new Day();
+            
         }
 
         #endregion
