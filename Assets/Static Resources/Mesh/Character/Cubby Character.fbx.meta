@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a2619328464494c62a203e6a7d4391f8
+guid: f070c504338a94f0e872e27f11db3842
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -73,7 +73,7 @@ ModelImporter:
     4300024: Wariior
   externalObjects: {}
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -129,7 +129,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2

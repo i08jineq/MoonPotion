@@ -7,7 +7,7 @@ namespace DarkLordGame
     public class GameMain : MonoBehaviour
     {
         public FadeLayer fadeLayer;
-        public DayTimeManager day;
+        public DayTimeManager dayManager;
         private bool shouldExecuteDay = false;
 
         #region initialization
@@ -40,7 +40,7 @@ namespace DarkLordGame
         {
             if(shouldExecuteDay)
             {
-                day.OnUpdate(deltaTime);
+                dayManager.OnUpdate(deltaTime);
             }
         }
     }
