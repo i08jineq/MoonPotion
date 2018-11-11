@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace DarkLordGame
 {
-    public class EnvironmentSpotLight : EnvironmentFillLight
+    public class EnvironmentSpotLight : EnvironmentLight
     {
         public AnimationCurve lightAngleCurve;
-
+        //public List<Vector3>
         /// <summary>
         /// time  0 ~ 1
         /// </summary>

@@ -1,76 +1,36 @@
 fileFormatVersion: 2
-guid: a2619328464494c62a203e6a7d4391f8
+guid: 3e395546912c0429aaef0662710806dd
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Almost a sphere
-    100002: Beast Man
-    100004: Brave
-    100006: Chicki
-    100008: //RootNode
-    100010: Farry
-    100012: Knight
-    100014: Lancer
-    100016: Magician 1
-    100018: Monk
-    100020: Priest
-    100022: Princess
-    100024: SoftEdgeCube
-    100026: Wariior
-    400000: Almost a sphere
-    400002: Beast Man
-    400004: Brave
-    400006: Chicki
-    400008: //RootNode
-    400010: Farry
-    400012: Knight
-    400014: Lancer
-    400016: Magician 1
-    400018: Monk
-    400020: Priest
-    400022: Princess
-    400024: SoftEdgeCube
-    400026: Wariior
-    2100000: No Name
-    2300000: Almost a sphere
-    2300002: Beast Man
-    2300004: Brave
-    2300006: Chicki
-    2300008: Farry
-    2300010: Knight
-    2300012: Lancer
-    2300014: Magician 1
-    2300016: Monk
-    2300018: Priest
-    2300020: Princess
-    2300022: SoftEdgeCube
-    2300024: Wariior
-    3300000: Almost a sphere
-    3300002: Beast Man
-    3300004: Brave
-    3300006: Chicki
-    3300008: Farry
-    3300010: Knight
-    3300012: Lancer
-    3300014: Magician 1
-    3300016: Monk
-    3300018: Priest
-    3300020: Princess
-    3300022: SoftEdgeCube
-    3300024: Wariior
-    4300000: Almost a sphere
-    4300002: SoftEdgeCube
-    4300004: Princess
-    4300006: Chicki
-    4300008: Knight
-    4300010: Farry
-    4300012: Beast Man
-    4300014: Monk
-    4300016: Priest
-    4300018: Brave
-    4300020: Lancer
-    4300022: Magician 1
-    4300024: Wariior
+    100000: Cube
+    100002: Cube.001
+    100004: Cube.002
+    100006: Cube.003
+    100008: Cube.004
+    100010: //RootNode
+    400000: Cube
+    400002: Cube.001
+    400004: Cube.002
+    400006: Cube.003
+    400008: Cube.004
+    400010: //RootNode
+    2100000: Material
+    2300000: Cube
+    2300002: Cube.001
+    2300004: Cube.002
+    2300006: Cube.003
+    2300008: Cube.004
+    3300000: Cube
+    3300002: Cube.001
+    3300004: Cube.002
+    3300006: Cube.003
+    3300008: Cube.004
+    4300000: Cube.004
+    4300002: Cube.003
+    4300004: Cube.002
+    4300006: Cube.001
+    4300008: Cube
   externalObjects: {}
   materials:
     importMaterials: 0

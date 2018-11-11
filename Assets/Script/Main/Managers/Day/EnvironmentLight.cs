@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace DarkLordGame
 {
-    public class EnvironmentFillLight : MonoBehaviour
+    public class EnvironmentLight : MonoBehaviour
     {
         public Light lightObject;
         public Gradient dayColor;
