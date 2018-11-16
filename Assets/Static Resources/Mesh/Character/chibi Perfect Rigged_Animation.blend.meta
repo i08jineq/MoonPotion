@@ -1,39 +1,66 @@
 fileFormatVersion: 2
-guid: 3e395546912c0429aaef0662710806dd
+guid: ff9bf723829664b90927256040187c98
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Cube
-    100002: Cube.001
-    100004: Cube.002
-    100006: Cube.003
-    100008: Cube.004
-    100010: //RootNode
-    400000: Cube
-    400002: Cube.001
-    400004: Cube.002
-    400006: Cube.003
-    400008: Cube.004
-    400010: //RootNode
-    2100000: Material
-    2300000: Cube
-    2300002: Cube.001
-    2300004: Cube.002
-    2300006: Cube.003
-    2300008: Cube.004
-    3300000: Cube
-    3300002: Cube.001
-    3300004: Cube.002
-    3300006: Cube.003
-    3300008: Cube.004
-    4300000: Cube.004
-    4300002: Cube.003
-    4300004: Cube.002
-    4300006: Cube.001
-    4300008: Cube
+    100000: ArmBot_L
+    100002: ArmBot_R
+    100004: ArtTop_L
+    100006: ArtTop_R
+    100008: BODY_000
+    100010: BODY_001
+    100012: Bone
+    100014: //RootNode
+    100016: Foot_L
+    100018: Foot_R
+    100020: Head
+    100022: LegBot_L
+    100024: LegBot_R
+    100026: LegTop_L
+    100028: LegTop_R
+    100030: Mourh
+    100032: Neck
+    100034: Root
+    100036: Spine0
+    100038: Spine1
+    100040: Spine2
+    400000: ArmBot_L
+    400002: ArmBot_R
+    400004: ArtTop_L
+    400006: ArtTop_R
+    400008: BODY_000
+    400010: BODY_001
+    400012: Bone
+    400014: //RootNode
+    400016: Foot_L
+    400018: Foot_R
+    400020: Head
+    400022: LegBot_L
+    400024: LegBot_R
+    400026: LegTop_L
+    400028: LegTop_R
+    400030: Mourh
+    400032: Neck
+    400034: Root
+    400036: Spine0
+    400038: Spine1
+    400040: Spine2
+    2100000: Material_002
+    2300000: BODY_000
+    2300002: Mourh
+    3300000: BODY_000
+    3300002: Mourh
+    4300000: BODY_001
+    4300002: Mourh
+    4300004: BODY_000
+    7400000: Default Take
+    7400002: Idle
+    7400004: Walk
+    9500000: //RootNode
+    13700000: BODY_001
   externalObjects: {}
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -70,7 +97,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
@@ -83,13 +110,13 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
     previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
@@ -108,7 +135,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

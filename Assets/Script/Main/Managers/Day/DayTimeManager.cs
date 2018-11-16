@@ -3,24 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace DarkLordGame
 {
-    public class DayTimeManager : MonoBehaviour
+    [System.Serializable]
+    public class DayTimeManager
     {
-        public AnimationCurve pointLightintensity;
-        public List<Light> pointLights = new List<Light>();
-        public Gradient spotLightColor;
-        public List<Light> spotLightList = new List<Light>();
-
+        public List<EnvironmentLight> environmentLights = new List<EnvironmentLight>();
+        public float turnToDayPeriod = 1;
         protected const float realtimeSecondPerHour = 5;
         protected float deltaTimeCount = 0;
-        protected int currentTimeOfDay = 9;
+        protected int currentTimeOfDay = 0;
 
-        protected const int startTimeOfDay = 9;
-        protected const int endTimeOfDay = 21;
+        protected const int startWorkTimeOfDay = 9;
+        protected const float endWorkTimeOfDay = 21;
+        protected const float hourOfDay = 24;
 
-        public void ResetDay()
+        public void SetStartDayTime()
         {
-            deltaTimeCount = 0;
-            currentTimeOfDay = startTimeOfDay;
+            deltaTimeCount = realtimeSecondPerHour * startWorkTimeOfDay;
+            currentTimeOfDay = startWorkTimeOfDay;
+            UpdateEnvironment();
+        }
+
+        public IEnumerator startDay()
+        {
+            float t = 0;
+            while(t <= turnToDayPeriod)
+            {
+                t += Time.deltaTime;
+                deltaTimeCount = Mathf.Lerp(0, startWorkTimeOfDay, t / turnToDayPeriod);
+                UpdateTimeOfDay();
+                UpdateEnvironment();
+                yield return null;
+            }
+            deltaTimeCount = startWorkTimeOfDay;
+            UpdateTimeOfDay();
+            UpdateEnvironment();
+            Singleton.instance.events.onDayStarted.Invoke();
         }
 
         public void OnUpdate(float deltaTime)
@@ -33,7 +50,7 @@ namespace DarkLordGame
 
         protected void UpdateTimeOfDay()
         {
-            int timeOfDay = (int)(deltaTimeCount / realtimeSecondPerHour) + startTimeOfDay;
+            int timeOfDay = (int)(deltaTimeCount / realtimeSecondPerHour) + startWorkTimeOfDay;
             if(currentTimeOfDay != timeOfDay)
             {
                 currentTimeOfDay = timeOfDay;
@@ -43,30 +60,17 @@ namespace DarkLordGame
 
         private void UpdateEnvironment()
         {
-            float gradientWeight = CalculateTimeWeightdOfDay();
-            Color color = spotLightColor.Evaluate(gradientWeight);
-            int spotLightNumbers = spotLightList.Count;
-            for (int i = 0; i < spotLightNumbers; i++)
+            int number = environmentLights.Count;
+            float weight = deltaTimeCount / hourOfDay;
+            for (int i = 0; i < number; i++)
             {
-                spotLightList[i].color = color;
+                environmentLights[i].UpdateTime(weight);
             }
-
-            float intensity = pointLightintensity.Evaluate(gradientWeight);
-            int pointLightNumbers = pointLights.Count;
-            for (int i = 0; i < pointLightNumbers; i++)
-            {
-                pointLights[i].intensity = intensity;
-            }
-        }
-
-        private float CalculateTimeWeightdOfDay()
-        {
-            return (float)(deltaTimeCount / realtimeSecondPerHour) / (float)(endTimeOfDay - startTimeOfDay);
         }
 
         protected void CheckDayEnded()
         {
-            if (currentTimeOfDay >= endTimeOfDay)
+            if (currentTimeOfDay >= endWorkTimeOfDay)
             {
                 Singleton.instance.events.onDayEnded.Invoke();
             }

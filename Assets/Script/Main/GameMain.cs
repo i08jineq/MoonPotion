@@ -7,10 +7,11 @@ namespace DarkLordGame
     public class GameMain : MonoBehaviour
     {
         public FadeLayer fadeLayer;
-        public DayTimeManager dayManager;
+        public DayTimeManager dayManager = new DayTimeManager();
         private bool shouldExecuteDay = false;
 
         #region initialization
+
         private void Awake()
         {
             fadeLayer.ForceColor(Color.black);
@@ -19,8 +20,10 @@ namespace DarkLordGame
         public IEnumerator Start()
         {
             yield return Singleton.Init();
-
-            fadeLayer.FadeIn();
+            SetupDay();
+            yield return fadeLayer.FadeIn();
+            yield return dayManager.startDay();
+            shouldExecuteDay = true;
         }
 
         private void SetupDay()

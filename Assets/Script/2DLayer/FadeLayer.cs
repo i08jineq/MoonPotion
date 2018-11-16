@@ -9,16 +9,19 @@ namespace DarkLordGame
         public Image image;
         public float fadePeriod = 0.3f;
 
-        public void FadeIn()
+        public IEnumerator FadeIn()
         {
-            StartCoroutine(FadeEnumerator(1, 0));
+            gameObject.SetActive(true);
+            yield return FadeEnumerator(1, 0);
+            gameObject.SetActive(false);
         }
 
-        public void FadeOut(Color targeColor)
+        public IEnumerator FadeOut(Color targeColor)
         {
+            gameObject.SetActive(true);
             targeColor.a = 0;
             image.color = targeColor;
-            StartCoroutine(FadeEnumerator(0, 1));
+            yield return FadeEnumerator(0, 1);
         }
 
         public void ForceColor(Color color)
