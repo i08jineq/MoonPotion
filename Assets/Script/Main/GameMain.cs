@@ -8,6 +8,7 @@ namespace DarkLordGame
     {
         public FadeLayer fadeLayer;
         public DayTimeManager dayManager = new DayTimeManager();
+        public CraftingManager craftingManager = new CraftingManager();
         private bool shouldExecuteDay = false;
 
         #region initialization
@@ -20,15 +21,31 @@ namespace DarkLordGame
         public IEnumerator Start()
         {
             yield return Singleton.Init();
-            SetupDay();
+
+            yield return dayManager.SetupStartDayTime();
+            yield return craftingManager.SetupEnumerator();
+
             yield return fadeLayer.FadeIn();
-            yield return dayManager.startDay();
-            shouldExecuteDay = true;
+
         }
 
-        private void SetupDay()
+        #endregion
+
+        #region mainLoop
+
+        private void StartCrafting()
         {
-            
+
+        }
+
+        private void StartDay()
+        {
+            StartCoroutine(StartDayEnumerator());
+        }
+
+        private IEnumerator StartDayEnumerator()
+        {
+            yield return dayManager.startDay();
         }
 
         #endregion
@@ -41,7 +58,7 @@ namespace DarkLordGame
 
         private void UpdateDay(float deltaTime)
         {
-            if(shouldExecuteDay)
+            if (shouldExecuteDay)
             {
                 dayManager.OnUpdate(deltaTime);
             }

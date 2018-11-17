@@ -11,6 +11,7 @@ namespace DarkLordGame
 
         public IEnumerator FadeIn()
         {
+            image.transform.SetAsLastSibling();
             gameObject.SetActive(true);
             yield return FadeEnumerator(1, 0);
             gameObject.SetActive(false);
@@ -18,6 +19,7 @@ namespace DarkLordGame
 
         public IEnumerator FadeOut(Color targeColor)
         {
+            image.transform.SetAsLastSibling();
             gameObject.SetActive(true);
             targeColor.a = 0;
             image.color = targeColor;
@@ -26,6 +28,7 @@ namespace DarkLordGame
 
         public void ForceColor(Color color)
         {
+            image.transform.SetAsLastSibling();
             image.color = Color.black;
         }
 

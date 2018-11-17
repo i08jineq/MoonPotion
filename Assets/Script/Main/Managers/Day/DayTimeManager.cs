@@ -7,8 +7,9 @@ namespace DarkLordGame
     public class DayTimeManager
     {
         public List<EnvironmentLight> environmentLights = new List<EnvironmentLight>();
+        public Gradient backgroundColor;
         public float turnToDayPeriod = 1;
-        protected const float realtimeSecondPerHour = 5;
+        protected const float timeCountSpeed = .2f;
         protected float deltaTimeCount = 0;
         protected int currentTimeOfDay = 0;
 
@@ -16,11 +17,12 @@ namespace DarkLordGame
         protected const float endWorkTimeOfDay = 21;
         protected const float hourOfDay = 24;
 
-        public void SetStartDayTime()
+        public IEnumerator SetupStartDayTime()
         {
-            deltaTimeCount = realtimeSecondPerHour * startWorkTimeOfDay;
+            deltaTimeCount = startWorkTimeOfDay;
             currentTimeOfDay = startWorkTimeOfDay;
             UpdateEnvironment();
+            yield break;
         }
 
         public IEnumerator startDay()
@@ -42,7 +44,7 @@ namespace DarkLordGame
 
         public void OnUpdate(float deltaTime)
         {
-            deltaTimeCount += deltaTime;
+            deltaTimeCount += deltaTime * timeCountSpeed;
             UpdateTimeOfDay();
             UpdateEnvironment();
             CheckDayEnded();
@@ -50,7 +52,7 @@ namespace DarkLordGame
 
         protected void UpdateTimeOfDay()
         {
-            int timeOfDay = (int)(deltaTimeCount / realtimeSecondPerHour) + startWorkTimeOfDay;
+            int timeOfDay = (int)(deltaTimeCount) + startWorkTimeOfDay;
             if(currentTimeOfDay != timeOfDay)
             {
                 currentTimeOfDay = timeOfDay;
@@ -66,6 +68,9 @@ namespace DarkLordGame
             {
                 environmentLights[i].UpdateTime(weight);
             }
+
+            Color bgColor = backgroundColor.Evaluate(weight);
+            Camera.main.backgroundColor = bgColor;
         }
 
         protected void CheckDayEnded()

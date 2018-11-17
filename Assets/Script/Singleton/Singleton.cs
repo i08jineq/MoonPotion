@@ -9,10 +9,15 @@ namespace DarkLordGame
         public Events events = new Events();//clear at the end of level
         public List<int> savedSlotIndex = new List<int>();
         public List<SaveData> allSaveData = new List<SaveData>();
-        public SaveData saveData = new SaveData();
+
+        public SaveData currentSelectedSaveData = new SaveData();
+        public ResourceData resourceData = new ResourceData();
 
         public const int maxSlotNumber = 4;
         public int selectedSlotIndex = 0;
+
+        public Canvas mainCanvas;
+        public Transform mainCanvasTransform;
 
         private const string saveSlotDataName = "savedslot";
 
@@ -26,7 +31,10 @@ namespace DarkLordGame
             if (instance == null)
             {
                 instance = new Singleton();
+                yield return instance.resourceData.LoadResource();
+
                 instance.LoadSavedSlotIndex();
+
                 int numbers = instance.savedSlotIndex.Count;
                 for (int i = 0; i < numbers; i++)
                 {
@@ -34,8 +42,14 @@ namespace DarkLordGame
                     instance.allSaveData.Add(saveDatas);
                     yield return null;
                 }
-
+                if(instance.currentSelectedSaveData == null)
+                {
+                    instance.currentSelectedSaveData = new SaveData();
+                }
             }
+
+            instance.mainCanvas = GameObject.FindObjectOfType<Canvas>();
+            instance.mainCanvasTransform = instance.mainCanvas.transform;
         }
 
         #region savesdata
@@ -57,13 +71,13 @@ namespace DarkLordGame
 
         public SaveData LoadSaveData(int slotIndex)
         {
-            saveData = PersistenceData.LoadData<SaveData>("slot_" + slotIndex.ToString(), new SaveData());
-            return saveData;
+            currentSelectedSaveData = PersistenceData.LoadData<SaveData>("slot_" + slotIndex.ToString(), new SaveData());
+            return currentSelectedSaveData;
         }
 
         public void SaveData(int slotIndex)
         {
-            PersistenceData.SaveData<SaveData>("slot_" + slotIndex.ToString(), saveData);
+            PersistenceData.SaveData<SaveData>("slot_" + slotIndex.ToString(), currentSelectedSaveData);
         }
         #endregion
     }
