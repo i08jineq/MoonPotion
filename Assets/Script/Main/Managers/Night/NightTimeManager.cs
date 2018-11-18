@@ -76,13 +76,25 @@ namespace DarkLordGame
                     nightTimeUITopScreen.gameObject.SetActive(true);
                     break;
                 case CraftNewItemScreen.UIEvent.Craft:
+                    //do craft stuff x 10
                     break;
             }
         }
 
         private void CraftRecipeIem(CraftItemFromRecipeScreen.UIEvent uIEvent)
         {
-
+            craftItemFromRecipeScreen.gameObject.SetActive(false);
+            switch(uIEvent)
+            {
+                case CraftItemFromRecipeScreen.UIEvent.Cancel:
+                    break;
+                case CraftItemFromRecipeScreen.UIEvent.DeleteRecipe:
+                    //do delete stuff
+                    break;
+                case CraftItemFromRecipeScreen.UIEvent.Craft:
+                    //do craft stuff
+                    break;
+            }
         }
         #endregion
     }
