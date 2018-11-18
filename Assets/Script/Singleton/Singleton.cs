@@ -31,7 +31,7 @@ namespace DarkLordGame
             if (instance == null)
             {
                 instance = new Singleton();
-                yield return instance.resourceData.LoadResource();
+                yield return instance.resourceData.LoadResources();
 
                 instance.LoadSavedSlotIndex();
 

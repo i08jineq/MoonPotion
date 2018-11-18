@@ -48,7 +48,11 @@ namespace DarkLordGame
         {
             selectBaseTypeButtonText.SetText("Pick Base Ingredient");
             selectIngredientButtonText.SetText("Pick Ingredient");
-            selectIngredientButtonText.SetText("Pick Mixing Method");
+            selectMixingMethodButtonText.SetText("Pick Mixing Method");
+
+            selectBaseTypeButtonText.ForceMeshUpdate();
+            selectIngredientButtonText.ForceMeshUpdate();
+            selectMixingMethodButtonText.ForceMeshUpdate();
 
             selectBaseIngredientScreen.gameObject.SetActive(false);
             selectBaseIngredientScreen.ResetUI();
@@ -58,6 +62,7 @@ namespace DarkLordGame
             selectMixingMethodScreen.ResetUI();
 
             craftingPrice.SetText("0");
+            craftingPrice.ForceMeshUpdate();
             SetEnableCraftButton(false);
         }
 
@@ -100,7 +105,6 @@ namespace DarkLordGame
             cancelButton.gameObject.SetActive(activate);
             topScreenRoot.SetActive(activate);
         }
-
 
         public void SetEnableCraftButton(bool interactable)
         {

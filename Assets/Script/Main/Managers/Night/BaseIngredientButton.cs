@@ -10,18 +10,22 @@ namespace DarkLordGame
         public TextMeshProUGUI itemNameText;
         public Button button;
 
-        [System.NonSerialized] public BaseIngredientData baseIngredientType;
+        [System.NonSerialized] public BaseIngredientData target;
         public Communicator<BaseIngredientData> onSelected = new Communicator<BaseIngredientData>();
 
-        public void Setup(BaseIngredientData _targetType)
+        public void Setup(BaseIngredientData _targetIngredient)
         {
-            baseIngredientType = _targetType;
+            target = _targetIngredient;
+
+            itemNameText.SetText(_targetIngredient.ingredientName);
+            itemNameText.ForceMeshUpdate();
+
             button.onClick.AddListener(OnClcikedButton);
         }
 
         private void OnClcikedButton()
         {
-            onSelected.Invoke(baseIngredientType);
+            onSelected.Invoke(target);
         }
     }
 }

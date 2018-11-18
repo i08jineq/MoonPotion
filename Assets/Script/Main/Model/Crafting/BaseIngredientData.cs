@@ -6,6 +6,8 @@ namespace DarkLordGame
     {
         public int id;
         public string ingredientName = "Tap Water";
+        public string description = "";
         public int priceForCrafting = 100;
+
     }
 }

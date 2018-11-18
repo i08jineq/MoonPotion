@@ -102,6 +102,7 @@ namespace DarkLordGame
         private void UpdateNumberText()
         {
             numberText.SetText(selectingNumber.ToString());
+            numberText.ForceMeshUpdate();
         }
 
         public int GetSelectingRecipeId()
