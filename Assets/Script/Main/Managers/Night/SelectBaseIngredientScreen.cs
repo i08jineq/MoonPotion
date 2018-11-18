@@ -74,7 +74,5 @@ namespace DarkLordGame
         {
             return selectedBaseIngredient;
         }
-
-
     }
 }
