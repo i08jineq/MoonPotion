@@ -47,6 +47,7 @@ namespace DarkLordGame
             //show recipe details
             //update can craft
         }
+
         #region ui event
         private void OnClickedPlusButton()
         {

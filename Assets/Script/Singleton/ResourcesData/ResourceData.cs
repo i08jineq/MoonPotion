@@ -5,9 +5,12 @@ namespace DarkLordGame
 {
     public class ResourceData
     {
-        public BaseIngredientData[] baseIngredientDatas;
+        public IngredientData[] baseIngredientDatas;
+        public IngredientData[] ingredientDatas;
         private int allBaseIngredientNumbers = 0;
+        private int allIngredientNumbers = 0;
         private const string BaseIngredientPath = "ScriptableObjects/BaseIngredient/";
+        private const string IngredientPath = "ScriptableObjects/Ingredient/";
         #region load
         public IEnumerator LoadResources()
         {
@@ -17,8 +20,14 @@ namespace DarkLordGame
 
         private void LoadBaseIngredientDatas()
         {
-            baseIngredientDatas = Resources.LoadAll<BaseIngredientData>(BaseIngredientPath);
+            baseIngredientDatas = Resources.LoadAll<IngredientData>(BaseIngredientPath);
             allBaseIngredientNumbers = baseIngredientDatas.Length;
+        }
+
+        private void LoadIngredientDatas()
+        {
+            ingredientDatas = Resources.LoadAll<IngredientData>(IngredientPath);
+            allIngredientNumbers = ingredientDatas.Length;
         }
 
         private IEnumerator RequestDelay(ResourceRequest request)
@@ -33,7 +42,7 @@ namespace DarkLordGame
         #endregion
         #region Getter
 
-        public BaseIngredientData GetBaseIngredientData(int id)
+        public IngredientData GetBaseIngredientData(int id)
         {
             for (int i = 0; i < allBaseIngredientNumbers; i++)
             {
@@ -43,6 +52,18 @@ namespace DarkLordGame
                 }
             }
             return baseIngredientDatas[0];
+        }
+
+        public IngredientData GetIngredient(int id)
+        {
+            for (int i = 0; i < allIngredientNumbers; i++)
+            {
+                if (ingredientDatas[i].id == id)
+                {
+                    return ingredientDatas[i];
+                }
+            }
+            return ingredientDatas[0];
         }
         #endregion
     }

@@ -17,19 +17,16 @@ namespace DarkLordGame
         public BaseIngredientButton baseIngredientButtonPrefab;
 
         public Communicator onClosed = new Communicator();
-
-        private BaseIngredientData selectedBaseIngredient;
-
+        private IngredientData selectedBaseIngredient;
 
         public void Setup()
         {
             closeButton.onClick.AddListener(CloseUI);
             selectButton.onClick.AddListener(CloseUI);
-
-            CreateTape();
+            CreateBaseIngredientButton();
         }
 
-        private void CreateTape()
+        private void CreateBaseIngredientButton()
         {
             List<int> ingredientTypes = Singleton.instance.currentSelectedSaveData.unlcokedBaseIngredientID;
             int number = ingredientTypes.Count;
@@ -38,39 +35,37 @@ namespace DarkLordGame
 
             for (int i = 0; i < number; i++)
             {
-                BaseIngredientData baseIngredient = Singleton.instance.resourceData.GetBaseIngredientData(ingredientTypes[i]);
-
+                IngredientData baseIngredient = Singleton.instance.resourceData.GetBaseIngredientData(ingredientTypes[i]);
                 BaseIngredientButton button = GameObject.Instantiate<BaseIngredientButton>(cachedInstance, baseIngredientButtonRoot);
                 button.Setup(baseIngredient);
                 button.gameObject.SetActive(true);
-
                 button.onSelected.AddListener(OnSelectedBaseIngredient);
             }
 
-            if(cachedInstance != null)
-            {
-                GameObject.Destroy(cachedInstance.gameObject);
-            }
+            GameObject.Destroy(cachedInstance.gameObject);
         }
 
         public void ResetUI()
         {
             selectingBaseIngredientDescription.SetText("");
             selectingBaseIngredientDescription.ForceMeshUpdate();
+
+            selectedBaseIngredient = null;
             //reset all selecting
         }
 
-        private void OnSelectedBaseIngredient(BaseIngredientData target)
+        private void OnSelectedBaseIngredient(IngredientData target)
         {
             selectedBaseIngredient = target;
         }
 
         private void CloseUI()
         {
+            gameObject.SetActive(false);
             onClosed.Invoke();
         }
 
-        public BaseIngredientData GetSelectedBaseIngredient()
+        public IngredientData GetSelectedBaseIngredient()
         {
             return selectedBaseIngredient;
         }

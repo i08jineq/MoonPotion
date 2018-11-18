@@ -19,6 +19,8 @@ namespace DarkLordGame
             yield return null;
             SetupCraftNewItemTopScreen();
             yield return null;
+            SetupCraftFromRecipeScreen();
+
         }
 
         private void SetupTopScreen()
@@ -32,7 +34,7 @@ namespace DarkLordGame
         {
             craftNewItemScreen.Setup();
             craftNewItemScreen.gameObject.SetActive(false);
-            craftNewItemScreen.uiEvent.AddListener(CraftNewItemUITopScreenEvent);
+            craftNewItemScreen.uiEvent.AddListener(CraftNewItemScreenEvent);
         }
 
         private void SetupCraftFromRecipeScreen()
@@ -43,11 +45,15 @@ namespace DarkLordGame
 
         #region event
 
-        public void Open()
+        public void Start()
         {
             craftNewItemScreen.gameObject.SetActive(false);
             craftNewItemScreen.ResetUI();
 
+            craftItemFromRecipeScreen.gameObject.SetActive(false);
+            //craftItemFromRecipeScreen
+
+            nightTimeUITopScreen.gameObject.SetActive(true);
         }
 
         private void TopScreenEvent(NightTimeUITopScreen.UIEvent eventType)
@@ -59,7 +65,8 @@ namespace DarkLordGame
                     onFinish.Invoke();
                     break;
                 case NightTimeUITopScreen.UIEvent.CraftNewItem:
-                    craftNewItemScreen.gameObject.SetActive(true);
+                    craftNewItemScreen.Open();
+
                     break;
                 case NightTimeUITopScreen.UIEvent.CraftFromRecipe:
                     craftItemFromRecipeScreen.gameObject.SetActive(true);
@@ -67,7 +74,7 @@ namespace DarkLordGame
             }
         }
 
-        private void CraftNewItemUITopScreenEvent(CraftNewItemScreen.UIEvent eventType)
+        private void CraftNewItemScreenEvent(CraftNewItemScreen.UIEvent eventType)
         {
             craftNewItemScreen.gameObject.SetActive(false);
             switch (eventType)
@@ -96,6 +103,7 @@ namespace DarkLordGame
                     break;
             }
         }
+
         #endregion
     }
 }

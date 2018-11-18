@@ -17,6 +17,7 @@ namespace DarkLordGame
         public int totalSell = 0;
         public List<InventoryItemData> inventoryItemDatas = new List<InventoryItemData>();
         public List<int> unlcokedBaseIngredientID = new List<int>();
+        public List<int> unlcokedIngredientID = new List<int>();
         public List<int> unlockedMixingMethodID = new List<int>();
         public List<int> completedEventID = new List<int>();
 
