@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace DarkLordGame
 {
-    public class CraftUI : MonoBehaviour
+    public class SelectMixingMethodScreen : MonoBehaviour
     {
+        public void ResetUI()
+        {
 
-
+        }
     }
 }

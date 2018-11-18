@@ -8,7 +8,7 @@ namespace DarkLordGame
     {
         public FadeLayer fadeLayer;
         public DayTimeManager dayManager = new DayTimeManager();
-        public CraftingManager craftingManager = new CraftingManager();
+        public NightTimeManager nightTimeManager = new NightTimeManager();
         private bool shouldExecuteDay = false;
 
         #region initialization
@@ -23,8 +23,7 @@ namespace DarkLordGame
             yield return Singleton.Init();
 
             yield return dayManager.SetupStartDayTime();
-            yield return craftingManager.SetupEnumerator();
-
+            yield return nightTimeManager.SetupEnumerator();
             yield return fadeLayer.FadeIn();
 
         }

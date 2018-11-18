@@ -5,19 +5,9 @@ namespace DarkLordGame
 {
     public class ResourceData
     {
-        public GameObject craftUIPrefab;
-
-        private const string craftUIPrefabPath = "Setup/CraftUI";
-
         public IEnumerator LoadResource()
         {
-            LoadSetupUI();
             yield return null;
-        }
-
-        private void LoadSetupUI()
-        {
-            craftUIPrefab = Resources.Load<GameObject>(craftUIPrefabPath);
         }
 
         private IEnumerator RequestDelay(ResourceRequest request)
