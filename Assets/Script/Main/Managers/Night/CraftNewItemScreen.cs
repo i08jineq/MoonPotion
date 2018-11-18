@@ -20,7 +20,7 @@ namespace DarkLordGame
         public TextMeshProUGUI selectMixingMethodButtonText;
         public TextMeshProUGUI craftingPrice;
 
-        public SelectBaseIngrediantScreen selectBaseIngrediantScreen;
+        public SelectBaseIngredientScreen selectBaseIngredientScreen;
         public SelectIngredientScreen selectIngredientScreen;
         public SelectMixingMethodScreen selectMixingMethodScreen;
 
@@ -50,8 +50,8 @@ namespace DarkLordGame
             selectIngredientButtonText.SetText("Pick Ingredient");
             selectIngredientButtonText.SetText("Pick Mixing Method");
 
-            selectBaseIngrediantScreen.gameObject.SetActive(false);
-            selectBaseIngrediantScreen.ResetUI();
+            selectBaseIngredientScreen.gameObject.SetActive(false);
+            selectBaseIngredientScreen.ResetUI();
             selectIngredientScreen.gameObject.SetActive(false);
             selectIngredientScreen.ResetUI();
             selectMixingMethodScreen.gameObject.SetActive(false);
@@ -76,7 +76,7 @@ namespace DarkLordGame
 
         public void OnclickedSelectBase()
         {
-            selectBaseIngrediantScreen.gameObject.SetActive(true);
+            selectBaseIngredientScreen.gameObject.SetActive(true);
             SetactiveTopScreenUI(false);
         }
 

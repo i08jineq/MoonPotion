@@ -5,9 +5,10 @@ namespace DarkLordGame
 {
     public class SelectMixingMethodScreen : MonoBehaviour
     {
+        
         public void ResetUI()
         {
-
+            
         }
     }
 }

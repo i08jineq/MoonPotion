@@ -16,6 +16,7 @@ namespace DarkLordGame
         public List<int> unlockedCustomerID = new List<int>();
         public int totalSell = 0;
         public List<InventoryItemData> inventoryItemDatas = new List<InventoryItemData>();
+        public List<int> unlcokedBaseIngredientID = new List<int>();
         public List<int> unlockedMixingMethodID = new List<int>();
         public List<int> completedEventID = new List<int>();
 
@@ -23,8 +24,8 @@ namespace DarkLordGame
         public SaveData()
         {
             currentGold = 1000;
-            inventoryItemDatas.Add(new InventoryItemData(1, 20));
             unlockedMixingMethodID.Add(0);
+            unlcokedBaseIngredientID.Add(0);
         }
     }
 }
