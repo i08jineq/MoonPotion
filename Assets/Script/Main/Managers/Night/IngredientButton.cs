@@ -8,7 +8,7 @@ namespace DarkLordGame
     public class IngredientButton : MonoBehaviour
     {
         public Toggle checkBox;
-        public TextMeshPro ingredientName;
+        public TextMeshProUGUI ingredientName;
 
         private IngredientData targetIngredient;
 
