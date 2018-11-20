@@ -6,7 +6,7 @@ namespace DarkLordGame
 {
     public class NightTimeUITopScreen : MonoBehaviour
     {
-        public Button finishButton;
+        public Button openShop;
         public Button craftNewItemButton;
         public Button craftFromRecipe;
         //public Button Research;
@@ -21,7 +21,7 @@ namespace DarkLordGame
 
         public void Setup()
         {
-            finishButton.onClick.AddListener(OnClickedFinish);
+            openShop.onClick.AddListener(OnClickedFinish);
             craftNewItemButton.onClick.AddListener(OnClickedCraftNewButton);
             craftFromRecipe.onClick.AddListener(OnClickedCraftFromRecipe);
         }

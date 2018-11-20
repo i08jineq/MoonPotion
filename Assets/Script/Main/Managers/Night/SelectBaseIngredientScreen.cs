@@ -11,7 +11,7 @@ namespace DarkLordGame
         public Button closeButton;
         public Button selectButton;
         public Transform baseIngredientButtonRoot;
-        public TextMeshPro selectingBaseIngredientDescription;
+        public TextMeshProUGUI selectingBaseIngredientDescription;
 
         [Header("Prefab")]
         public BaseIngredientButton baseIngredientButtonPrefab;

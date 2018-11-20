@@ -9,6 +9,7 @@ namespace DarkLordGame
     {
         public TextMeshProUGUI itemNameText;
         public Button button;
+         
 
         [System.NonSerialized] public IngredientData target;
         public Communicator<IngredientData> onSelected = new Communicator<IngredientData>();
