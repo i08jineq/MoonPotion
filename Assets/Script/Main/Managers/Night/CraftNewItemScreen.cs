@@ -41,6 +41,9 @@ namespace DarkLordGame
             selectBaseButton.onClick.AddListener(OnclickedSelectBase);
             selectIngredientButton.onClick.AddListener(OnClickedSelectIngredient);
             selectMixingMethodButton.onClick.AddListener(OnClickedMixingMethod);
+
+            selectBaseIngredientScreen.Setup();
+            selectIngredientScreen.Setup();
         }
 
         //call everytime First try crafting

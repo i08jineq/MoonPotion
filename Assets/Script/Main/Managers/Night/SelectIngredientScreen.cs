@@ -24,7 +24,6 @@ namespace DarkLordGame
                 ingredientButton.Setup(ingredientData);
                 ingredientButton.onSelected.AddListener(OnSelected);
             }
-
             GameObject.Destroy(cahcedIngredientButton.gameObject);
         }
 

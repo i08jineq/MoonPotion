@@ -25,7 +25,9 @@ namespace DarkLordGame
             craftNewItemButton.onClick.AddListener(OnClickedCraftNewButton);
             craftFromRecipe.onClick.AddListener(OnClickedCraftFromRecipe);
         }
+
         #region uievent
+
         private void OnClickedFinish()
         {
             uiEvent.Invoke(UIEvent.Finish);
@@ -40,6 +42,7 @@ namespace DarkLordGame
         {
             uiEvent.Invoke(UIEvent.CraftFromRecipe);
         }
+
         #endregion
     }
 }
