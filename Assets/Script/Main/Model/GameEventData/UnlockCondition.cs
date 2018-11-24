@@ -7,6 +7,6 @@ namespace DarkLordGame
     public struct UnlockCondition
     {
         public UnlockConditionType unlockConditionType;
-        public List<int> dataParameter;
+        public int conditionValue;
     }
 }

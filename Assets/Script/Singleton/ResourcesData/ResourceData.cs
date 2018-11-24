@@ -7,15 +7,24 @@ namespace DarkLordGame
     {
         public IngredientData[] baseIngredientDatas;
         public IngredientData[] ingredientDatas;
-        private int allBaseIngredientNumbers = 0;
-        private int allIngredientNumbers = 0;
+        public int allBaseIngredientNumbers = 0;
+        public int allIngredientNumbers = 0;
         private const string BaseIngredientPath = "ScriptableObjects/BaseIngredient/";
         private const string IngredientPath = "ScriptableObjects/Ingredient/";
+
+        public GameEventData[] gameEventDatas;
+        public int gameEventDatasNumbers;
+        public const string GameEventDatasPath = "ScriptableObjects/GameEvents/";
         #region load
         public IEnumerator LoadResources()
         {
             LoadBaseIngredientDatas();
             yield return null;
+
+            LoadIngredientDatas();
+            yield return null;
+
+            LoadGameEvent();
         }
 
         private void LoadBaseIngredientDatas()
@@ -28,6 +37,12 @@ namespace DarkLordGame
         {
             ingredientDatas = Resources.LoadAll<IngredientData>(IngredientPath);
             allIngredientNumbers = ingredientDatas.Length;
+        }
+
+        private void LoadGameEvent()
+        {
+            gameEventDatas = Resources.LoadAll<GameEventData>(GameEventDatasPath);
+            gameEventDatasNumbers = gameEventDatas.Length;
         }
 
         private IEnumerator RequestDelay(ResourceRequest request)
@@ -65,6 +80,7 @@ namespace DarkLordGame
             }
             return ingredientDatas[0];
         }
+
         #endregion
     }
 }

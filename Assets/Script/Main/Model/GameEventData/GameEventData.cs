@@ -2,10 +2,11 @@
 using UnityEngine;
 namespace DarkLordGame
 {
+    [CreateAssetMenu(fileName = "game event data", menuName = "DarkLordGame/GameEvent/Default")]
     public class GameEventData : ScriptableObject
     {
         public int eventID;
-        public List<UnlockCondition> condition = new List<UnlockCondition>();
+        public UnlockCondition condition;
         public List<UnlockData> unlockData = new List<UnlockData>();
     }
 }

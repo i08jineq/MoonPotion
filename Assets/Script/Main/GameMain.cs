@@ -9,6 +9,7 @@ namespace DarkLordGame
         public FadeLayer fadeLayer;
         public DayTimeManager dayManager = new DayTimeManager();
         public NightTimeManager nightTimeManager = new NightTimeManager();
+        public GameEventManager gameEventManager = new GameEventManager();
         private bool shouldExecuteDay = false;
 
         #region initialization
@@ -24,6 +25,7 @@ namespace DarkLordGame
 
             yield return dayManager.SetupStartDayTime();
             yield return nightTimeManager.SetupEnumerator();
+            gameEventManager.Setup();
             yield return fadeLayer.FadeIn();
 
         }
@@ -31,6 +33,11 @@ namespace DarkLordGame
         #endregion
 
         #region mainLoop
+
+        private void CheckEvent()
+        {
+
+        }
 
         private void StartCrafting()
         {

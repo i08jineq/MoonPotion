@@ -11,7 +11,7 @@ namespace DarkLordGame
         public string playername = "-";
         public string shopName = "-";
 
-        public int currentDay = 0;
+        public int currentDay = 1;
         public int currentGold = 0;
         public List<int> unlockedCustomerID = new List<int>();
         public int totalSell = 0;
