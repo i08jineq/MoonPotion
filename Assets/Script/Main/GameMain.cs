@@ -25,9 +25,9 @@ namespace DarkLordGame
 
             yield return dayManager.SetupStartDayTime();
             yield return nightTimeManager.SetupEnumerator();
-
+            SetupGameEvent();
             yield return fadeLayer.FadeIn();
-
+            CheckEvent();
         }
 
         private void SetupGameEvent()

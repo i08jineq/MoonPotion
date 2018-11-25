@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7cee69b0d8974ac3b4c24d292841be1, type: 3}
   m_Name: Tutorial
   m_EditorClassIdentifier: 
-  eventID: 0
+  eventID: 1
   condition:
     unlockConditionType: 0
     conditionValue: 0
