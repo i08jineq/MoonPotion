@@ -7,7 +7,7 @@ namespace DarkLordGame
     {
         public Communicator onDayStarted = new Communicator();
         public Communicator onDayEnded = new Communicator();
-        public Communicator<int> onDayTimeChanged = new Communicator<int>();
+        public Communicator<float> onDayTimeChanged = new Communicator<float>();
         public Communicator onInteruptedByLevelEvent = new Communicator();
         public Communicator onLeventEventEnded = new Communicator();
 

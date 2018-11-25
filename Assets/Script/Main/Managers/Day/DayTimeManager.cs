@@ -7,40 +7,62 @@ namespace DarkLordGame
     public class DayTimeManager
     {
         public List<EnvironmentLight> environmentLights = new List<EnvironmentLight>();
+        private int environmentLightNumbers = 0;
         public Gradient backgroundColor;
+
+        private Color startDayBackgroundColor;
+        private Color nightTimeBackgroundColor;
+
         public float turnToDayPeriod = 1;
-        protected const float timeCountSpeed = .2f;
         protected float deltaTimeCount = 0;
-        protected int currentTimeOfDay = 0;
 
-        protected const int startWorkTimeOfDay = 9;
-        protected const float endWorkTimeOfDay = 21;
-        protected const float hourOfDay = 24;
+        protected const float timeCountSpeed = .2f;
+        protected const int startWorkTimeOfDay = 0;
+        protected const int endWorkTimeOfDay = 10;
 
+        #region setup
         public IEnumerator SetupStartDayTime()
         {
-            deltaTimeCount = startWorkTimeOfDay;
-            currentTimeOfDay = startWorkTimeOfDay;
+            yield return null;
+            SetupEnivornmentLight();
+            yield return null;
+            SetupBackgroundColor();
+
+            deltaTimeCount = endWorkTimeOfDay;
             UpdateEnvironment();
-            yield break;
         }
 
-        public IEnumerator startDay()
+        private void SetupEnivornmentLight()
+        {
+            environmentLightNumbers = environmentLights.Count;
+            for (int i = 0; i < environmentLightNumbers; i++)
+            {
+                environmentLights[i].Setup();
+            }
+        }
+
+        private void SetupBackgroundColor()
+        {
+            startDayBackgroundColor = backgroundColor.Evaluate(0);
+            nightTimeBackgroundColor = backgroundColor.Evaluate(1);
+        }
+        #endregion
+
+        #region event
+        public IEnumerator SunriseEnumerator()
         {
             float t = 0;
-            while(t <= turnToDayPeriod)
+            while (t <= turnToDayPeriod)
             {
                 t += Time.deltaTime;
-                deltaTimeCount = Mathf.Lerp(0, startWorkTimeOfDay, t / turnToDayPeriod);
-                UpdateTimeOfDay();
-                UpdateEnvironment();
+                UpdateSunriseEnvironment(t / turnToDayPeriod);
                 yield return null;
             }
+            UpdateSunriseEnvironment(1);
             deltaTimeCount = startWorkTimeOfDay;
-            UpdateTimeOfDay();
-            UpdateEnvironment();
             Singleton.instance.events.onDayStarted.Invoke();
         }
+
 
         public void OnUpdate(float deltaTime)
         {
@@ -52,19 +74,23 @@ namespace DarkLordGame
 
         protected void UpdateTimeOfDay()
         {
-            int timeOfDay = (int)(deltaTimeCount) + startWorkTimeOfDay;
-            if(currentTimeOfDay != timeOfDay)
+            Singleton.instance.events.onDayTimeChanged.Invoke(deltaTimeCount);
+        }
+
+        private void UpdateSunriseEnvironment(float weight)
+        {
+
+            for (int i = 0; i < environmentLightNumbers; i++)
             {
-                currentTimeOfDay = timeOfDay;
-                Singleton.instance.events.onDayTimeChanged.Invoke(currentTimeOfDay);
+                environmentLights[i].Sunrise(weight);
             }
+            Camera.main.backgroundColor = Color.Lerp(nightTimeBackgroundColor, startDayBackgroundColor, weight);
         }
 
         private void UpdateEnvironment()
         {
-            int number = environmentLights.Count;
-            float weight = deltaTimeCount / hourOfDay;
-            for (int i = 0; i < number; i++)
+            float weight = deltaTimeCount / endWorkTimeOfDay;
+            for (int i = 0; i < environmentLightNumbers; i++)
             {
                 environmentLights[i].UpdateTime(weight);
             }
@@ -75,11 +101,11 @@ namespace DarkLordGame
 
         protected void CheckDayEnded()
         {
-            if (currentTimeOfDay >= endWorkTimeOfDay)
+            if (deltaTimeCount >= endWorkTimeOfDay)
             {
                 Singleton.instance.events.onDayEnded.Invoke();
             }
         }
-
+        #endregion
     }
 }

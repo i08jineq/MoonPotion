@@ -14,6 +14,6 @@ MonoBehaviour:
   eventID: 1
   condition:
     unlockConditionType: 0
-    conditionValue: 0
+    conditionValue: 1
   unlockDataList:
   - {fileID: 11400000, guid: 6ab0df155ca90445f829b1e735203bcb, type: 2}

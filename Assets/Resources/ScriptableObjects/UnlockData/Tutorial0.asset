@@ -11,4 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b15d9e3f2e7b471ea084c13240964fe, type: 3}
   m_Name: Tutorial0
   m_EditorClassIdentifier: 
-  tutorialMessages: []
+  tutorialMessages:
+  - You are a potions merchant, Who started a new business in the dungeon town.
+  - You are going earn 1 million along.
+  - Let's start crafting your first potion.

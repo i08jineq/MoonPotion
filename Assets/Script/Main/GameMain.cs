@@ -22,7 +22,6 @@ namespace DarkLordGame
         public IEnumerator Start()
         {
             yield return Singleton.Init();
-
             yield return dayManager.SetupStartDayTime();
             yield return nightTimeManager.SetupEnumerator();
             SetupGameEvent();
@@ -61,7 +60,7 @@ namespace DarkLordGame
 
         private IEnumerator StartDayEnumerator()
         {
-            yield return dayManager.startDay();
+            yield return dayManager.SunriseEnumerator();
             Singleton.instance.currentSelectedSaveData.currentDay++;
             Singleton.instance.SaveCurrentSlotData();
         }
