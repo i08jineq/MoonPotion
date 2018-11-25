@@ -22,13 +22,20 @@ namespace DarkLordGame
         public IEnumerator Start()
         {
             yield return Singleton.Init();
-            yield return dayManager.SetupStartDayTime();
+            yield return SetupDayManager();
             yield return nightTimeManager.SetupEnumerator();
             SetupGameEvent();
             yield return fadeLayer.FadeIn();
             CheckEvent();
         }
 
+        private IEnumerator SetupDayManager()
+        {
+            yield return dayManager.SetupStartDayTime();
+            dayManager.onDayEnded.AddListener(onDayEnded);
+            dayManager.onDayStarted.AddListener(OnDayStarted);
+            dayManager.onDayTimeChanged.AddListener(OnDayTimeChanged);
+        }
         private void SetupGameEvent()
         {
             gameEventManager.Setup();
@@ -45,6 +52,7 @@ namespace DarkLordGame
 
         private void OnFinishedEvent()
         {
+            //    StartCrafting();
             StartDay();
         }
 
@@ -55,14 +63,24 @@ namespace DarkLordGame
 
         private void StartDay()
         {
-            StartCoroutine(StartDayEnumerator());
-        }
-
-        private IEnumerator StartDayEnumerator()
-        {
-            yield return dayManager.SunriseEnumerator();
             Singleton.instance.currentSelectedSaveData.currentDay++;
             Singleton.instance.SaveCurrentSlotData();
+            StartCoroutine(dayManager.SunriseEnumerator());
+        }
+
+        private void OnDayStarted()
+        {
+            shouldExecuteDay = true;
+        }
+
+        private void onDayEnded()
+        {
+            shouldExecuteDay = false;
+        }
+
+        private void OnDayTimeChanged(float timeCount)
+        {
+
         }
 
         #endregion

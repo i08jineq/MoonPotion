@@ -20,6 +20,12 @@ namespace DarkLordGame
         protected const int startWorkTimeOfDay = 0;
         protected const int endWorkTimeOfDay = 10;
 
+        public Communicator onDayStarted = new Communicator();
+        public Communicator onDayEnded = new Communicator();
+        public Communicator<float> onDayTimeChanged = new Communicator<float>();
+        public Communicator onInteruptedByLevelEvent = new Communicator();
+        public Communicator onLeventEventEnded = new Communicator();
+
         #region setup
         public IEnumerator SetupStartDayTime()
         {
@@ -60,7 +66,7 @@ namespace DarkLordGame
             }
             UpdateSunriseEnvironment(1);
             deltaTimeCount = startWorkTimeOfDay;
-            Singleton.instance.events.onDayStarted.Invoke();
+            onDayStarted.Invoke();
         }
 
 
@@ -74,7 +80,7 @@ namespace DarkLordGame
 
         protected void UpdateTimeOfDay()
         {
-            Singleton.instance.events.onDayTimeChanged.Invoke(deltaTimeCount);
+            onDayTimeChanged.Invoke(deltaTimeCount);
         }
 
         private void UpdateSunriseEnvironment(float weight)
@@ -103,7 +109,7 @@ namespace DarkLordGame
         {
             if (deltaTimeCount >= endWorkTimeOfDay)
             {
-                Singleton.instance.events.onDayEnded.Invoke();
+                onDayEnded.Invoke();
             }
         }
         #endregion

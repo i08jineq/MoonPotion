@@ -6,7 +6,6 @@ namespace DarkLordGame
     public class Singleton
     {
         public static Singleton instance;
-        public Events events = new Events();//clear at the end of level
         public List<int> savedSlotIndex = new List<int>();
         public List<SaveData> allSaveData = new List<SaveData>();
 
@@ -20,11 +19,6 @@ namespace DarkLordGame
         public Transform mainCanvasTransform;
 
         private const string saveSlotDataName = "savedslot";
-
-        public Singleton()
-        {
-            events = new Events();
-        }
 
         public static IEnumerator Init()
         {
