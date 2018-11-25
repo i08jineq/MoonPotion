@@ -80,6 +80,12 @@ namespace DarkLordGame
         {
             PersistenceData.SaveData<SaveData>("slot_" + slotIndex.ToString(), currentSelectedSaveData);
         }
+
+        public void SaveCurrentSlotData()
+        {
+            SaveData(selectedSlotIndex);
+        }
+
         #endregion
     }
 }

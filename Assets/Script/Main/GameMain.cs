@@ -25,18 +25,28 @@ namespace DarkLordGame
 
             yield return dayManager.SetupStartDayTime();
             yield return nightTimeManager.SetupEnumerator();
-            gameEventManager.Setup();
+
             yield return fadeLayer.FadeIn();
 
         }
 
+        private void SetupGameEvent()
+        {
+            gameEventManager.Setup();
+            gameEventManager.onFinishedAllEvent.AddListener(OnFinishedEvent);
+        }
         #endregion
 
         #region mainLoop
 
         private void CheckEvent()
         {
+            gameEventManager.TryStartDayEvent(Singleton.instance.currentSelectedSaveData.currentDay);
+        }
 
+        private void OnFinishedEvent()
+        {
+            StartDay();
         }
 
         private void StartCrafting()
@@ -52,6 +62,8 @@ namespace DarkLordGame
         private IEnumerator StartDayEnumerator()
         {
             yield return dayManager.startDay();
+            Singleton.instance.currentSelectedSaveData.currentDay++;
+            Singleton.instance.SaveCurrentSlotData();
         }
 
         #endregion
