@@ -14,7 +14,12 @@ namespace DarkLordGame
 
         public GameEventData[] gameEventDatas;
         public int gameEventDatasNumbers;
-        public const string GameEventDatasPath = "ScriptableObjects/GameEvents/";
+        public const string GameEventDatasPath = "ScriptableObjects/GameEvent/";
+
+        public UnlockData[] unlockDatas;
+        public int unlockDataNumbers;
+        public const string UnlockDataPath = "ScriptableObjects/TutorialData/";
+
         #region load
         public IEnumerator LoadResources()
         {
@@ -25,6 +30,10 @@ namespace DarkLordGame
             yield return null;
 
             LoadGameEvent();
+            yield return null;
+
+            LoadUnlockData();
+            yield return null;
         }
 
         private void LoadBaseIngredientDatas()
@@ -43,6 +52,12 @@ namespace DarkLordGame
         {
             gameEventDatas = Resources.LoadAll<GameEventData>(GameEventDatasPath);
             gameEventDatasNumbers = gameEventDatas.Length;
+        }
+
+        private void LoadUnlockData()
+        {
+            unlockDatas = Resources.LoadAll<TutorialData>(UnlockDataPath);
+            unlockDataNumbers = unlockDatas.Length;
         }
 
         private IEnumerator RequestDelay(ResourceRequest request)

@@ -10,7 +10,12 @@ namespace DarkLordGame
         public MessagesDialogue messageDialogueUI;
         [System.NonSerialized]public Communicator onFinishedExecuteEvent = new Communicator();
         private List<GameEventData> targetEventData = new List<GameEventData>();
+        private GameEventData currentEventData;
+        private List<UnlockData> unlockDatas = new List<UnlockData>();
+        private int currentShowIndex = 0;
+        private int unlockDataNumber = 0;
 
+        public Communicator onFinishedAllEvent = new Communicator();
         #region setup
 
         public void Setup()
@@ -38,9 +43,26 @@ namespace DarkLordGame
         private void SetupUI()
         {
             messageDialogueUI.Setup();
+            messageDialogueUI.onFinished.AddListener(OnFinishedEvent);
         }
 
         #endregion
+
+        public void TryStartDayEvent(int day)
+        {
+            currentEventData = GetEventDataDay(day);
+            if(currentEventData == null)
+            {
+                onFinishedAllEvent.Invoke();
+                return;
+            }
+
+            unlockDatas.Clear();
+            unlockDatas = currentEventData.unlockDataList;
+            currentShowIndex = 0;
+            unlockDataNumber = unlockDatas.Count;
+            ExecuteCurrentUnlockDataEvent();
+        }
 
         public GameEventData GetEventDataDay(int day)
         {
@@ -55,5 +77,29 @@ namespace DarkLordGame
             return null;
         }
 
+        private void OnFinishedEvent()
+        {
+            currentShowIndex++;
+            if(currentShowIndex >= unlockDataNumber)
+            {
+                onFinishedAllEvent.Invoke();
+                targetEventData.Remove(currentEventData);
+                Singleton.instance.currentSelectedSaveData.completedEventID.Add(currentEventData.eventID);
+                return;
+            }
+            ExecuteCurrentUnlockDataEvent();
+        }
+
+        private void ExecuteCurrentUnlockDataEvent()
+        {
+            int currentDay = Singleton.instance.currentSelectedSaveData.currentDay;
+            switch (unlockDatas[currentShowIndex].GetUnlockType())
+            {
+                case UnlockDataType.Tutorial:
+                    TutorialData tutorial = unlockDatas[currentShowIndex] as TutorialData;
+                    messageDialogueUI.Open(tutorial.tutorialMessages, "Day - " + (currentDay));
+                    break;
+            }
+        }
     }
 }

@@ -7,6 +7,6 @@ namespace DarkLordGame
     {
         public int eventID;
         public UnlockCondition condition;
-        public List<UnlockData> unlockData = new List<UnlockData>();
+        public List<UnlockData> unlockDataList = new List<UnlockData>();
     }
 }

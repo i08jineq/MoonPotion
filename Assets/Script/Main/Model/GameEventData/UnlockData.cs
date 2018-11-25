@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace DarkLordGame
 {
-    [System.Serializable]
-    public struct UnlockData
+    public abstract class UnlockData : ScriptableObject
     {
-        public UnlockDataType unlockDataType;
-        public int unlockId;
-        public int amount;
+        public abstract UnlockDataType GetUnlockType();
     }
 }
