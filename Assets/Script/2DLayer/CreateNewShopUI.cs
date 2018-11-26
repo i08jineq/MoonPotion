@@ -24,13 +24,14 @@ namespace DarkLordGame
 
         private void OnNameChanged(string changed)
         {
-            bool isShopNameEmpty = shopNameField.text.Length == 0;
-            bool isPlayerNameEmpty = playerNameField.text.Length == 0;
-            okButton.interactable = isShopNameEmpty || isPlayerNameEmpty;
+            bool isNotShopNameEmpty = shopNameField.text.Length != 0;
+            bool isNotPlayerNameEmpty = playerNameField.text.Length != 0;
+            okButton.interactable = isNotShopNameEmpty && isNotPlayerNameEmpty;
         }
 
         public void OnFinishedInput()
         {
+            gameObject.SetActive(false);
             onFinished.Invoke();
         }
     }

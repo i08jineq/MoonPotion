@@ -48,9 +48,11 @@ namespace DarkLordGame
             createNewShopUI.Setup();
             createNewShopUI.onFinished.AddListener(OnFinishedInputShopName);
             createNewShopUI.onFinished.AddListener(OnFinishedEvent);
+            createNewShopUI.gameObject.SetActive(false);
 
             messageDialogueUI.Setup();
             messageDialogueUI.onFinished.AddListener(OnFinishedEvent);
+            messageDialogueUI.gameObject.SetActive(false);
         }
 
         #endregion
@@ -110,7 +112,7 @@ namespace DarkLordGame
             switch (unlockDatas[currentShowIndex].GetUnlockType())
             {
                 case UnlockDataType.CreateNewShop:
-                    
+                    createNewShopUI.gameObject.SetActive(true);
                     break;
                 case UnlockDataType.Tutorial:
                     TutorialUnlockData tutorial = unlockDatas[currentShowIndex] as TutorialUnlockData;
