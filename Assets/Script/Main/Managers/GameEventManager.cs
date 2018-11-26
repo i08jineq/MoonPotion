@@ -7,7 +7,9 @@ namespace DarkLordGame
     public class GameEventManager
     {
         // ui of events
+        public CreateNewShopUI createNewShopUI;
         public MessagesDialogue messageDialogueUI;
+
         [System.NonSerialized]public Communicator onFinishedExecuteEvent = new Communicator();
         private List<GameEventData> targetEventData = new List<GameEventData>();
         private GameEventData currentEventData;
@@ -16,6 +18,7 @@ namespace DarkLordGame
         private int unlockDataNumber = 0;
 
         public Communicator onFinishedAllEvent = new Communicator();
+
         #region setup
 
         public void Setup()
@@ -42,6 +45,10 @@ namespace DarkLordGame
 
         private void SetupUI()
         {
+            createNewShopUI.Setup();
+            createNewShopUI.onFinished.AddListener(OnFinishedInputShopName);
+            createNewShopUI.onFinished.AddListener(OnFinishedEvent);
+
             messageDialogueUI.Setup();
             messageDialogueUI.onFinished.AddListener(OnFinishedEvent);
         }
@@ -77,6 +84,13 @@ namespace DarkLordGame
             return null;
         }
 
+        private void OnFinishedInputShopName()
+        {
+            Singleton.instance.currentSelectedSaveData.shopName = createNewShopUI.shopNameField.text;
+            Singleton.instance.currentSelectedSaveData.playername = createNewShopUI.playerNameField.text;
+            Singleton.instance.SaveCurrentSlotData();
+        }
+
         private void OnFinishedEvent()
         {
             currentShowIndex++;
@@ -95,6 +109,9 @@ namespace DarkLordGame
             int currentDay = Singleton.instance.currentSelectedSaveData.currentDay;
             switch (unlockDatas[currentShowIndex].GetUnlockType())
             {
+                case UnlockDataType.CreateNewShop:
+                    
+                    break;
                 case UnlockDataType.Tutorial:
                     TutorialUnlockData tutorial = unlockDatas[currentShowIndex] as TutorialUnlockData;
                     messageDialogueUI.Open(tutorial.tutorialMessages, "Day - " + (currentDay));
