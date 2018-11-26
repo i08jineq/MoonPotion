@@ -2,10 +2,11 @@
 {
     public enum UnlockDataType 
     {
+        CreateNewShop,
+        Tutorial,
         Shop,
         ShopItem,
         MixMethod,
-        Tutorial,
         Customer,
         Recipe,
         ToBeContronue,

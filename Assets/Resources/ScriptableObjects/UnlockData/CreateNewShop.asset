@@ -8,12 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7cee69b0d8974ac3b4c24d292841be1, type: 3}
-  m_Name: Tutorial
+  m_Script: {fileID: 11500000, guid: 18ac74813b4ca4f2e8a01b4f928768a2, type: 3}
+  m_Name: CreateNewShop
   m_EditorClassIdentifier: 
-  eventID: 1
-  condition:
-    unlockConditionType: 0
-    conditionValue: 1
-  unlockDataList:
-  - {fileID: 11400000, guid: 6ab0df155ca90445f829b1e735203bcb, type: 2}

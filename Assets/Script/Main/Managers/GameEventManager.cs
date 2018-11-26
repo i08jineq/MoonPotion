@@ -96,7 +96,7 @@ namespace DarkLordGame
             switch (unlockDatas[currentShowIndex].GetUnlockType())
             {
                 case UnlockDataType.Tutorial:
-                    TutorialData tutorial = unlockDatas[currentShowIndex] as TutorialData;
+                    TutorialUnlockData tutorial = unlockDatas[currentShowIndex] as TutorialUnlockData;
                     messageDialogueUI.Open(tutorial.tutorialMessages, "Day - " + (currentDay));
                     break;
             }

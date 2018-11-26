@@ -56,7 +56,7 @@ namespace DarkLordGame
 
         private void LoadUnlockData()
         {
-            unlockDatas = Resources.LoadAll<TutorialData>(UnlockDataPath);
+            unlockDatas = Resources.LoadAll<TutorialUnlockData>(UnlockDataPath);
             unlockDataNumbers = unlockDatas.Length;
         }
 
