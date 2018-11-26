@@ -17,7 +17,6 @@ namespace DarkLordGame
         public Communicator onFinished = new Communicator();
 
         private int currentMessageIndex = 0;
-
         private List<string> messagesList = new List<string>();
 
         public void Setup()

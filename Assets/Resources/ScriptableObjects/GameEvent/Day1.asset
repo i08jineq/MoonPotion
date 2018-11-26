@@ -18,3 +18,4 @@ MonoBehaviour:
   unlockDataList:
   - {fileID: 11400000, guid: 6ab0df155ca90445f829b1e735203bcb, type: 2}
   - {fileID: 11400000, guid: 15846683598b14b55b334fe52a3811ca, type: 2}
+  - {fileID: 11400000, guid: 41bc801f7e36b402caba4a7a0d69dba3, type: 2}

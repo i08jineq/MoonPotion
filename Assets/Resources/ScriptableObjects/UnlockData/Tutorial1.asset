@@ -9,9 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 475b3d4f79665459aad3473cdee09fda, type: 3}
-  m_Name: Tutorial0
+  m_Name: Tutorial1
   m_EditorClassIdentifier: 
   tutorialMessages:
-  - You are a new startup potion merchant in the dungeon town. In 30 years you are
-    going to become the richest potion merchant in the world
-  - Before you start crafting, you need a shop name
+  - Let's start crafting your first potion.
