@@ -27,7 +27,8 @@ namespace DarkLordGame
         public Communicator<UIEvent> uiEvent = new Communicator<UIEvent>();
 
         private InventoryItemData craftingItemData = new InventoryItemData();
-
+        private int baseIngredientPrice = 0;
+        private int ingredientsSumPrice = 0;
         public enum UIEvent
         {
             Cancel,
@@ -65,7 +66,8 @@ namespace DarkLordGame
 
             craftingPrice.SetText("0");
             craftingPrice.ForceMeshUpdate();
-
+            baseIngredientPrice = 0;
+            ingredientsSumPrice = 0;
 
             SetEnableCraftButton(false);
 
@@ -118,11 +120,12 @@ namespace DarkLordGame
         {
             SetactiveTopScreenUI(true);
             IngredientData baseIngredient = selectBaseIngredientScreen.GetSelectedBaseIngredient();
-            if(baseIngredient)
+            if(baseIngredient != null)
             {
                 selectBaseIngredientButtonText.SetText(baseIngredient.ingredientName);
                 selectBaseIngredientButtonText.ForceMeshUpdate();
                 craftingItemData.baseIngredientID = baseIngredient.id;
+                baseIngredientPrice = baseIngredient.baseCost;
             }
         }
 
@@ -143,6 +146,11 @@ namespace DarkLordGame
         public InventoryItemData GetCraftingItemData()
         {
             return craftingItemData;
+        }
+
+        public int GetTotalPrice()
+        {
+            return baseIngredientPrice + ingredientsSumPrice;
         }
     }
 }

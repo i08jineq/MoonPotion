@@ -7,8 +7,7 @@ namespace DarkLordGame
         public int id;
         public string ingredientName = "Tap Water";
         public string description = "";
-        public float baseCost = 100;
-        public float costMultiplier = 1;
+        public int baseCost = 100;
 
         //parameter --- ****multiplier, ****adder---
     }
