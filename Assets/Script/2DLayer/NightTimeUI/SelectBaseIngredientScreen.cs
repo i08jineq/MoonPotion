@@ -18,7 +18,7 @@ namespace DarkLordGame
 
         public Communicator onClosed = new Communicator();
         private IngredientData selectedBaseIngredient;
-
+        private List<BaseIngredientButton> baseIngredientButtons = new List<BaseIngredientButton>();
         public void Setup()
         {
             closeButton.onClick.AddListener(CloseUI);
@@ -40,6 +40,7 @@ namespace DarkLordGame
                 button.Setup(baseIngredient);
                 button.gameObject.SetActive(true);
                 button.onSelected.AddListener(OnSelectedBaseIngredient);
+                baseIngredientButtons.Add(button);
             }
 
             GameObject.Destroy(cachedInstance.gameObject);
@@ -51,12 +52,23 @@ namespace DarkLordGame
             selectingBaseIngredientDescription.ForceMeshUpdate();
 
             selectedBaseIngredient = null;
-            //reset all selecting
         }
 
         private void OnSelectedBaseIngredient(IngredientData target)
         {
             selectedBaseIngredient = target;
+            selectingBaseIngredientDescription.SetText(target.description);
+            selectingBaseIngredientDescription.ForceMeshUpdate();
+
+            int numbers = baseIngredientButtons.Count;
+            for (int i = 0; i < numbers; i++)
+            {
+                if(baseIngredientButtons[i].target == target)
+                {
+                    continue;
+                }
+                baseIngredientButtons[i].SetNotSelected();
+            }
         }
 
         private void CloseUI()

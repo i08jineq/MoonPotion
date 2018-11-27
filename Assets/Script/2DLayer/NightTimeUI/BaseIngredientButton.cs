@@ -26,7 +26,13 @@ namespace DarkLordGame
 
         private void OnClcikedButton()
         {
+            button.image.color = button.colors.pressedColor;
             onSelected.Invoke(target);
+        }
+
+        public void SetNotSelected()
+        {
+            button.image.color = button.colors.normalColor;
         }
     }
 }
