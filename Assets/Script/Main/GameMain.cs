@@ -10,12 +10,17 @@ namespace DarkLordGame
         public DayTimeManager dayManager = new DayTimeManager();
         public NightTimeManager nightTimeManager = new NightTimeManager();
         public GameEventManager gameEventManager = new GameEventManager();
+
+        public TopPanelUI topPanelUI;
+        public PauseScreenUI pauseScreen;
+
         private bool shouldExecuteDay = false;
 
         #region initialization
 
         private void Awake()
         {
+            fadeLayer.gameObject.SetActive(true);
             fadeLayer.ForceColor(Color.black);
         }
 
@@ -23,8 +28,10 @@ namespace DarkLordGame
         {
             yield return Singleton.Init();
             yield return SetupDayManager();
-            yield return nightTimeManager.SetupEnumerator();
+            yield return SetupNightTimeManager();
             SetupGameEvent();
+            SetupTopPanelUI();
+            SetupPauseScreen();
             yield return fadeLayer.FadeIn();
             CheckEvent();
         }
@@ -36,11 +43,31 @@ namespace DarkLordGame
             dayManager.onDayStarted.AddListener(OnDayStarted);
             dayManager.onDayTimeChanged.AddListener(OnDayTimeChanged);
         }
+
+        private IEnumerator SetupNightTimeManager()
+        {
+            yield return nightTimeManager.SetupEnumerator();
+            nightTimeManager.onFinish.AddListener(StartDay);
+        }
+
         private void SetupGameEvent()
         {
             gameEventManager.Setup();
             gameEventManager.onFinishedAllEvent.AddListener(OnFinishedEvent);
         }
+
+        private void SetupTopPanelUI()
+        {
+            topPanelUI.SetGoldAmount(Singleton.instance.currentSelectedSaveData.currentGold);
+            topPanelUI.pauseButton.onClick.AddListener(OnPauseGame);
+        }
+
+        private void SetupPauseScreen()
+        {
+            pauseScreen.resumeButton.onClick.AddListener(OnResumeGame);
+            pauseScreen.saveAndQuitButton.onClick.AddListener(OnSaveAndQuitGame);
+        }
+
         #endregion
 
         #region mainLoop
@@ -52,13 +79,12 @@ namespace DarkLordGame
 
         private void OnFinishedEvent()
         {
-            //    StartCrafting();
-            StartDay();
+            StartNightTimeSequence();
         }
 
-        private void StartCrafting()
+        private void StartNightTimeSequence()
         {
-
+            nightTimeManager.Start();
         }
 
         private void StartDay()
@@ -85,6 +111,34 @@ namespace DarkLordGame
 
         #endregion
 
+        #region event
+
+        private void OnPauseGame()
+        {
+            Time.timeScale = 0;
+            pauseScreen.gameObject.SetActive(true);
+        }
+
+        private void OnResumeGame()
+        {
+            Time.timeScale = 1;
+            pauseScreen.gameObject.SetActive(false);
+        }
+
+        private void OnSaveAndQuitGame()
+        {
+            StartCoroutine(QuitEnumerator());
+        }
+
+        private IEnumerator QuitEnumerator()
+        {
+            Singleton.instance.SaveCurrentSlotData();
+            yield return null;
+            Application.Quit();
+        }
+
+        #endregion
+
         private void Update()
         {
             float deltaTime = Time.deltaTime;
@@ -97,6 +151,11 @@ namespace DarkLordGame
             {
                 dayManager.OnUpdate(deltaTime);
             }
+        }
+
+        private void UpdateGoldAmount()
+        {
+            topPanelUI.SetGoldAmount(Singleton.instance.currentSelectedSaveData.currentGold);
         }
     }
 }

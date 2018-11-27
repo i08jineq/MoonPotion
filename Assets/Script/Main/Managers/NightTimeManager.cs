@@ -20,7 +20,6 @@ namespace DarkLordGame
             SetupCraftNewItemTopScreen();
             yield return null;
             SetupCraftFromRecipeScreen();
-
         }
 
         private void SetupTopScreen()
@@ -51,8 +50,27 @@ namespace DarkLordGame
             craftNewItemScreen.ResetUI();
 
             craftItemFromRecipeScreen.gameObject.SetActive(false);
-            //craftItemFromRecipeScreen
+            //craftItemFromRecipeScreen.r
 
+
+        }
+
+        private void OpenTopScreen()
+        {
+            List<InventoryItemData> inventories = Singleton.instance.currentSelectedSaveData.inventoryItemDatas;
+            int numbers = inventories.Count;
+            bool hasAnyItem = false;
+            for (int i = 0; i < numbers; i++)
+            {
+                if(inventories[i].amount > 0)
+                {
+                    hasAnyItem = true;
+                    break;
+                }
+            }
+            nightTimeUITopScreen.openShop.interactable = hasAnyItem;
+            nightTimeUITopScreen.warningText.SetActive(!hasAnyItem);
+            //if ()
             nightTimeUITopScreen.gameObject.SetActive(true);
         }
 
@@ -66,7 +84,6 @@ namespace DarkLordGame
                     break;
                 case NightTimeUITopScreen.UIEvent.CraftNewItem:
                     craftNewItemScreen.Open();
-
                     break;
                 case NightTimeUITopScreen.UIEvent.CraftFromRecipe:
                     craftItemFromRecipeScreen.gameObject.SetActive(true);

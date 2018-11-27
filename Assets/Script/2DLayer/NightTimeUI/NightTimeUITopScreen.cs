@@ -6,10 +6,10 @@ namespace DarkLordGame
 {
     public class NightTimeUITopScreen : MonoBehaviour
     {
+        public GameObject warningText;
         public Button openShop;
         public Button craftNewItemButton;
         public Button craftFromRecipe;
-        //public Button Research;
 
         public Communicator<UIEvent> uiEvent = new Communicator<UIEvent>();
         public enum UIEvent
