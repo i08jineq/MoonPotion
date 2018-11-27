@@ -39,6 +39,7 @@ namespace DarkLordGame
         private void SetupCraftFromRecipeScreen()
         {
             craftItemFromRecipeScreen.Setup();
+            craftItemFromRecipeScreen.uiEvent.AddListener(CraftRecipeIem);
             craftItemFromRecipeScreen.gameObject.SetActive(false);
         }
 
@@ -52,7 +53,7 @@ namespace DarkLordGame
             craftItemFromRecipeScreen.gameObject.SetActive(false);
             //craftItemFromRecipeScreen.r
 
-
+            OpenTopScreen();
         }
 
         private void OpenTopScreen()
@@ -70,8 +71,9 @@ namespace DarkLordGame
             }
             nightTimeUITopScreen.openShop.interactable = hasAnyItem;
             nightTimeUITopScreen.warningText.SetActive(!hasAnyItem);
-            //if ()
             nightTimeUITopScreen.gameObject.SetActive(true);
+
+            nightTimeUITopScreen.craftFromRecipe.interactable = (numbers > 0);
         }
 
         private void TopScreenEvent(NightTimeUITopScreen.UIEvent eventType)
@@ -111,6 +113,7 @@ namespace DarkLordGame
             switch(uIEvent)
             {
                 case CraftItemFromRecipeScreen.UIEvent.Cancel:
+                    OpenTopScreen();
                     break;
                 case CraftItemFromRecipeScreen.UIEvent.DeleteRecipe:
                     //do delete stuff

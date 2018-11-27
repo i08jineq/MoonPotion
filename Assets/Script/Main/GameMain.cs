@@ -60,6 +60,7 @@ namespace DarkLordGame
         {
             topPanelUI.SetGoldAmount(Singleton.instance.currentSelectedSaveData.currentGold);
             topPanelUI.pauseButton.onClick.AddListener(OnPauseGame);
+            topPanelUI.gameObject.SetActive(true);
         }
 
         private void SetupPauseScreen()
@@ -127,13 +128,7 @@ namespace DarkLordGame
 
         private void OnSaveAndQuitGame()
         {
-            StartCoroutine(QuitEnumerator());
-        }
-
-        private IEnumerator QuitEnumerator()
-        {
             Singleton.instance.SaveCurrentSlotData();
-            yield return null;
             Application.Quit();
         }
 

@@ -47,7 +47,7 @@ namespace DarkLordGame
 
         public void ResetUI()
         {
-            selectingBaseIngredientDescription.SetText("");
+            selectingBaseIngredientDescription.SetText("No Item Selected");
             selectingBaseIngredientDescription.ForceMeshUpdate();
 
             selectedBaseIngredient = null;
