@@ -20,6 +20,11 @@ namespace DarkLordGame
             checkBox.onValueChanged.AddListener(OnCheckBoxVolumeChanged);
         }
 
+        public void UncheckCheckbox()
+        {
+            checkBox.isOn = false;
+        }
+
         private void OnCheckBoxVolumeChanged(bool value)
         {
             onSelected.Invoke(value, targetIngredient);

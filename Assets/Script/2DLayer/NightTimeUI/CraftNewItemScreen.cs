@@ -44,7 +44,10 @@ namespace DarkLordGame
             selectMixingMethodButton.onClick.AddListener(OnClickedMixingMethod);
 
             selectBaseIngredientScreen.Setup();
+            selectBaseIngredientScreen.onClosed.AddListener(OnClosedSelectBaseIngredientScreen);
+
             selectIngredientScreen.Setup();
+            selectIngredientScreen.onFinished.AddListener(OnClosedSelectIngredientScreen);
         }
 
         //call everytime First try crafting
@@ -62,7 +65,6 @@ namespace DarkLordGame
             selectIngredientScreen.ResetUI();
             selectMixingMethodScreen.ResetUI();
 
-            selectBaseIngredientScreen.onClosed.AddListener(OnClosedSelectBaseIngredientScreen);
 
             craftingPrice.SetText("0");
             craftingPrice.ForceMeshUpdate();
@@ -125,8 +127,28 @@ namespace DarkLordGame
                 selectBaseIngredientButtonText.SetText(baseIngredient.ingredientName);
                 selectBaseIngredientButtonText.ForceMeshUpdate();
                 craftingItemData.baseIngredientID = baseIngredient.id;
-                baseIngredientPrice = baseIngredient.baseCost;
+                baseIngredientPrice = baseIngredient.price;
             }
+            UpdatePriceText();
+        }
+
+        private void OnClosedSelectIngredientScreen()
+        {
+            SetactiveTopScreenUI(true);
+            IngredientData[] ingredients = selectIngredientScreen.GetIngredientDatas();
+            int length = ingredients.Length;
+            ingredientsSumPrice = 0;
+            for (int i = 0; i < length; i++)
+            {
+                ingredientsSumPrice += ingredients[i].price;
+            }
+            UpdatePriceText();
+        }
+
+        private void UpdatePriceText()
+        {
+            craftingPrice.SetText(GetTotalPrice().ToString());
+            craftingPrice.ForceMeshUpdate();
         }
 
         #endregion
