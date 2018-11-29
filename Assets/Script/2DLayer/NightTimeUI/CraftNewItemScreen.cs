@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+
 namespace DarkLordGame
 {
     public class CraftNewItemScreen : MonoBehaviour
@@ -29,6 +30,7 @@ namespace DarkLordGame
         private InventoryItemData craftingItemData = new InventoryItemData();
         private int baseIngredientPrice = 0;
         private int ingredientsSumPrice = 0;
+
         public enum UIEvent
         {
             Cancel,
@@ -46,10 +48,12 @@ namespace DarkLordGame
             selectBaseIngredientScreen.Setup();
             selectBaseIngredientScreen.onClosed.AddListener(OnClosedSelectBaseIngredientScreen);
             selectBaseIngredientScreen.onSelectedBaseIngredientChanged.AddListener(UpdatePrice);
+            selectBaseIngredientScreen.onSelectedBaseIngredientChanged.AddListener(UpdateBaseIngredient);
 
             selectIngredientScreen.Setup();
             selectIngredientScreen.onFinished.AddListener(OnClosedSelectIngredientScreen);
             selectIngredientScreen.onSelectingIngredientChanged.AddListener(UpdatePrice);
+            selectIngredientScreen.onSelectingIngredientChanged.AddListener(UpdateIngredient);
         }
 
         //call everytime First try crafting
@@ -151,15 +155,16 @@ namespace DarkLordGame
             IngredientData[] ingredients = selectIngredientScreen.GetIngredientDatas();
             int length = ingredients.Length;
             ingredientsSumPrice = 0;
+            craftingItemData.ingredientIDs.Clear();
             for (int i = 0; i < length; i++)
             {
+                craftingItemData.ingredientIDs.Add(ingredients[i].id);
                 ingredientsSumPrice += ingredients[i].price;
             }
         }
 
         private void UpdatePrice()
         {
-
             craftingPrice.SetText(GetTotalPrice().ToString());
             craftingPrice.ForceMeshUpdate();
         }

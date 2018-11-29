@@ -18,7 +18,7 @@ namespace DarkLordGame
         public List<InventoryItemData> inventoryItemDatas = new List<InventoryItemData>();
         public List<int> unlcokedBaseIngredientID = new List<int>();
         public List<int> unlcokedIngredientID = new List<int>();
-        public List<int> unlockedMixingMethodID = new List<int>();
+        public List<MixingMethodType> unlockedMixingMethodID = new List<MixingMethodType>();
         public List<int> completedEventID = new List<int>();
 
         //default save data
@@ -28,7 +28,8 @@ namespace DarkLordGame
             unlockedMixingMethodID.Add(0);
             unlcokedBaseIngredientID.Add(0);
             unlcokedIngredientID.Add(0);
-            unlockedMixingMethodID.Add(0);
+            unlockedMixingMethodID.Add(MixingMethodType.Boil);
+            unlockedMixingMethodID.Add(MixingMethodType.Freeze);
         }
     }
 }
