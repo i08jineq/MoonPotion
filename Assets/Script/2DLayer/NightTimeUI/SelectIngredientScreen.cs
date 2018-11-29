@@ -14,6 +14,7 @@ namespace DarkLordGame
         private const int selectAbleIngredientNumber = 3;
         public Communicator onFinished = new Communicator();
         private List<IngredientButton> ingredientButtonList = new List<IngredientButton>();
+       
         public void Setup()
         {
             SetupIngredientsButton();
@@ -38,7 +39,7 @@ namespace DarkLordGame
 
         private void SetupCloseButton()
         {
-            closeButton.onClick.AddListener(OnFinished)
+            closeButton.onClick.AddListener(OnFinished);
         }
 
         private void OnFinished()
