@@ -27,6 +27,8 @@ namespace DarkLordGame
             currentGold = 1000;
             unlockedMixingMethodID.Add(0);
             unlcokedBaseIngredientID.Add(0);
+            unlcokedIngredientID.Add(0);
+            unlockedMixingMethodID.Add(0);
         }
     }
 }

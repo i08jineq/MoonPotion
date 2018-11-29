@@ -17,6 +17,8 @@ namespace DarkLordGame
         public void Setup(IngredientData _targetIngredient)
         {
             targetIngredient = _targetIngredient;
+            ingredientName.SetText(_targetIngredient.ingredientName);
+            ingredientName.ForceMeshUpdate();
             checkBox.onValueChanged.AddListener(OnCheckBoxVolumeChanged);
         }
 

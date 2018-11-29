@@ -101,6 +101,7 @@ namespace DarkLordGame
                 onFinishedAllEvent.Invoke();
                 targetEventData.Remove(currentEventData);
                 Singleton.instance.currentSelectedSaveData.completedEventID.Add(currentEventData.eventID);
+                Singleton.instance.SaveCurrentSlotData();
                 return;
             }
             ExecuteCurrentUnlockDataEvent();

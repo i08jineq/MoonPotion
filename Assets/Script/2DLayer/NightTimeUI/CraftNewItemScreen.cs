@@ -45,9 +45,11 @@ namespace DarkLordGame
 
             selectBaseIngredientScreen.Setup();
             selectBaseIngredientScreen.onClosed.AddListener(OnClosedSelectBaseIngredientScreen);
+            selectBaseIngredientScreen.onSelectedBaseIngredientChanged.AddListener(UpdatePrice);
 
             selectIngredientScreen.Setup();
             selectIngredientScreen.onFinished.AddListener(OnClosedSelectIngredientScreen);
+            selectIngredientScreen.onSelectingIngredientChanged.AddListener(UpdatePrice);
         }
 
         //call everytime First try crafting
@@ -121,20 +123,31 @@ namespace DarkLordGame
         private void OnClosedSelectBaseIngredientScreen()
         {
             SetactiveTopScreenUI(true);
+            UpdateBaseIngredient();
+            UpdatePrice();
+        }
+
+        private void OnClosedSelectIngredientScreen()
+        {
+            SetactiveTopScreenUI(true);
+            UpdateIngredient();
+            UpdatePrice();
+        }
+
+        private void UpdateBaseIngredient()
+        {
             IngredientData baseIngredient = selectBaseIngredientScreen.GetSelectedBaseIngredient();
-            if(baseIngredient != null)
+            if (baseIngredient != null)
             {
                 selectBaseIngredientButtonText.SetText(baseIngredient.ingredientName);
                 selectBaseIngredientButtonText.ForceMeshUpdate();
                 craftingItemData.baseIngredientID = baseIngredient.id;
                 baseIngredientPrice = baseIngredient.price;
             }
-            UpdatePriceText();
         }
 
-        private void OnClosedSelectIngredientScreen()
+        private void UpdateIngredient()
         {
-            SetactiveTopScreenUI(true);
             IngredientData[] ingredients = selectIngredientScreen.GetIngredientDatas();
             int length = ingredients.Length;
             ingredientsSumPrice = 0;
@@ -142,11 +155,11 @@ namespace DarkLordGame
             {
                 ingredientsSumPrice += ingredients[i].price;
             }
-            UpdatePriceText();
         }
 
-        private void UpdatePriceText()
+        private void UpdatePrice()
         {
+
             craftingPrice.SetText(GetTotalPrice().ToString());
             craftingPrice.ForceMeshUpdate();
         }

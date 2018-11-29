@@ -51,7 +51,7 @@ namespace DarkLordGame
             craftNewItemScreen.ResetUI();
 
             craftItemFromRecipeScreen.gameObject.SetActive(false);
-            //craftItemFromRecipeScreen.r
+
 
             OpenTopScreen();
         }

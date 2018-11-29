@@ -13,6 +13,8 @@ namespace DarkLordGame
         private List<IngredientData> selectingIngredientDatas = new List<IngredientData>();
         private const int selectAbleIngredientNumber = 3;
         public Communicator onFinished = new Communicator();
+        public Communicator onSelectingIngredientChanged = new Communicator();
+
         private List<IngredientButton> ingredientButtonList = new List<IngredientButton>();
        
         public void Setup()
@@ -20,6 +22,7 @@ namespace DarkLordGame
             SetupIngredientsButton();
             SetupCloseButton();
         }
+
         private void SetupIngredientsButton()
         {
             List<int> ingredientIDs = Singleton.instance.currentSelectedSaveData.unlcokedIngredientID;
@@ -44,6 +47,7 @@ namespace DarkLordGame
 
         private void OnFinished()
         {
+            gameObject.SetActive(false);
             onFinished.Invoke();
         }
 
@@ -56,6 +60,7 @@ namespace DarkLordGame
             {
                 selectingIngredientDatas.Remove(ingredientData);
             }
+            onSelectingIngredientChanged.Invoke();
         }
 
         public IngredientData[] GetIngredientDatas()

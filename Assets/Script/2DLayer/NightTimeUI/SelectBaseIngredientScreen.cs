@@ -16,6 +16,7 @@ namespace DarkLordGame
         [Header("Prefab")]
         public BaseIngredientButton baseIngredientButtonPrefab;
 
+        public Communicator onSelectedBaseIngredientChanged = new Communicator();
         public Communicator onClosed = new Communicator();
         private IngredientData selectedBaseIngredient;
         private List<BaseIngredientButton> baseIngredientButtons = new List<BaseIngredientButton>();
