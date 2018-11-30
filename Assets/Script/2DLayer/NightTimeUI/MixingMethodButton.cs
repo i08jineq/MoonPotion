@@ -7,8 +7,8 @@ namespace DarkLordGame
 {
     public class MixingMethodButton : MonoBehaviour
     {
-        public MixingMethodType mixingMethodType = MixingMethodType.Boil;
-        public TextMeshPro nameText;
+        [System.NonSerialized]public MixingMethodType mixingMethodType = MixingMethodType.Boil;
+        public TextMeshProUGUI nameText;
         public Button button;
         public Communicator<MixingMethodType> onSelected = new Communicator<MixingMethodType>();
 

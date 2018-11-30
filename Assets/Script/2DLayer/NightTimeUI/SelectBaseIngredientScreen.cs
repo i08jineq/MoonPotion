@@ -70,6 +70,8 @@ namespace DarkLordGame
                 }
                 baseIngredientButtons[i].SetNotSelected();
             }
+
+            onSelectedBaseIngredientChanged.Invoke();
         }
 
         private void CloseUI()
