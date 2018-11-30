@@ -15,11 +15,14 @@ namespace DarkLordGame
         public Button selectBaseButton;
         public Button selectIngredientButton;
         public Button selectMixingMethodButton;
+        public InputField itemName;
+
 
         public TextMeshProUGUI selectBaseIngredientButtonText;
         public TextMeshProUGUI selectIngredientButtonText;
         public TextMeshProUGUI selectMixingMethodButtonText;
         public TextMeshProUGUI craftingPrice;
+
 
         public SelectBaseIngredientScreen selectBaseIngredientScreen;
         public SelectIngredientScreen selectIngredientScreen;
@@ -84,6 +87,8 @@ namespace DarkLordGame
             selectIngredientScreen.ResetUI();
             selectMixingMethodScreen.ResetUI();
 
+            itemName.text = "";
+            itemName.onValueChanged.AddListener(OnNameChanged);
 
             craftingPrice.SetText("0");
             craftingPrice.ForceMeshUpdate();
@@ -197,7 +202,14 @@ namespace DarkLordGame
             bool hasAnyItem = craftingItemData.ingredientIDs.Count > 0;
             bool hasBaseItem = craftingItemData.baseIngredientID != -1;
             bool selectedMethod = craftingItemData.mixingMethod != MixingMethodType.None;
-            SetEnableCraftButton(hasBaseItem && hasAnyItem && selectedMethod);
+            bool hasName = craftingItemData.itemName.Length > 0;
+            SetEnableCraftButton(hasBaseItem && hasAnyItem && selectedMethod && hasName);
+        }
+
+        private void OnNameChanged(string _itemName)
+        {
+            craftingItemData.itemName = _itemName;
+            UpdateCraftButtonEnable();
         }
 
         #endregion
@@ -207,6 +219,7 @@ namespace DarkLordGame
             craftButton.gameObject.SetActive(activate);
             cancelButton.gameObject.SetActive(activate);
             topScreenRoot.SetActive(activate);
+            itemName.gameObject.SetActive(activate);
         }
 
         public void SetEnableCraftButton(bool interactable)

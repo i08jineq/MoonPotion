@@ -6,6 +6,7 @@ namespace DarkLordGame
     [System.Serializable]
     public class InventoryItemData
     {
+        public string itemName = "";
         public int recipeID = 0;
         public int amount = 0;
         public int baseIngredientID = 0;
