@@ -15,9 +15,9 @@ namespace DarkLordGame
         public void SetData(InventoryItemData inventoryItem)
         {
             itemName.SetText(inventoryItem.itemName);
-            effective.SetText(inventoryItem.effectiveScore.ToString());
-            taste.SetText(inventoryItem.tasteScore.ToString());
-            ability.SetText(inventoryItem.ability.ToString());
+            effective.SetText(inventoryItem.effectiveScore.ToString("n0"));
+            taste.SetText(inventoryItem.tasteScore.ToString("n0"));
+            ability.SetText(inventoryItem.ability.ToString("n0"));
 
             itemName.ForceMeshUpdate();
             effective.ForceMeshUpdate();

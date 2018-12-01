@@ -71,7 +71,7 @@ namespace DarkLordGame
             totalScore.gameObject.SetActive(false);
             potionName.SetText(inventoryItemData.itemName);
             potionName.ForceMeshUpdate();
-            totalScore.SetText(inventoryItemData.totalScore.ToString());
+            totalScore.SetText(inventoryItemData.totalScore.ToString("n0"));
             totalScore.gameObject.SetActive(false);
             effective.Hide();
             taste.Hide();
@@ -80,13 +80,13 @@ namespace DarkLordGame
 
             List<string> commenters = commentData.GetCommenters(3);
             string effectiveComment = commentData.GetEffectComment((int)inventoryItemData.effectiveScore);
-            effective.SetData(inventoryItemData.effectiveScore.ToString(), commenters[0], effectiveComment);
+            effective.SetData(inventoryItemData.effectiveScore.ToString("n0"), commenters[0], effectiveComment);
 
             string tasteComment = commentData.GetEffectComment((int)inventoryItemData.tasteScore);
-            taste.SetData(inventoryItemData.tasteScore.ToString(), commenters[1], tasteComment);
+            taste.SetData(inventoryItemData.tasteScore.ToString("n0"), commenters[1], tasteComment);
 
             string universualComment = commentData.GetEffectComment((int)inventoryItemData.ability);
-            ability.SetData(inventoryItemData.ability.ToString(), commenters[2], universualComment);
+            ability.SetData(inventoryItemData.ability.ToString("n0"), commenters[2], universualComment);
             yield return null;
 
             yield return effective.ShowEnumerator(delayForEachElement);
