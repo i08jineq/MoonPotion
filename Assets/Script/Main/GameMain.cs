@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 namespace DarkLordGame
@@ -21,7 +22,7 @@ namespace DarkLordGame
         private bool shouldExecuteDay = false;
         private bool isAllCustomerVisited = true;
 
-        private const float townFee = 100;
+        private const int townFee = 100;
 
         #region initialization
 
@@ -50,7 +51,7 @@ namespace DarkLordGame
         private IEnumerator SetupDayManager()
         {
             yield return dayManager.SetupStartDayTime();
-            dayManager.onDayEnded.AddListener(onDayEnded);
+            dayManager.onDayEnded.AddListener(OnBecameNight);
             dayManager.onDayStarted.AddListener(OnDayStarted);
         }
 
@@ -129,6 +130,7 @@ namespace DarkLordGame
             Singleton.instance.SaveData();
             customersManager.StandbyCustomers();
             soundManager.StopBGM();
+
             StartCoroutine(dayManager.SunriseEnumerator());
         }
 
@@ -139,24 +141,32 @@ namespace DarkLordGame
             isAllCustomerVisited = false;
         }
 
-        private void onDayEnded()
+        private void OnBecameNight()
         {
             soundManager.PlayNightSound();
             shouldExecuteDay = false;
-            if(isAllCustomerVisited)
-            {
-                CheckEvent();
-            }
+            TryEndTheDay();
         }
-
 
         private void OnAllCustomerVisited()
         {
             isAllCustomerVisited = true;
-            if(shouldExecuteDay == false)
+            TryEndTheDay();
+        }
+
+        private void TryEndTheDay()
+        {
+            bool isDayEnded = (shouldExecuteDay == false && isAllCustomerVisited == true);
+            if ( isDayEnded == false)
+            {
+                return;
+            }
+            if(PayTownFee())
             {
                 CheckEvent();
+                return;
             }
+            StartCoroutine(GameOver());
         }
 
         #endregion
@@ -235,6 +245,27 @@ namespace DarkLordGame
             Singleton.instance.saveData.currentGold += gold;
             soundManager.PlayBuySound();
             UpdateGoldAmount();
+        }
+
+        private bool PayTownFee()
+        {
+            if(Singleton.instance.saveData.currentGold >= townFee)
+            {
+                Singleton.instance.saveData.currentGold -= townFee;
+                Singleton.instance.SaveData();
+                soundManager.PlayBuySound();
+                UpdateGoldAmount();
+                return true;
+            }
+            soundManager.effect.pitch = 3;
+            soundManager.PlayBuySound();
+            return false;
+        }
+
+        private IEnumerator GameOver()
+        {
+            yield return fadeLayer.FadeOut(Color.black);
+            SceneManager.LoadScene("GameOver");
         }
     }
 }

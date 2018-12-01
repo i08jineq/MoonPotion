@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialMessages:
   - Every day you will need to pay the bill (100 Gold). Make sure you left money for
-    the bills.
+    the bills.If you have not enough money, the game is over.
   - Let's start crafting your first potion.
