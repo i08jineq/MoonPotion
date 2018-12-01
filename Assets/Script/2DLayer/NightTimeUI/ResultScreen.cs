@@ -89,11 +89,11 @@ namespace DarkLordGame
             string effectiveComment = commentData.GetEffectComment((int)inventoryItemData.effectiveScore);
             effective.SetData(inventoryItemData.effectiveScore.ToString("n0"), commenters[0], effectiveComment);
 
-            string tasteComment = commentData.GetEffectComment((int)inventoryItemData.tasteScore);
+            string tasteComment = commentData.GetTasteComments((int)inventoryItemData.tasteScore);
             taste.SetData(inventoryItemData.tasteScore.ToString("n0"), commenters[1], tasteComment);
 
-            string universualComment = commentData.GetEffectComment((int)inventoryItemData.ability);
-            ability.SetData(inventoryItemData.ability.ToString("n0"), commenters[2], universualComment);
+            string abilityComment = commentData.GetAbilityComments((int)inventoryItemData.ability);
+            ability.SetData(inventoryItemData.ability.ToString("n0"), commenters[2], abilityComment);
             yield return null;
 
             yield return effective.ShowEnumerator(delayForEachElement);

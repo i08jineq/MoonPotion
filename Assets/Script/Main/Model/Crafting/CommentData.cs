@@ -42,7 +42,7 @@ namespace DarkLordGame
             return GetComment(tasteComments, score);
         }
 
-        public string GetStorabilityComments(int score)
+        public string GetAbilityComments(int score)
         {
             return GetComment(universualComments, score);
         }
