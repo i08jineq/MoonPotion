@@ -13,12 +13,14 @@ namespace DarkLordGame
         public bool isBackroupted = false;
         public int currentDay = 0;
         public int currentGold = 0;
+        public int totalCraft = 0;
         public int totalSell = 0;
         public List<InventoryItemData> inventoryItemDatas = new List<InventoryItemData>();
         public List<int> unlcokedBaseIngredientID = new List<int>();
         public List<int> unlcokedIngredientID = new List<int>();
         public List<MixingMethodType> unlockedMixingMethodID = new List<MixingMethodType>();
         public List<int> completedEventID = new List<int>();
+        public Trending trending = new Trending();
 
         //default save data
         public SaveData()

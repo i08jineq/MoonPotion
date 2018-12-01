@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3669bce59859e48d18b188c8603067c9, type: 3}
+  m_Name: UnlockHolyWater
+  m_EditorClassIdentifier: 
+  targetIngredientData: {fileID: 11400000, guid: 046595247742e41efb57adabcf75ceeb,
+    type: 2}

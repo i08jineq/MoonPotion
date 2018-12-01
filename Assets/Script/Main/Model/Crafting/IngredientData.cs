@@ -4,7 +4,7 @@ namespace DarkLordGame
     [CreateAssetMenu(fileName = "BaseIngredient", menuName ="DarkLordGame/Create Data/Base Ingredient")]
     public class IngredientData : ScriptableObject
     {
-        public int id;
+        [IDGenerator("Ingredient", 100000)]public int id;
         public string ingredientName = "Tap Water";
         public string description = "";
         public int price = 100;

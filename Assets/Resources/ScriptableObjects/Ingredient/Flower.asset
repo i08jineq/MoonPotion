@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   ingredientName: Flower
-  description: Cure small injured
-  price: 100
+  description: Have little taste
+  price: 75
   baseEffectiveScore: -1
-  baseTasteScore: 4
-  baseUniveresualScore: 2
+  baseTasteScore: 1
+  baseAbilityScore: 1

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7cee69b0d8974ac3b4c24d292841be1, type: 3}
+  m_Name: Craft15
+  m_EditorClassIdentifier: 
+  eventID: 35853
+  condition:
+    unlockConditionType: 2
+    conditionValue: 15
+  unlockDataList:
+  - {fileID: 11400000, guid: d2b296495b9a441408e5e49caf294213, type: 2}
+  - {fileID: 11400000, guid: e1ee4da975ed4426a89786e45fb64458, type: 2}

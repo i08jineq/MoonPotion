@@ -45,7 +45,7 @@ namespace DarkLordGame
             yield return null;
             SetupSound();
             yield return fadeLayer.FadeIn();
-            CheckEvent();
+            CheckDayEvent();
         }
 
         private IEnumerator SetupDayManager()
@@ -61,12 +61,12 @@ namespace DarkLordGame
             nightTimeManager.onGoldChanged.AddListener(UpdateGoldAmount);
             nightTimeManager.onGoldChanged.AddListener(soundManager.PlayBuySound);
             nightTimeManager.onFinish.AddListener(StartDay);
+            nightTimeManager.onCraftedNewItem.AddListener(OnCraftedNewItem);
         }
 
         private void SetupGameEvent()
         {
             gameEventManager.Setup();
-            gameEventManager.onFinishedAllEvent.AddListener(OnFinishedEvent);
         }
 
         private void SetupTopPanelUI()
@@ -110,13 +110,15 @@ namespace DarkLordGame
 
         #region mainLoop
 
-        private void CheckEvent()
+        private void CheckDayEvent()
         {
+            gameEventManager.onFinishedAllEvent.AddListener(OnFinishedEvent);
             gameEventManager.TryStartDayEvent(Singleton.instance.saveData.currentDay);
         }
 
         private void OnFinishedEvent()
         {
+            gameEventManager.onFinishedAllEvent.RemoveListener(OnFinishedEvent);
             StartNightTimeSequence();
         }
 
@@ -166,7 +168,7 @@ namespace DarkLordGame
             if (PayTownFee())
             {
                 Singleton.instance.SaveData();
-                CheckEvent();
+                CheckDayEvent();
                 return;
             }
             StartCoroutine(GameOver());
@@ -272,6 +274,11 @@ namespace DarkLordGame
 
             yield return fadeLayer.FadeOut(Color.black);
             SceneManager.LoadScene("GameOver");
+        }
+
+        private void OnCraftedNewItem()
+        {
+            gameEventManager.TryUnlockIngredient(Singleton.instance.saveData.totalCraft);
         }
 
         private void UpdateDayUI()

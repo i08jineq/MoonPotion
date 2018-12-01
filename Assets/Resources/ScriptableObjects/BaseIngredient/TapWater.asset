@@ -14,7 +14,7 @@ MonoBehaviour:
   id: 1
   ingredientName: Tap Water
   description: Normal clean water
-  price: 100
+  price: 50
   baseEffectiveScore: 1
   baseTasteScore: 1
   baseAbilityScore: 1

@@ -9,6 +9,7 @@ namespace DarkLordGame
         // ui of events
         public CreateNewShopUI createNewShopUI;
         public MessagesDialogue messageDialogueUI;
+        public UnlockIngredientScreen unlockIngredientScreen;
 
         [System.NonSerialized]public Communicator onFinishedExecuteEvent = new Communicator();
         private List<GameEventData> targetEventData = new List<GameEventData>();
@@ -53,32 +54,41 @@ namespace DarkLordGame
             messageDialogueUI.Setup();
             messageDialogueUI.onFinished.AddListener(OnFinishedEvent);
             messageDialogueUI.gameObject.SetActive(false);
+
+            unlockIngredientScreen.Setup();
+            unlockIngredientScreen.onClosed.AddListener(OnFinishedEvent);
         }
 
         #endregion
 
         public void TryStartDayEvent(int day)
         {
-            currentEventData = GetEventDataDay(day);
+            currentEventData = GetEventDataType(UnlockConditionType.StartDay, day);
             if(currentEventData == null)
             {
                 onFinishedAllEvent.Invoke();
                 return;
             }
 
-            unlockDatas.Clear();
-            unlockDatas = currentEventData.unlockDataList;
-            currentShowIndex = 0;
-            unlockDataNumber = unlockDatas.Count;
-            ExecuteCurrentUnlockDataEvent();
+            ExecuteCurrentUnlockDataFromBegin();
         }
 
-        public GameEventData GetEventDataDay(int day)
+        public void TryUnlockIngredient(int craftNumber)
+        {
+            currentEventData = GetEventDataType(UnlockConditionType.CraftedNumber, craftNumber);
+            if (currentEventData == null)
+            {
+                return;
+            }
+            ExecuteCurrentUnlockDataFromBegin();
+        }
+
+        public GameEventData GetEventDataType(UnlockConditionType targetType, int value)
         {
             int count = targetEventData.Count;
             for (int i = 0; i < count; i++)
             {
-                if (targetEventData[i].condition.unlockConditionType == UnlockConditionType.StartDay && targetEventData[i].condition.conditionValue == day)
+                if (targetEventData[i].condition.unlockConditionType == targetType && targetEventData[i].condition.conditionValue == value)
                 {
                     return targetEventData[i];
                 }
@@ -107,6 +117,15 @@ namespace DarkLordGame
             ExecuteCurrentUnlockDataEvent();
         }
 
+        private void ExecuteCurrentUnlockDataFromBegin()
+        {
+            unlockDatas.Clear();
+            unlockDatas = currentEventData.unlockDataList;
+            currentShowIndex = 0;
+            unlockDataNumber = unlockDatas.Count;
+            ExecuteCurrentUnlockDataEvent();
+        }
+
         private void ExecuteCurrentUnlockDataEvent()
         {
             switch (unlockDatas[currentShowIndex].GetUnlockType())
@@ -117,6 +136,11 @@ namespace DarkLordGame
                 case UnlockDataType.Tutorial:
                     TutorialUnlockData tutorial = unlockDatas[currentShowIndex] as TutorialUnlockData;
                     messageDialogueUI.Open(tutorial.tutorialMessages, "-- Tips --");
+                    break;
+
+                case UnlockDataType.Ingredient:
+                    IngredientUnlockData ingredientUnlock = unlockDatas[currentShowIndex] as IngredientUnlockData;
+                    unlockIngredientScreen.Open(ingredientUnlock.targetIngredientData);
                     break;
             }
         }

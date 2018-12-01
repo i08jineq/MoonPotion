@@ -4,7 +4,7 @@
     {
         StartDay,
         EndDay,
-        UnlockedRecipe,
+        CraftedNumber,
         UnlockedCustomer,
         TotalSell,
         Gold,

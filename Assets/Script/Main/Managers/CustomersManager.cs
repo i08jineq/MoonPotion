@@ -11,7 +11,6 @@ namespace DarkLordGame
         public Vector3 shopQueue;
         public Vector3 goOutFromShopPosition;
         public Vector3 customerHomePosition;
-        private InventoryItemData globalWanted;
         private List<CustomerPawn> allCustomers = new List<CustomerPawn>();
         private int customerCount = 0;
 

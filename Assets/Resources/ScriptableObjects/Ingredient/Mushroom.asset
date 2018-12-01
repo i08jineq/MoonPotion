@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 3
   ingredientName: Mushroom
-  description: Cure small injured
+  description: Taste Good
   price: 100
-  baseEffectiveScore: 1
+  baseEffectiveScore: 0
   baseTasteScore: 2
-  baseUniveresualScore: -2
+  baseAbilityScore: 0

@@ -4,11 +4,8 @@
     {
         CreateNewShop,
         Tutorial,
-        Shop,
-        ShopItem,
         MixMethod,
-        Customer,
-        Recipe,
+        Ingredient,
         ToBeContronue,
         Gold,
     }
