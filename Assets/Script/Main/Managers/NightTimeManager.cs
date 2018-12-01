@@ -102,7 +102,10 @@ namespace DarkLordGame
                     nightTimeUITopScreen.gameObject.SetActive(true);
                     break;
                 case CraftNewItemScreen.UIEvent.Craft:
-                    //do craft stuff x 10
+                    //calculate effeciency
+                    InventoryItemData inventoryItem = craftNewItemScreen.GetCraftingItemData();
+                    Singleton.instance.currentSelectedSaveData.inventoryItemDatas.Add(inventoryItem);
+                    Singleton.instance.SaveCurrentSlotData();
                     break;
             }
         }
