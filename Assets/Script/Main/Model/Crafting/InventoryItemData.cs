@@ -14,7 +14,7 @@ namespace DarkLordGame
 
         public int effectiveScore = 0;
         public int tasteScore = 0;
-        public int universualScore = 0;
+        public int ability = 0;
         public int totalScore = 0;
     }
 }

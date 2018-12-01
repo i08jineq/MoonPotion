@@ -11,7 +11,7 @@ namespace DarkLordGame
         public Button closeButton;
         public ResultUIGroup effective;
         public ResultUIGroup taste;
-        public ResultUIGroup universual;
+        public ResultUIGroup ability;
         public CommentData commentData;
         public GameObject totalScoreRoot;
         public TextMeshProUGUI totalScore;
@@ -75,7 +75,7 @@ namespace DarkLordGame
             totalScore.gameObject.SetActive(false);
             effective.Hide();
             taste.Hide();
-            universual.Hide();
+            ability.Hide();
 
 
             List<string> commenters = commentData.GetCommenters(3);
@@ -85,8 +85,8 @@ namespace DarkLordGame
             string tasteComment = commentData.GetEffectComment(inventoryItemData.tasteScore);
             taste.SetData(inventoryItemData.tasteScore.ToString(), commenters[1], tasteComment);
 
-            string universualComment = commentData.GetEffectComment(inventoryItemData.universualScore);
-            universual.SetData(inventoryItemData.universualScore.ToString(), commenters[2], universualComment);
+            string universualComment = commentData.GetEffectComment(inventoryItemData.ability);
+            ability.SetData(inventoryItemData.ability.ToString(), commenters[2], universualComment);
             yield return null;
 
             yield return effective.ShowEnumerator(delayForEachElement);
@@ -95,7 +95,7 @@ namespace DarkLordGame
             yield return taste.ShowEnumerator(delayForEachElement);
             yield return new WaitForSeconds(delayForEachParameter);
 
-            yield return universual.ShowEnumerator(delayForEachElement);
+            yield return ability.ShowEnumerator(delayForEachElement);
             yield return new WaitForSeconds(delayForEachParameter);
 
             totalScoreRoot.SetActive(true);

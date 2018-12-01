@@ -12,6 +12,6 @@ namespace DarkLordGame
         //parameter --- ****multiplier, ****adder---
         public float baseEffectiveScore = 1;
         public float baseTasteScore = 1;
-        public float baseUniveresualScore = 1;
+        public float baseAbilityScore = 1;
     }
 }

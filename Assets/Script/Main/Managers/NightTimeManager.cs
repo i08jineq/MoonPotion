@@ -8,7 +8,7 @@ namespace DarkLordGame
     {
         public NightTimeUITopScreen nightTimeUITopScreen;
         public CraftNewItemScreen craftNewItemScreen;
-        public CraftItemFromRecipeScreen craftItemFromRecipeScreen;
+        public InventoryScreen inventoryScreen;
         public ResultScreen resultScreen;
         public Communicator onFinish = new Communicator();
         public Communicator onGoldChanged = new Communicator();
@@ -41,9 +41,9 @@ namespace DarkLordGame
 
         private void SetupCraftFromRecipeScreen()
         {
-            craftItemFromRecipeScreen.Setup();
-            craftItemFromRecipeScreen.uiEvent.AddListener(CraftRecipeIem);
-            craftItemFromRecipeScreen.gameObject.SetActive(false);
+            inventoryScreen.Setup();
+            inventoryScreen.onClosed.AddListener(OnClosedInventoryScreen);
+            inventoryScreen.gameObject.SetActive(false);
         }
 
         private void SetupResultScreen()
@@ -58,7 +58,7 @@ namespace DarkLordGame
             craftNewItemScreen.gameObject.SetActive(false);
             craftNewItemScreen.ResetUI();
 
-            craftItemFromRecipeScreen.gameObject.SetActive(false);
+            inventoryScreen.gameObject.SetActive(false);
             OpenTopScreen();
         }
 
@@ -93,7 +93,7 @@ namespace DarkLordGame
                     craftNewItemScreen.Open();
                     break;
                 case NightTimeUITopScreen.UIEvent.CraftFromRecipe:
-                    craftItemFromRecipeScreen.gameObject.SetActive(true);
+                    inventoryScreen.gameObject.SetActive(true);
                     break;
             }
         }
@@ -132,14 +132,14 @@ namespace DarkLordGame
             List<IngredientData> currentIngredients = craftNewItemScreen.currentIngredients;
             effectiveScore += currentBaseIngredientData.baseEffectiveScore;
             tasteScore += currentBaseIngredientData.baseTasteScore;
-            universualScore += currentBaseIngredientData.baseUniveresualScore;
+            universualScore += currentBaseIngredientData.baseAbilityScore;
 
             int count = currentIngredients.Count;
             for (int i = 0; i < count; i++)
             {
                 effectiveScore += currentIngredients[i].baseEffectiveScore;
                 tasteScore += currentIngredients[i].baseTasteScore;
-                universualScore += currentIngredients[i].baseUniveresualScore;
+                universualScore += currentIngredients[i].baseAbilityScore;
             }
 
             effectiveScore = Mathf.Clamp(effectiveScore, 0, 10);
@@ -148,27 +148,15 @@ namespace DarkLordGame
 
             inventoryItem.effectiveScore = Mathf.CeilToInt(effectiveScore);
             inventoryItem.tasteScore = Mathf.CeilToInt(tasteScore);
-            inventoryItem.universualScore = Mathf.CeilToInt(universualScore);
+            inventoryItem.ability = Mathf.CeilToInt(universualScore);
             inventoryItem.totalScore = Mathf.CeilToInt(totalScore);
             inventoryItem.amount = 1;
             return inventoryItem;
         }
 
-        private void CraftRecipeIem(CraftItemFromRecipeScreen.UIEvent uIEvent)
+        private void OnClosedInventoryScreen()
         {
-            craftItemFromRecipeScreen.gameObject.SetActive(false);
-            switch(uIEvent)
-            {
-                case CraftItemFromRecipeScreen.UIEvent.Cancel:
-                    OpenTopScreen();
-                    break;
-                case CraftItemFromRecipeScreen.UIEvent.DeleteRecipe:
-                    //do delete stuff
-                    break;
-                case CraftItemFromRecipeScreen.UIEvent.Craft:
-                    //do craft stuff
-                    break;
-            }
+            OpenTopScreen();
         }
 
         private void OnCloseResultScreen()

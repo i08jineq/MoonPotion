@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: Tutorial0
   m_EditorClassIdentifier: 
   tutorialMessages:
-  - You are a new startup potion merchant in the dungeon town. In 30 years you are
-    going to become the richest potion merchant in the world
-  - Before you start crafting your first potion, you need a shop name
+  - You are a new potion researcher in the dungeon town. In order to keep your lab
+    goes you need to make items that people needs, so they will donates the money
+    for you
+  - Before you start crafting your first potion, you need a lab name
