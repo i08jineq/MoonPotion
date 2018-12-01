@@ -12,8 +12,6 @@ namespace DarkLordGame
         public TextMeshProUGUI taste;
         public TextMeshProUGUI ability;
 
-        public Button closeButton;
-
         public void SetData(InventoryItemData inventoryItem)
         {
             itemName.SetText(inventoryItem.itemName);

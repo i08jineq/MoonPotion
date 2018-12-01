@@ -126,7 +126,7 @@ namespace DarkLordGame
             float effectiveScore = 0;
             float tasteScore = 0;
             float universualScore = 0;
-            float totalScore = (tasteScore + effectiveScore + universualScore) / 3;
+
 
             IngredientData currentBaseIngredientData = craftNewItemScreen.currentBaseIngredientData;
             List<IngredientData> currentIngredients = craftNewItemScreen.currentIngredients;
@@ -145,6 +145,8 @@ namespace DarkLordGame
             effectiveScore = Mathf.Clamp(effectiveScore, 0, 10);
             tasteScore = Mathf.Clamp(tasteScore, 0, 10);
             universualScore = Mathf.Clamp(universualScore, 0, 10);
+
+            float totalScore = (tasteScore + effectiveScore + universualScore) / 3;
 
             inventoryItem.effectiveScore = Mathf.CeilToInt(effectiveScore);
             inventoryItem.tasteScore = Mathf.CeilToInt(tasteScore);

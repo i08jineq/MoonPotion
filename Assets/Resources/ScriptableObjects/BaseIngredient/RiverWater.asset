@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: RiverWater
   m_EditorClassIdentifier: 
   id: 0
-  ingredientName: Tap Water
-  description: Taste Bad But have power of nature
+  ingredientName: River Water
+  description: Taste bad but have power of nature
   price: 100
   baseEffectiveScore: 2
   baseTasteScore: -1
-  baseUniveresualScore: 1
+  baseAbilityScore: 1

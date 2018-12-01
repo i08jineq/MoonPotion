@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   ingredientName: Tap Water
-  description: Normal clean Water
+  description: Normal clean water
   price: 100
   baseEffectiveScore: 1
   baseTasteScore: 1
-  baseUniveresualScore: 1
+  baseAbilityScore: 1
