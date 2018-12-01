@@ -10,5 +10,8 @@ namespace DarkLordGame
         public int price = 100;
 
         //parameter --- ****multiplier, ****adder---
+        public float baseEffectiveScore = 1;
+        public float baseTasteScore = 1;
+        public float baseUniveresualScore = 1;
     }
 }

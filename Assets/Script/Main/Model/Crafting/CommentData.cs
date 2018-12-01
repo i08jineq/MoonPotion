@@ -16,8 +16,8 @@ namespace DarkLordGame
         public List<string> commenters = new List<string>();
         public List<CommentsForScore> effectComments = new List<CommentsForScore>();
         public List<CommentsForScore> tasteComments = new List<CommentsForScore>();
-        public List<CommentsForScore> storabilityComments = new List<CommentsForScore>();
 
+        public List<CommentsForScore> universualComments = new List<CommentsForScore>();
         public List<string> GetCommenters(int numbers)
         {
             List<string> targetList = new List<string>();
@@ -44,7 +44,7 @@ namespace DarkLordGame
 
         public string GetStorabilityComments(int score)
         {
-            return GetComment(storabilityComments, score);
+            return GetComment(universualComments, score);
         }
 
         private string GetComment(List<CommentsForScore> commentsForScores, int score)

@@ -7,10 +7,14 @@ namespace DarkLordGame
     public class InventoryItemData
     {
         public string itemName = "";
-        public int recipeID = 0;
         public int amount = 0;
         public int baseIngredientID = 0;
         public List<int> ingredientIDs = new List<int>();
         public MixingMethodType mixingMethod = MixingMethodType.Boil;
+
+        public int effectiveScore = 0;
+        public int tasteScore = 0;
+        public int universualScore = 0;
+        public int totalScore = 0;
     }
 }

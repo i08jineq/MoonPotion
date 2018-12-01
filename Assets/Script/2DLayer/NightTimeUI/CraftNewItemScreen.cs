@@ -17,7 +17,6 @@ namespace DarkLordGame
         public Button selectMixingMethodButton;
         public InputField itemName;
 
-
         public TextMeshProUGUI selectBaseIngredientButtonText;
         public TextMeshProUGUI selectIngredientButtonText;
         public TextMeshProUGUI selectMixingMethodButtonText;
@@ -33,6 +32,9 @@ namespace DarkLordGame
         private InventoryItemData craftingItemData = new InventoryItemData();
         private int baseIngredientPrice = 0;
         private int ingredientsSumPrice = 0;
+
+        [System.NonSerialized]public IngredientData currentBaseIngredientData;
+        [System.NonSerialized]public List<IngredientData> currentIngredients = new List<IngredientData>();
 
         private const string BaseIngredientEmptyText = "Pick Base Ingredient";
         private const string IngredientEmptyText = "Pick Ingredient";
@@ -120,6 +122,7 @@ namespace DarkLordGame
         public void OnClickedCraft()
         {
             gameObject.SetActive(false);
+
             uiEvent.Invoke(UIEvent.Craft);
         }
 
@@ -149,6 +152,7 @@ namespace DarkLordGame
         private void UpdateBaseIngredient()
         {
             IngredientData baseIngredient = selectBaseIngredientScreen.GetSelectedBaseIngredient();
+            currentBaseIngredientData = baseIngredient;
             if (baseIngredient != null)
             {
                 selectBaseIngredientButtonText.SetText(baseIngredient.ingredientName);
@@ -166,6 +170,9 @@ namespace DarkLordGame
         private void UpdateIngredient()
         {
             IngredientData[] ingredients = selectIngredientScreen.GetIngredientDatas();
+            currentIngredients.Clear();
+            currentIngredients.AddRange(ingredients);
+
             int length = ingredients.Length;
             ingredientsSumPrice = 0;
             craftingItemData.ingredientIDs.Clear();
