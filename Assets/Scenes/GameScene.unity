@@ -5579,6 +5579,7 @@ MonoBehaviour:
     bubble: {fileID: 8300000, guid: 88b216bef849e43afa29304bcd19a4ff, type: 3}
     buyVolume: 0.5
     buy: {fileID: 8300000, guid: 53d2cb5253c6545ae8313f7a07ddd874, type: 3}
+    magicSound: {fileID: 8300000, guid: dfba74fb0b41e4e7d9218542e8974e6c, type: 3}
     bgm: {fileID: 2128528785}
     effect: {fileID: 1197470753}
   topPanelUI: {fileID: 967746885}

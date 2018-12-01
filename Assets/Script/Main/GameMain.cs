@@ -67,6 +67,7 @@ namespace DarkLordGame
         private void SetupGameEvent()
         {
             gameEventManager.Setup();
+            gameEventManager.onUnlockingNewIngredient.AddListener(OnUnlockingNewIngredient);
         }
 
         private void SetupTopPanelUI()
@@ -284,6 +285,11 @@ namespace DarkLordGame
         private void UpdateDayUI()
         {
             topPanelUI.SetDay(Singleton.instance.saveData.currentDay);
+        }
+
+        private void OnUnlockingNewIngredient()
+        {
+            soundManager.PlayMagicSound();
         }
     }
 }

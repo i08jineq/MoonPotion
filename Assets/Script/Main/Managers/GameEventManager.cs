@@ -19,7 +19,7 @@ namespace DarkLordGame
         private int unlockDataNumber = 0;
 
         public Communicator onFinishedAllEvent = new Communicator();
-
+        public Communicator onUnlockingNewIngredient = new Communicator();
         #region setup
 
         public void Setup()
@@ -141,6 +141,7 @@ namespace DarkLordGame
                 case UnlockDataType.Ingredient:
                     IngredientUnlockData ingredientUnlock = unlockDatas[currentShowIndex] as IngredientUnlockData;
                     unlockIngredientScreen.Open(ingredientUnlock.targetIngredientData);
+                    onUnlockingNewIngredient.Invoke();
                     break;
             }
         }

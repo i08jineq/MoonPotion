@@ -13,6 +13,7 @@ namespace DarkLordGame
         public AudioClip bubble;
         public float buyVolume = 0.5f;
         public AudioClip buy;
+        public AudioClip magicSound;
 
         public AudioSource bgm;
         public AudioSource effect;
@@ -52,5 +53,10 @@ namespace DarkLordGame
             effect.PlayOneShot(buy);
         }
 
+        public void PlayMagicSound()
+        {
+            effect.volume = 1;
+            effect.PlayOneShot(magicSound);
+        }
     }
 }
