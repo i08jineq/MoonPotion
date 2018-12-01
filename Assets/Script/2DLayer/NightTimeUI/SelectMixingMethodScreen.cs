@@ -18,7 +18,7 @@ namespace DarkLordGame
 
         public void Setup()
         {
-            List<MixingMethodType> mixingMethods = Singleton.instance.currentSelectedSaveData.unlockedMixingMethodID;
+            List<MixingMethodType> mixingMethods = Singleton.instance.saveData.unlockedMixingMethodID;
             int count = mixingMethods.Count;
             MixingMethodButton mixingMethodButton = GameObject.Instantiate<MixingMethodButton>(mixingMethodButtonPrefab, buttonRoot);
 

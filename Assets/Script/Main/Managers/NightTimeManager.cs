@@ -64,7 +64,7 @@ namespace DarkLordGame
 
         private void OpenTopScreen()
         {
-            List<InventoryItemData> inventories = Singleton.instance.currentSelectedSaveData.inventoryItemDatas;
+            List<InventoryItemData> inventories = Singleton.instance.saveData.inventoryItemDatas;
             int numbers = inventories.Count;
             bool hasAnyItem = false;
             for (int i = 0; i < numbers; i++)
@@ -110,8 +110,8 @@ namespace DarkLordGame
                     //calculate effeciency
                     InventoryItemData inventoryItem = CalculateCraftItemScore();
 
-                    Singleton.instance.currentSelectedSaveData.inventoryItemDatas.Add(inventoryItem);
-                    Singleton.instance.currentSelectedSaveData.currentGold -= craftNewItemScreen.GetTotalPrice();
+                    Singleton.instance.saveData.inventoryItemDatas.Add(inventoryItem);
+                    Singleton.instance.saveData.currentGold -= craftNewItemScreen.GetTotalPrice();
                     Singleton.instance.SaveData();
                     onGoldChanged.Invoke();
                     resultScreen.gameObject.SetActive(true);

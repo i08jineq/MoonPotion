@@ -5,6 +5,9 @@ namespace DarkLordGame
 {
     public class ResourceData
     {
+        public GameObject[] customersPawns;
+        private const string CustomersPawnPath = "Prefabs/Customers/";
+
         public IngredientData[] baseIngredientDatas;
         public IngredientData[] ingredientDatas;
         public int allBaseIngredientNumbers = 0;
@@ -33,6 +36,9 @@ namespace DarkLordGame
             yield return null;
 
             LoadUnlockData();
+            yield return null;
+
+            LoadAllCustomers();
             yield return null;
         }
 
@@ -69,6 +75,10 @@ namespace DarkLordGame
             yield return null;
         }
 
+        private void LoadAllCustomers()
+        {
+            customersPawns = Resources.LoadAll<GameObject>(CustomersPawnPath);
+        }
         #endregion
         #region Getter
 

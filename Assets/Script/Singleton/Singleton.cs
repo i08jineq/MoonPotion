@@ -7,7 +7,7 @@ namespace DarkLordGame
     {
         public static Singleton instance;
 
-        public SaveData currentSelectedSaveData = new SaveData();
+        public SaveData saveData = new SaveData();
         public ResourceData resourceData = new ResourceData();
 
         public const int maxSlotNumber = 4;
@@ -37,13 +37,13 @@ namespace DarkLordGame
 
         public SaveData LoadSaveData()
         {
-            currentSelectedSaveData = PersistenceData.LoadData<SaveData>(saveSlotDataName, new SaveData());
-            return currentSelectedSaveData;
+            saveData = PersistenceData.LoadData<SaveData>(saveSlotDataName, new SaveData());
+            return saveData;
         }
 
         public void SaveData()
         {
-            PersistenceData.SaveData<SaveData>(saveSlotDataName, currentSelectedSaveData);
+            PersistenceData.SaveData<SaveData>(saveSlotDataName, saveData);
         }
 
         #endregion

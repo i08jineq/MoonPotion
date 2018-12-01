@@ -29,7 +29,7 @@ namespace DarkLordGame
 
         private void PreloadTargetEvent()
         {
-            List<int> completedID = Singleton.instance.currentSelectedSaveData.completedEventID;
+            List<int> completedID = Singleton.instance.saveData.completedEventID;
             int number = completedID.Count;
             targetEventData.AddRange(Singleton.instance.resourceData.gameEventDatas);
             int totalNumber = Singleton.instance.resourceData.gameEventDatasNumbers;
@@ -88,8 +88,8 @@ namespace DarkLordGame
 
         private void OnFinishedInputShopName()
         {
-            Singleton.instance.currentSelectedSaveData.shopName = createNewShopUI.shopNameField.text;
-            Singleton.instance.currentSelectedSaveData.playername = createNewShopUI.playerNameField.text;
+            Singleton.instance.saveData.shopName = createNewShopUI.shopNameField.text;
+            Singleton.instance.saveData.playername = createNewShopUI.playerNameField.text;
             Singleton.instance.SaveData();
         }
 
@@ -100,7 +100,7 @@ namespace DarkLordGame
             {
                 onFinishedAllEvent.Invoke();
                 targetEventData.Remove(currentEventData);
-                Singleton.instance.currentSelectedSaveData.completedEventID.Add(currentEventData.eventID);
+                Singleton.instance.saveData.completedEventID.Add(currentEventData.eventID);
                 Singleton.instance.SaveData();
                 return;
             }
@@ -109,7 +109,7 @@ namespace DarkLordGame
 
         private void ExecuteCurrentUnlockDataEvent()
         {
-            int currentDay = Singleton.instance.currentSelectedSaveData.currentDay;
+            int currentDay = Singleton.instance.saveData.currentDay;
             switch (unlockDatas[currentShowIndex].GetUnlockType())
             {
                 case UnlockDataType.CreateNewShop:

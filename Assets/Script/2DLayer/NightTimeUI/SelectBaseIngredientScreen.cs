@@ -29,7 +29,7 @@ namespace DarkLordGame
 
         private void CreateBaseIngredientButton()
         {
-            List<int> ingredientTypes = Singleton.instance.currentSelectedSaveData.unlcokedBaseIngredientID;
+            List<int> ingredientTypes = Singleton.instance.saveData.unlcokedBaseIngredientID;
             int number = ingredientTypes.Count;
             BaseIngredientButton cachedInstance = GameObject.Instantiate<BaseIngredientButton>(baseIngredientButtonPrefab, baseIngredientButtonRoot);
             cachedInstance.gameObject.SetActive(false);

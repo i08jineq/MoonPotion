@@ -25,7 +25,7 @@ namespace DarkLordGame
 
         private void SetupIngredientsButton()
         {
-            List<int> ingredientIDs = Singleton.instance.currentSelectedSaveData.unlcokedIngredientID;
+            List<int> ingredientIDs = Singleton.instance.saveData.unlcokedIngredientID;
             int number = ingredientIDs.Count;
             IngredientButton cahcedIngredientButton = GameObject.Instantiate<IngredientButton>(ingredientButtonPrefab, ingreDientButtonRoot);
 

@@ -10,7 +10,7 @@ namespace DarkLordGame
         public DayTimeManager dayManager = new DayTimeManager();
         public NightTimeManager nightTimeManager = new NightTimeManager();
         public GameEventManager gameEventManager = new GameEventManager();
-
+        public CustomersManager customersManager = new CustomersManager();
         public TopPanelUI topPanelUI;
         public PauseScreenUI pauseScreen;
         private float playSpeed = 1;
@@ -32,6 +32,7 @@ namespace DarkLordGame
             SetupGameEvent();
             SetupTopPanelUI();
             SetupPauseScreen();
+            SetupCustomer();
             UpdateGoldAmount();
             yield return fadeLayer.FadeIn();
             CheckEvent();
@@ -60,7 +61,7 @@ namespace DarkLordGame
 
         private void SetupTopPanelUI()
         {
-            topPanelUI.SetGoldAmount(Singleton.instance.currentSelectedSaveData.currentGold);
+            topPanelUI.SetGoldAmount(Singleton.instance.saveData.currentGold);
             topPanelUI.pauseButton.onClick.AddListener(OnPauseGame);
             topPanelUI.normalSpeedButton.onClick.AddListener(OnPressNormalButton);
             topPanelUI.fastButton.onClick.AddListener(OnPressFastButton);
@@ -75,13 +76,18 @@ namespace DarkLordGame
             pauseScreen.saveAndQuitButton.onClick.AddListener(OnSaveAndQuitGame);
         }
 
+        private void SetupCustomer()
+        {
+            customersManager.Setup();
+        }
+
         #endregion
 
         #region mainLoop
 
         private void CheckEvent()
         {
-            gameEventManager.TryStartDayEvent(Singleton.instance.currentSelectedSaveData.currentDay);
+            gameEventManager.TryStartDayEvent(Singleton.instance.saveData.currentDay);
         }
 
         private void OnFinishedEvent()
@@ -96,8 +102,9 @@ namespace DarkLordGame
 
         private void StartDay()
         {
-            Singleton.instance.currentSelectedSaveData.currentDay++;
+            Singleton.instance.saveData.currentDay++;
             Singleton.instance.SaveData();
+            customersManager.StandbyCustomers();
             StartCoroutine(dayManager.SunriseEnumerator());
         }
 
@@ -109,6 +116,7 @@ namespace DarkLordGame
         private void onDayEnded()
         {
             shouldExecuteDay = false;
+            CheckEvent();
         }
 
         private void OnDayTimeChanged(float timeCount)
@@ -156,7 +164,7 @@ namespace DarkLordGame
 
         private void UpdateGoldAmount()
         {
-            topPanelUI.SetGoldAmount(Singleton.instance.currentSelectedSaveData.currentGold);
+            topPanelUI.SetGoldAmount(Singleton.instance.saveData.currentGold);
         }
 
         private void OnPressNormalButton()
