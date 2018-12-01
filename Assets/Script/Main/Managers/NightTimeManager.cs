@@ -11,6 +11,7 @@ namespace DarkLordGame
         public CraftItemFromRecipeScreen craftItemFromRecipeScreen;
         public ResultScreen resultScreen;
         public Communicator onFinish = new Communicator();
+        public Communicator onGoldChanged = new Communicator();
         // craft data
         // on craft
         public IEnumerator SetupEnumerator()
@@ -110,8 +111,9 @@ namespace DarkLordGame
                     InventoryItemData inventoryItem = CalculateCraftItemScore();
 
                     Singleton.instance.currentSelectedSaveData.inventoryItemDatas.Add(inventoryItem);
-                    Singleton.instance.SaveCurrentSlotData();
-
+                    Singleton.instance.currentSelectedSaveData.currentGold -= craftNewItemScreen.GetTotalPrice();
+                    Singleton.instance.SaveData();
+                    onGoldChanged.Invoke();
                     resultScreen.gameObject.SetActive(true);
                     resultScreen.StartCoroutine(resultScreen.ShowResultEnumerator(inventoryItem));
                     break;

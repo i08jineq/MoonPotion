@@ -90,7 +90,7 @@ namespace DarkLordGame
         {
             Singleton.instance.currentSelectedSaveData.shopName = createNewShopUI.shopNameField.text;
             Singleton.instance.currentSelectedSaveData.playername = createNewShopUI.playerNameField.text;
-            Singleton.instance.SaveCurrentSlotData();
+            Singleton.instance.SaveData();
         }
 
         private void OnFinishedEvent()
@@ -101,7 +101,7 @@ namespace DarkLordGame
                 onFinishedAllEvent.Invoke();
                 targetEventData.Remove(currentEventData);
                 Singleton.instance.currentSelectedSaveData.completedEventID.Add(currentEventData.eventID);
-                Singleton.instance.SaveCurrentSlotData();
+                Singleton.instance.SaveData();
                 return;
             }
             ExecuteCurrentUnlockDataEvent();

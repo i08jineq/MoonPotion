@@ -6,8 +6,6 @@ namespace DarkLordGame
     public class Singleton
     {
         public static Singleton instance;
-        public List<int> savedSlotIndex = new List<int>();
-        public List<SaveData> allSaveData = new List<SaveData>();
 
         public SaveData currentSelectedSaveData = new SaveData();
         public ResourceData resourceData = new ResourceData();
@@ -27,19 +25,8 @@ namespace DarkLordGame
                 instance = new Singleton();
                 yield return instance.resourceData.LoadResources();
 
-                instance.LoadSavedSlotIndex();
+                instance.LoadSaveData();
 
-                int numbers = instance.savedSlotIndex.Count;
-                for (int i = 0; i < numbers; i++)
-                {
-                    SaveData saveDatas = instance.LoadSaveData(instance.savedSlotIndex[i]);
-                    instance.allSaveData.Add(saveDatas);
-                    yield return null;
-                }
-                if(instance.currentSelectedSaveData == null)
-                {
-                    instance.currentSelectedSaveData = new SaveData();
-                }
             }
 
             instance.mainCanvas = GameObject.FindObjectOfType<Canvas>();
@@ -48,36 +35,15 @@ namespace DarkLordGame
 
         #region savesdata
 
-        private void LoadSavedSlotIndex()
+        public SaveData LoadSaveData()
         {
-            savedSlotIndex = PersistenceData.LoadData<List<int>>(saveSlotDataName, new List<int>());
-        }
-
-        public void OnCreateNewSlotData(int slotIndex)
-        {
-            if (savedSlotIndex.Contains(slotIndex) == false)
-            {
-                savedSlotIndex.Add(slotIndex);
-            }
-
-            PersistenceData.SaveData<List<int>>(saveSlotDataName, savedSlotIndex);
-            PersistenceData.SaveData<SaveData>("slot_" + slotIndex.ToString(), new SaveData());
-        }
-
-        public SaveData LoadSaveData(int slotIndex)
-        {
-            currentSelectedSaveData = PersistenceData.LoadData<SaveData>("slot_" + slotIndex.ToString(), new SaveData());
+            currentSelectedSaveData = PersistenceData.LoadData<SaveData>(saveSlotDataName, new SaveData());
             return currentSelectedSaveData;
         }
 
-        public void SaveData(int slotIndex)
+        public void SaveData()
         {
-            PersistenceData.SaveData<SaveData>("slot_" + slotIndex.ToString(), currentSelectedSaveData);
-        }
-
-        public void SaveCurrentSlotData()
-        {
-            SaveData(selectedSlotIndex);
+            PersistenceData.SaveData<SaveData>(saveSlotDataName, currentSelectedSaveData);
         }
 
         #endregion

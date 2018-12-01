@@ -13,7 +13,7 @@ namespace DarkLordGame
         {
             for (int i = 0; i < Singleton.maxSlotNumber; i++)
             {
-                PersistenceData.DeleteFile("slot_" + i.ToString());
+                PersistenceData.DeleteFile("savedslot");
             }
 
         }

@@ -32,6 +32,7 @@ namespace DarkLordGame
             SetupGameEvent();
             SetupTopPanelUI();
             SetupPauseScreen();
+            UpdateGoldAmount();
             yield return fadeLayer.FadeIn();
             CheckEvent();
         }
@@ -47,6 +48,7 @@ namespace DarkLordGame
         private IEnumerator SetupNightTimeManager()
         {
             yield return nightTimeManager.SetupEnumerator();
+            nightTimeManager.onGoldChanged.AddListener(UpdateGoldAmount);
             nightTimeManager.onFinish.AddListener(StartDay);
         }
 
@@ -91,7 +93,7 @@ namespace DarkLordGame
         private void StartDay()
         {
             Singleton.instance.currentSelectedSaveData.currentDay++;
-            Singleton.instance.SaveCurrentSlotData();
+            Singleton.instance.SaveData();
             StartCoroutine(dayManager.SunriseEnumerator());
         }
 
@@ -128,7 +130,7 @@ namespace DarkLordGame
 
         private void OnSaveAndQuitGame()
         {
-            Singleton.instance.SaveCurrentSlotData();
+            Singleton.instance.SaveData();
             Application.Quit();
         }
 
