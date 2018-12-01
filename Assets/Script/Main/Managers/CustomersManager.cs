@@ -19,7 +19,7 @@ namespace DarkLordGame
         public Communicator onAllCustomerVisited = new Communicator();
 
         public float totalWalkPeriod = 5;
-        public float totalTurnPeriod = 1f;
+        public float totalTurnPeriod = .3f;
 
         private const int basicDonation = 5;
 
@@ -173,17 +173,17 @@ namespace DarkLordGame
             onCustomerDonated.Invoke(donatePeriod);
 
             t = 0;
-            while(t <= totalTurnPeriod)
+            while (t <= customersActionPerTime)
             {
-                Vector3 position = Vector3.Lerp(shopQueue, goOutFromShopPosition, t / totalTurnPeriod);
-                pawn.SetTransform(position, Vector3.right);
                 t += currentDeltaTime;
                 yield return null;
             }
 
             t = 0;
-            while(t <= customersActionPerTime)
+            while(t <= totalTurnPeriod)
             {
+                Vector3 position = Vector3.Lerp(shopQueue, goOutFromShopPosition, t / totalTurnPeriod);
+                pawn.SetTransform(position, Vector3.right);
                 t += currentDeltaTime;
                 yield return null;
             }

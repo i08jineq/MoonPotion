@@ -26,7 +26,7 @@ namespace DarkLordGame
             public TextMeshProUGUI scoreText;
             public TextMeshProUGUI commenterName;
             public TextMeshProUGUI commentText;
-
+            public Communicator playingSound = new Communicator();
             public void SetData(string score, string commenter, string comment)
             {
                 scoreText.SetText(score);
@@ -41,12 +41,19 @@ namespace DarkLordGame
             public IEnumerator ShowEnumerator(float delayForEach)
             {
                 root.SetActive(true);
+                Singleton.instance.soundManager.PlayBubbleSound(0.8f);
                 yield return new WaitForSeconds(delayForEach);
+
                 scoreText.gameObject.SetActive(true);
+                Singleton.instance.soundManager.PlayBubbleSound(0.8f);
                 yield return new WaitForSeconds(delayForEach);
+
                 commenterName.gameObject.SetActive(true);
+                Singleton.instance.soundManager.PlayBubbleSound(1.2f);
                 yield return new WaitForSeconds(delayForEach);
+
                 commentText.gameObject.SetActive(true);
+                Singleton.instance.soundManager.PlayBubbleSound(1.5f);
             }
             public void Hide()
             {
@@ -99,11 +106,15 @@ namespace DarkLordGame
             yield return new WaitForSeconds(delayForEachParameter);
 
             totalScoreRoot.SetActive(true);
+            Singleton.instance.soundManager.PlayBubbleSound(1.5f);
             new WaitForSeconds(delayForEachElement);
-            totalScore.gameObject.SetActive(true);
 
+            totalScore.gameObject.SetActive(true);
+            Singleton.instance.soundManager.PlayBubbleSound(1.5f);
             yield return new WaitForSeconds(delayForEachParameter);
+
             closeButton.gameObject.SetActive(true);
+            Singleton.instance.soundManager.PlayBubbleSound(1.5f);
         }
 
         private void OnClickedClose()

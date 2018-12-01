@@ -15,7 +15,7 @@ namespace DarkLordGame
 
         public Canvas mainCanvas;
         public Transform mainCanvasTransform;
-
+        public SoundManager soundManager;
         private const string saveSlotDataName = "savedslot";
 
         public static IEnumerator Init()

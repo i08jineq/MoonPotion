@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 namespace DarkLordGame
 {
     public class GameMain : MonoBehaviour
@@ -11,9 +11,11 @@ namespace DarkLordGame
         public NightTimeManager nightTimeManager = new NightTimeManager();
         public GameEventManager gameEventManager = new GameEventManager();
         public CustomersManager customersManager = new CustomersManager();
+        public SoundManager soundManager = new SoundManager();
+
         public TopPanelUI topPanelUI;
         public PauseScreenUI pauseScreen;
- 
+
         private float playSpeed = 1;
 
         private bool shouldExecuteDay = false;
@@ -39,6 +41,8 @@ namespace DarkLordGame
             SetupPauseScreen();
             SetupCustomer();
             UpdateGoldAmount();
+            yield return null;
+            SetupSound();
             yield return fadeLayer.FadeIn();
             CheckEvent();
         }
@@ -54,6 +58,7 @@ namespace DarkLordGame
         {
             yield return nightTimeManager.SetupEnumerator();
             nightTimeManager.onGoldChanged.AddListener(UpdateGoldAmount);
+            nightTimeManager.onGoldChanged.AddListener(soundManager.PlayBuySound);
             nightTimeManager.onFinish.AddListener(StartDay);
         }
 
@@ -87,6 +92,18 @@ namespace DarkLordGame
             customersManager.onAllCustomerVisited.AddListener(OnAllCustomerVisited);
         }
 
+        private void SetupSound()
+        {
+            Button[] buttons = GetComponentsInChildren<Button>(true);
+            int count = buttons.Length;
+            for (int i = 0; i < count; i++)
+            {
+                buttons[i].onClick.AddListener(soundManager.PlayBubbleSound);
+            }
+            soundManager.PlayNightSound();
+            Singleton.instance.soundManager = soundManager;
+        }
+
         #endregion
 
         #region mainLoop
@@ -111,17 +128,20 @@ namespace DarkLordGame
             Singleton.instance.saveData.currentDay++;
             Singleton.instance.SaveData();
             customersManager.StandbyCustomers();
+            soundManager.StopBGM();
             StartCoroutine(dayManager.SunriseEnumerator());
         }
 
         private void OnDayStarted()
         {
+            soundManager.PlayDaySound();
             shouldExecuteDay = true;
             isAllCustomerVisited = false;
         }
 
         private void onDayEnded()
         {
+            soundManager.PlayNightSound();
             shouldExecuteDay = false;
             if(isAllCustomerVisited)
             {
@@ -213,6 +233,7 @@ namespace DarkLordGame
         private void OnCustomerDonated(int gold)
         {
             Singleton.instance.saveData.currentGold += gold;
+            soundManager.PlayBuySound();
             UpdateGoldAmount();
         }
     }

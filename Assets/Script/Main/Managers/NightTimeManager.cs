@@ -130,7 +130,6 @@ namespace DarkLordGame
             float tasteScore = 0;
             float universualScore = 0;
 
-
             IngredientData currentBaseIngredientData = craftNewItemScreen.currentBaseIngredientData;
             List<IngredientData> currentIngredients = craftNewItemScreen.currentIngredients;
             effectiveScore += currentBaseIngredientData.baseEffectiveScore;
