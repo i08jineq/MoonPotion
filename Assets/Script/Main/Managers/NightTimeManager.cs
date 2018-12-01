@@ -117,7 +117,6 @@ namespace DarkLordGame
                     Singleton.instance.saveData.currentGold -= craftNewItemScreen.GetTotalPrice();
                     Singleton.instance.SaveData();
 
-                    onCraftedNewItem.Invoke();
                     onGoldChanged.Invoke();
 
                     inventoryScreen.OnAddedNewInventory(inventoryItem);
@@ -172,6 +171,7 @@ namespace DarkLordGame
         private void OnCloseResultScreen()
         {
             OpenTopScreen();
+            onCraftedNewItem.Invoke();
         }
 
         #endregion
