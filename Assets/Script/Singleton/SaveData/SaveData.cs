@@ -25,9 +25,12 @@ namespace DarkLordGame
         public SaveData()
         {
             currentGold = 1000;
-            unlockedMixingMethodID.Add(0);
             unlcokedBaseIngredientID.Add(0);
+            unlcokedBaseIngredientID.Add(1);
             unlcokedIngredientID.Add(0);
+            unlcokedIngredientID.Add(1);
+            unlcokedIngredientID.Add(2);
+            unlcokedIngredientID.Add(3);
             unlockedMixingMethodID.Add(MixingMethodType.Boil);
             unlockedMixingMethodID.Add(MixingMethodType.Freeze);
         }

@@ -25,7 +25,7 @@ namespace DarkLordGame
             for (int i = 0; i < count; i++)
             {
                 MixingMethodButton mixingMethodButtonClone = GameObject.Instantiate<MixingMethodButton>(mixingMethodButton, buttonRoot);
-                mixingMethodButtonClone.Setup((MixingMethodType)mixingMethods[i]);
+                mixingMethodButtonClone.Setup(mixingMethods[i]);
                 mixingMethodButtonClone.onSelected.AddListener(OnSelectedMixingMethod);
             }
             GameObject.Destroy(mixingMethodButton.gameObject);
@@ -36,6 +36,15 @@ namespace DarkLordGame
         private void OnSelectedMixingMethod(MixingMethodType mixingMethodType)
         {
             selectedMixingMethodType = mixingMethodType;
+            int count = mixingMethodButtons.Count;
+            for (int i = 0; i < count; i++)
+            {
+                if(mixingMethodType == mixingMethodButtons[i].mixingMethodType)
+                {
+                    continue;
+                }
+                mixingMethodButtons[i].SetUnSelected();
+            }
             onChangedMixingMethod.Invoke(selectedMixingMethodType);
         }
 

@@ -14,5 +14,7 @@ MonoBehaviour:
   id: 0
   ingredientName: Herb
   description: Cure small injured
-  baseCost: 0
-  costMultiplier: 1.5
+  price: 100
+  baseEffectiveScore: 3
+  baseTasteScore: -2
+  baseUniveresualScore: 3
