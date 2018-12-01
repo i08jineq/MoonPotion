@@ -210,7 +210,9 @@ namespace DarkLordGame
             bool hasBaseItem = craftingItemData.baseIngredientID != -1;
             bool selectedMethod = craftingItemData.mixingMethod != MixingMethodType.None;
             bool hasName = craftingItemData.itemName.Length > 0;
-            SetEnableCraftButton(hasBaseItem && hasAnyItem && selectedMethod && hasName);
+            bool hasEnoughMoney = Singleton.instance.saveData.currentGold >= GetTotalPrice();
+
+            SetEnableCraftButton(hasBaseItem && hasAnyItem && selectedMethod && hasName && hasEnoughMoney);
         }
 
         private void OnNameChanged(string _itemName)

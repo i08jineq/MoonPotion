@@ -5,13 +5,10 @@ namespace DarkLordGame
 {
     public class CustomerPawn : MonoBehaviour
     {
-        [System.NonSerialized] public bool boughtItem = false;
-        [System.NonSerialized] public bool hasWantedItem = false;
-        [System.NonSerialized] public int wantedItemID = 0;
-        [Range(0, 5)]public float startTime;
-        public InventoryItemData wantedItem = new InventoryItemData();
+        public DonateRequirement donateRequirement = new DonateRequirement();
+        public int minDonates = 5;
+        public int maxDonates = 1000;
         private Transform localTransform;
-
 
         public void Setup()
         {

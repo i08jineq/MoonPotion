@@ -5409,9 +5409,12 @@ MonoBehaviour:
     createNewShopUI: {fileID: 679556571}
     messageDialogueUI: {fileID: 661094881}
   customersManager:
-    customersStartLocation: {x: 0, y: 0, z: 0}
-    shopQueue: {x: 0, y: 0, z: 0}
+    customersStartLocation: {x: -17, y: 0, z: -50}
+    shopQueue: {x: -17, y: 0, z: 0}
+    goOutFromShopPosition: {x: -15, y: 0, z: 5}
+    customerHomePosition: {x: -15, y: 0, z: 50}
     totalWalkPeriod: 1
+    totalTurnPeriod: 1
   topPanelUI: {fileID: 967746885}
   pauseScreen: {fileID: 906891533}
 --- !u!4 &343670134
@@ -10814,7 +10817,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: You don't have any Item to sell
+  m_text: You don't have any Item to yet
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10882,7 +10885,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 704405285}
-    characterCount: 31
+    characterCount: 30
     spriteCount: 0
     spaceCount: 6
     wordCount: 7
@@ -10890,11 +10893,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -14571,7 +14574,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 949305500}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -26.87, y: 3.5197144, z: 6.63}
+  m_LocalPosition: {x: -25.24, y: 3.5197144, z: 7.97}
   m_LocalScale: {x: 100, y: 99.99997, z: 99.99997}
   m_Children: []
   m_Father: {fileID: 885397334}
@@ -22882,7 +22885,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Open Lab
+  m_Text: Ask for donation
 --- !u!222 &1444213259
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -25238,7 +25241,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4655736977694600, guid: abc127512133d488c948349227ee652a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -30.98
+      value: -28.24
       objectReference: {fileID: 0}
     - target: {fileID: 4655736977694600, guid: abc127512133d488c948349227ee652a, type: 2}
       propertyPath: m_LocalPosition.y
@@ -25246,7 +25249,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4655736977694600, guid: abc127512133d488c948349227ee652a, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 9.52
+      value: 10.01
       objectReference: {fileID: 0}
     - target: {fileID: 4655736977694600, guid: abc127512133d488c948349227ee652a, type: 2}
       propertyPath: m_LocalRotation.x
@@ -25586,7 +25589,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1624252302}
   m_LocalRotation: {x: -0.6123729, y: -0.35355282, z: -0.35355285, w: 0.61237276}
-  m_LocalPosition: {x: -28.3, y: 3.56, z: 7.4}
+  m_LocalPosition: {x: -26.39, y: 3.56, z: 9.26}
   m_LocalScale: {x: 99.999985, y: 99.99994, z: 99.99994}
   m_Children: []
   m_Father: {fileID: 885397334}
@@ -26065,7 +26068,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1657009419}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -26, y: 0, z: 14.7}
+  m_LocalPosition: {x: -23.09, y: 0, z: 15.72}
   m_LocalScale: {x: 200, y: 199.99988, z: 199.99988}
   m_Children: []
   m_Father: {fileID: 343670134}
@@ -28011,7 +28014,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1798277079}
   m_LocalRotation: {x: -0.50000083, y: -0.49999925, z: -0.4999993, w: 0.5000007}
-  m_LocalPosition: {x: -24.7, y: 0, z: 10.6}
+  m_LocalPosition: {x: -21.53, y: 0, z: 10.6}
   m_LocalScale: {x: 150, y: 150, z: 100.00006}
   m_Children: []
   m_Father: {fileID: 885397334}

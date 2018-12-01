@@ -13,8 +13,13 @@ namespace DarkLordGame
         public CustomersManager customersManager = new CustomersManager();
         public TopPanelUI topPanelUI;
         public PauseScreenUI pauseScreen;
+ 
         private float playSpeed = 1;
+
         private bool shouldExecuteDay = false;
+        private bool isAllCustomerVisited = true;
+
+        private const float townFee = 100;
 
         #region initialization
 
@@ -43,7 +48,6 @@ namespace DarkLordGame
             yield return dayManager.SetupStartDayTime();
             dayManager.onDayEnded.AddListener(onDayEnded);
             dayManager.onDayStarted.AddListener(OnDayStarted);
-            dayManager.onDayTimeChanged.AddListener(OnDayTimeChanged);
         }
 
         private IEnumerator SetupNightTimeManager()
@@ -79,6 +83,8 @@ namespace DarkLordGame
         private void SetupCustomer()
         {
             customersManager.Setup();
+            customersManager.onCustomerDonated.AddListener(OnCustomerDonated);
+            customersManager.onAllCustomerVisited.AddListener(OnAllCustomerVisited);
         }
 
         #endregion
@@ -111,17 +117,26 @@ namespace DarkLordGame
         private void OnDayStarted()
         {
             shouldExecuteDay = true;
+            isAllCustomerVisited = false;
         }
 
         private void onDayEnded()
         {
             shouldExecuteDay = false;
-            CheckEvent();
+            if(isAllCustomerVisited)
+            {
+                CheckEvent();
+            }
         }
 
-        private void OnDayTimeChanged(float timeCount)
-        {
 
+        private void OnAllCustomerVisited()
+        {
+            isAllCustomerVisited = true;
+            if(shouldExecuteDay == false)
+            {
+                CheckEvent();
+            }
         }
 
         #endregion
@@ -152,6 +167,7 @@ namespace DarkLordGame
         {
             float deltaTime = Time.deltaTime * playSpeed;
             UpdateDay(deltaTime);
+            UpdateCustomer(deltaTime);
         }
 
         private void UpdateDay(float deltaTime)
@@ -160,6 +176,15 @@ namespace DarkLordGame
             {
                 dayManager.OnUpdate(deltaTime);
             }
+        }
+
+        private void UpdateCustomer(float deltaTime)
+        {
+            if(isAllCustomerVisited)
+            {
+                return;
+            }
+            customersManager.OnUpdate(deltaTime);
         }
 
         private void UpdateGoldAmount()
@@ -183,6 +208,12 @@ namespace DarkLordGame
         {
             playSpeed = 5;
             topPanelUI.SetPlaySpeedActive(topPanelUI.superFastButton);
+        }
+
+        private void OnCustomerDonated(int gold)
+        {
+            Singleton.instance.saveData.currentGold += gold;
+            UpdateGoldAmount();
         }
     }
 }

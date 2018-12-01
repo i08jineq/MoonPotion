@@ -22,7 +22,6 @@ namespace DarkLordGame
 
         public Communicator onDayStarted = new Communicator();
         public Communicator onDayEnded = new Communicator();
-        public Communicator<float> onDayTimeChanged = new Communicator<float>();
         public Communicator onInteruptedByLevelEvent = new Communicator();
         public Communicator onLeventEventEnded = new Communicator();
 
@@ -73,15 +72,10 @@ namespace DarkLordGame
         public void OnUpdate(float deltaTime)
         {
             deltaTimeCount += deltaTime * timeCountSpeed;
-            UpdateTimeOfDay();
             UpdateEnvironment();
             CheckDayEnded();
         }
 
-        protected void UpdateTimeOfDay()
-        {
-            onDayTimeChanged.Invoke(deltaTimeCount);
-        }
 
         private void UpdateSunriseEnvironment(float weight)
         {

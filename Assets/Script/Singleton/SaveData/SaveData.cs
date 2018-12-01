@@ -13,7 +13,6 @@ namespace DarkLordGame
 
         public int currentDay = 1;
         public int currentGold = 0;
-        public List<int> unlockedCustomerID = new List<int>();
         public int totalSell = 0;
         public List<InventoryItemData> inventoryItemDatas = new List<InventoryItemData>();
         public List<int> unlcokedBaseIngredientID = new List<int>();
@@ -24,7 +23,7 @@ namespace DarkLordGame
         //default save data
         public SaveData()
         {
-            currentGold = 1000;
+            currentGold = 1500;
             unlcokedBaseIngredientID.Add(0);
             unlcokedBaseIngredientID.Add(1);
             unlcokedIngredientID.Add(0);
