@@ -1,0 +1,223 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd9d574544bc4b538be8066c214fa1e, type: 3}
+  m_Name: CommentData
+  m_EditorClassIdentifier: 
+  commenters:
+  - Jin
+  - Elva
+  - Luna
+  - Sisa
+  - Gaga
+  - Aq
+  - Lyly
+  - Kit
+  - Christ
+  - Cedric
+  - Tim
+  - Bastien
+  - Andrea
+  - Cocorino
+  - Mr. N
+  - Alexsay
+  - Yago
+  - Lufas
+  - Loli bro
+  - Kris
+  - Darklord
+  - Bram
+  - Yukina
+  - Jose
+  - Ayaka
+  effectComments:
+  - score: 1
+    comments:
+    - Suicide drug
+    - Poison
+    - Toxic
+  - score: 2
+    comments:
+    - Wasted
+    - Does it work?
+    - Potion???
+    - Very bad
+  - score: 3
+    comments:
+    - hm...
+    - huh....
+    - Better than nothing
+    - Better than nothing
+  - score: 4
+    comments:
+    - Meh
+    - Wat
+    - Working...
+  - score: 5
+    comments:
+    - Meh
+    - Wat
+    - Working...
+    - Ok
+    - Good
+  - score: 6
+    comments:
+    - Good
+    - Fair
+    - It works
+  - score: 7
+    comments:
+    - Very good
+    - Nice
+    - Working...
+  - score: 8
+    comments:
+    - Very good
+    - Unbelievable
+    - Effective
+    - Amazing
+  - score: 9
+    comments:
+    - My power is overflowing
+    - Super Effective
+    - Super good
+    - Unbelievable
+    - Amazing
+  - score: 10
+    comments:
+    - Saved my life
+    - Miracle
+    - Ultimate potion
+    - Holy water
+    - My power is overflowing
+    - I am in tears
+  tasteComments:
+  - score: 1
+    comments:
+    - I feel sick
+    - Knocked out
+    - Too salty
+    - Very smelly
+  - score: 2
+    comments:
+    - I feel sick
+    - Knocked out
+    - Very Bad
+    - Too salty
+    - Smelly
+  - score: 3
+    comments:
+    - Bitter
+    - Smelly
+    - Very salty
+    - Spicy
+  - score: 4
+    comments:
+    - No taste
+    - salty
+    - Like water
+    - Funny taste
+  - score: 5
+    comments:
+    - No taste
+    - Ok
+    - Funny taste
+    - Fine
+    - Medicine
+  - score: 6
+    comments:
+    - Taste like juice
+    - Not good not bad
+    - Good
+    - Fine
+  - score: 7
+    comments:
+    - Good
+    - Potion or juice?
+    - I like it...
+  - score: 8
+    comments:
+    - I like it...!
+    - Very good
+    - Very nice
+    - Fruity taste
+    - Potion or juice?
+    - My new favorite
+  - score: 9
+    comments:
+    - Really nice
+    - I need more...
+    - Will drink it everyday
+    - Super good
+    - Heart warming
+    - More... more...
+  - score: 10
+    comments:
+    - I need more...
+    - More... more...
+    - Wow....
+    - Heart warming
+    - Happiness
+  storabilityComments:
+  - score: 1
+    comments:
+    - Not working
+    - I couldn't use it
+    - Worthless
+  - score: 2
+    comments:
+    - I will take it
+    - Wasted
+  - score: 3
+    comments:
+    - I will take it
+    - Meh...
+    - Not worth
+  - score: 4
+    comments:
+    - I will take it
+    - Works
+    - Kinda useful
+  - score: 5
+    comments:
+    - Useful
+    - Handy
+    - Good
+  - score: 6
+    comments:
+    - Nice
+    - Good
+    - Useful
+    - Works
+  - score: 7
+    comments:
+    - Shoul buy
+    - Very good
+    - Works well
+  - score: 8
+    comments:
+    - Recommended
+    - Powerful
+    - Amazing
+  - score: 9
+    comments:
+    - A must have
+    - Recommended
+    - Take my money
+    - Powerful
+  - score: 10
+    comments:
+    - A must have
+    - Take my money
+    - Always take this
+    - Recommended
+    - A miracle
+    - No better
+    - God like
