@@ -151,10 +151,10 @@ namespace DarkLordGame
 
             float totalScore = (tasteScore + effectiveScore + universualScore) / 3;
 
-            inventoryItem.effectiveScore = Mathf.CeilToInt(effectiveScore);
-            inventoryItem.tasteScore = Mathf.CeilToInt(tasteScore);
-            inventoryItem.ability = Mathf.CeilToInt(universualScore);
-            inventoryItem.totalScore = Mathf.CeilToInt(totalScore);
+            inventoryItem.effectiveScore = effectiveScore;
+            inventoryItem.tasteScore = tasteScore;
+            inventoryItem.ability = universualScore;
+            inventoryItem.totalScore = totalScore;
             inventoryItem.amount = 1;
             
             return inventoryItem;
