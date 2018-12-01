@@ -47,6 +47,16 @@ namespace DarkLordGame
             GameObject.Destroy(cachedInstance.gameObject);
         }
 
+        public BaseIngredientButton OnAddedNewBaseIngredient(IngredientData ingredient)
+        {
+            BaseIngredientButton button = GameObject.Instantiate<BaseIngredientButton>(baseIngredientButtonPrefab, baseIngredientButtonRoot);
+            button.Setup(ingredient);
+            button.gameObject.SetActive(true);
+            button.onSelected.AddListener(OnSelectedBaseIngredient);
+            baseIngredientButtons.Add(button);
+            return button;
+        }
+
         public void ResetUI()
         {
             selectingBaseIngredientDescription.SetText("No Item Selected");

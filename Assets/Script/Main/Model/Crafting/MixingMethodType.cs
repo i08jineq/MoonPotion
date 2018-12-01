@@ -10,6 +10,8 @@ namespace DarkLordGame
         Magic,
         Burn,
         SquideIngredientJuice,
-
+        Mixer,
+        Compress,
+        Fusion
     }
 }

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetIngredientData: {fileID: 11400000, guid: 6ee0bd1a054504c109b0c503c0a31b8c,
     type: 2}
+  isBaseIngredient: 1

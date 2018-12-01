@@ -7,6 +7,7 @@ namespace DarkLordGame
     public class IngredientUnlockData : UnlockData
     {
         public IngredientData targetIngredientData;
+        public bool isBaseIngredient = false;
         public override UnlockDataType GetUnlockType()
         {
             return UnlockDataType.Ingredient;

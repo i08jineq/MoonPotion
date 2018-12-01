@@ -25,7 +25,7 @@ namespace DarkLordGame
         //default save data
         public SaveData()
         {
-            currentGold = 2500;
+            currentGold = 1000;
             unlcokedBaseIngredientID.Add(0);
             unlcokedBaseIngredientID.Add(1);
             unlcokedIngredientID.Add(0);

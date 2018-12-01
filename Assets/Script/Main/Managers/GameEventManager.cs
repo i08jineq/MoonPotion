@@ -10,6 +10,7 @@ namespace DarkLordGame
         public CreateNewShopUI createNewShopUI;
         public MessagesDialogue messageDialogueUI;
         public UnlockIngredientScreen unlockIngredientScreen;
+        public UnlockMixingMethodScreen unlockMixingMethodScreen;
 
         [System.NonSerialized]public Communicator onFinishedExecuteEvent = new Communicator();
         private List<GameEventData> targetEventData = new List<GameEventData>();
@@ -19,7 +20,8 @@ namespace DarkLordGame
         private int unlockDataNumber = 0;
 
         public Communicator onFinishedAllEvent = new Communicator();
-        public Communicator onUnlockingNewIngredient = new Communicator();
+        public Communicator<IngredientUnlockData> onUnlockingNewIngredient = new Communicator<IngredientUnlockData>();
+        public Communicator<MixingMethodUnlockData> onUnlockedNewMethod = new Communicator<MixingMethodUnlockData>();
         public Communicator onChangedShopName = new Communicator();
         #region setup
 
@@ -58,6 +60,9 @@ namespace DarkLordGame
 
             unlockIngredientScreen.Setup();
             unlockIngredientScreen.onClosed.AddListener(OnFinishedEvent);
+
+            unlockMixingMethodScreen.Setup();
+            unlockMixingMethodScreen.onClosed.AddListener(OnFinishedEvent);
         }
 
         #endregion
@@ -121,7 +126,6 @@ namespace DarkLordGame
 
         private void ExecuteCurrentUnlockDataFromBegin()
         {
-            unlockDatas.Clear();
             unlockDatas = currentEventData.unlockDataList;
             currentShowIndex = 0;
             unlockDataNumber = unlockDatas.Count;
@@ -142,8 +146,27 @@ namespace DarkLordGame
 
                 case UnlockDataType.Ingredient:
                     IngredientUnlockData ingredientUnlock = unlockDatas[currentShowIndex] as IngredientUnlockData;
+                    if(ingredientUnlock.isBaseIngredient)
+                    {
+                        Singleton.instance.saveData.unlcokedBaseIngredientID.Add(ingredientUnlock.targetIngredientData.id);
+                    }
+                    else
+                    {
+                        Singleton.instance.saveData.unlcokedIngredientID.Add(ingredientUnlock.targetIngredientData.id);
+                    }
+
+                    Singleton.instance.SaveData();
+
                     unlockIngredientScreen.Open(ingredientUnlock.targetIngredientData);
-                    onUnlockingNewIngredient.Invoke();
+                    onUnlockingNewIngredient.Invoke(ingredientUnlock);
+                    break;
+                case UnlockDataType.MixMethod:
+                    MixingMethodUnlockData mixingMethodData = unlockDatas[currentShowIndex] as MixingMethodUnlockData;
+                    Singleton.instance.saveData.unlockedMixingMethodID.Add(mixingMethodData.targetMixingMethodType);
+                    Singleton.instance.SaveData();
+
+                    unlockMixingMethodScreen.Open(mixingMethodData.targetMixingMethodType);
+                    onUnlockedNewMethod.Invoke(mixingMethodData);
                     break;
             }
         }

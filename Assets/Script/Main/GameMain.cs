@@ -68,6 +68,7 @@ namespace DarkLordGame
         {
             gameEventManager.Setup();
             gameEventManager.onUnlockingNewIngredient.AddListener(OnUnlockingNewIngredient);
+            gameEventManager.onUnlockedNewMethod.AddListener(OnUnlockingNewMixingMethod);
             gameEventManager.onChangedShopName.AddListener(OnChangedShopName);
         }
 
@@ -107,6 +108,13 @@ namespace DarkLordGame
             }
             soundManager.PlayNightSound();
             Singleton.instance.soundManager = soundManager;
+
+            Toggle[] toggles = GetComponentsInChildren<Toggle>(true);
+            count = toggles.Length;
+            for (int i = 0; i < count; i++)
+            {
+                toggles[i].onValueChanged.AddListener(OnCheckboxChanged);
+            }
         }
 
         #endregion
@@ -289,14 +297,41 @@ namespace DarkLordGame
             topPanelUI.SetDay(Singleton.instance.saveData.currentDay);
         }
 
-        private void OnUnlockingNewIngredient()
+        private void OnUnlockingNewIngredient(IngredientUnlockData ingredientUnlcokData)
         {
             soundManager.PlayMagicSound();
+            if (ingredientUnlcokData.isBaseIngredient)
+            {
+                BaseIngredientButton baseIngredientButton = nightTimeManager.craftNewItemScreen.selectBaseIngredientScreen.OnAddedNewBaseIngredient(ingredientUnlcokData.targetIngredientData);
+                baseIngredientButton.button.onClick.AddListener(soundManager.PlayBubbleSound);
+            }else{
+                IngredientButton button = nightTimeManager.craftNewItemScreen.selectIngredientScreen.OnAddIngredient(ingredientUnlcokData.targetIngredientData);
+                button.checkBox.onValueChanged.AddListener(OnCheckboxChanged);
+            }
+        }
+
+        private void OnUnlockingNewMixingMethod(MixingMethodUnlockData mixingMethodUnlockData)
+        {
+            soundManager.PlayMagicSound();
+            MixingMethodButton button = nightTimeManager.craftNewItemScreen.selectMixingMethodScreen.OnAddNewMixingMethod(mixingMethodUnlockData.targetMixingMethodType);
+            button.button.onClick.AddListener(soundManager.PlayBuySound);
         }
 
         private void OnChangedShopName()
         {
             topPanelUI.SetName(Singleton.instance.saveData.shopName);
+        }
+
+        private void OnCheckboxChanged(bool check)
+        {
+            if(check)
+            {
+                soundManager.PlayBubbleSound();
+            }else
+            {
+                soundManager.PlayBubbleSound(0.5f);
+            }
+
         }
     }
 }

@@ -11,6 +11,8 @@ namespace DarkLordGame
         public InventoryScreen inventoryScreen;
         public ResultScreen resultScreen;
 
+        public MixingMethodData mixingMethodData;
+
         public Communicator onCraftedNewItem = new Communicator();
         public Communicator onFinish = new Communicator();
         public Communicator onGoldChanged = new Communicator();
@@ -132,31 +134,36 @@ namespace DarkLordGame
             InventoryItemData inventoryItem = craftNewItemScreen.GetCraftingItemData();
             float effectiveScore = 0;
             float tasteScore = 0;
-            float universualScore = 0;
+            float abilityScore = 0;
 
             IngredientData currentBaseIngredientData = craftNewItemScreen.currentBaseIngredientData;
             List<IngredientData> currentIngredients = craftNewItemScreen.currentIngredients;
             effectiveScore += currentBaseIngredientData.baseEffectiveScore;
             tasteScore += currentBaseIngredientData.baseTasteScore;
-            universualScore += currentBaseIngredientData.baseAbilityScore;
+            abilityScore += currentBaseIngredientData.baseAbilityScore;
 
             int count = currentIngredients.Count;
             for (int i = 0; i < count; i++)
             {
                 effectiveScore += currentIngredients[i].baseEffectiveScore;
                 tasteScore += currentIngredients[i].baseTasteScore;
-                universualScore += currentIngredients[i].baseAbilityScore;
+                abilityScore += currentIngredients[i].baseAbilityScore;
             }
+
+            MixingMethodData.MixingMethodMultiplier multiplier = mixingMethodData.GetMultiplier(inventoryItem.mixingMethod);
+            effectiveScore *= multiplier.effectiveMultiplier;
+            tasteScore *= multiplier.tasteMultiplier;
+            abilityScore *= multiplier.abilityMultiplier;
 
             effectiveScore = Mathf.Clamp(effectiveScore, 1, 10);
             tasteScore = Mathf.Clamp(tasteScore, 1, 10);
-            universualScore = Mathf.Clamp(universualScore, 1, 10);
+            abilityScore = Mathf.Clamp(abilityScore, 1, 10);
 
-            float totalScore = (tasteScore + effectiveScore + universualScore) / 3;
+            float totalScore = (tasteScore + effectiveScore + abilityScore) / 3;
 
             inventoryItem.effectiveScore = effectiveScore;
             inventoryItem.tasteScore = tasteScore;
-            inventoryItem.ability = universualScore;
+            inventoryItem.ability = abilityScore;
             inventoryItem.totalScore = totalScore;
             inventoryItem.amount = 1;
             

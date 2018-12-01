@@ -34,10 +34,22 @@ namespace DarkLordGame
                 IngredientButton ingredientButton = GameObject.Instantiate<IngredientButton>(cahcedIngredientButton, ingreDientButtonRoot);
                 IngredientData ingredientData = Singleton.instance.resourceData.GetIngredient(ingredientIDs[i]);
                 ingredientButton.Setup(ingredientData);
+                ingredientButton.checkBox.isOn = false;
                 ingredientButton.onSelected.AddListener(OnSelected);
                 ingredientButtonList.Add(ingredientButton);
             }
             GameObject.Destroy(cahcedIngredientButton.gameObject);
+        }
+
+        public IngredientButton OnAddIngredient(IngredientData ingredientData)
+        {
+            IngredientButton ingredientButton = GameObject.Instantiate<IngredientButton>(ingredientButtonPrefab, ingreDientButtonRoot);
+            ingredientButton.Setup(ingredientData);
+            ingredientButton.onSelected.AddListener(OnSelected);
+            ingredientButton.checkBox.isOn = false;
+            ingredientButtonList.Add(ingredientButton);
+
+            return ingredientButton;
         }
 
         private void SetupCloseButton()

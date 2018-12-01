@@ -8,9 +8,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3669bce59859e48d18b188c8603067c9, type: 3}
-  m_Name: UnlockFruitJuice
+  m_Script: {fileID: 11500000, guid: b7cee69b0d8974ac3b4c24d292841be1, type: 3}
+  m_Name: Craft9
   m_EditorClassIdentifier: 
-  targetIngredientData: {fileID: 11400000, guid: 28b5cbe938c6e4d3ebd2a58fc096a4d5,
-    type: 2}
-  isBaseIngredient: 1
+  eventID: 85115
+  condition:
+    unlockConditionType: 2
+    conditionValue: 9
+  unlockDataList:
+  - {fileID: 11400000, guid: 4a9d3961b736d4fef86b225cd7c515b2, type: 2}

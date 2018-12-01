@@ -27,10 +27,20 @@ namespace DarkLordGame
                 MixingMethodButton mixingMethodButtonClone = GameObject.Instantiate<MixingMethodButton>(mixingMethodButton, buttonRoot);
                 mixingMethodButtonClone.Setup(mixingMethods[i]);
                 mixingMethodButtonClone.onSelected.AddListener(OnSelectedMixingMethod);
+                mixingMethodButtons.Add(mixingMethodButtonClone);
             }
             GameObject.Destroy(mixingMethodButton.gameObject);
 
             closeButton.onClick.AddListener(OnClickedClose);
+        }
+
+        public MixingMethodButton OnAddNewMixingMethod(MixingMethodType mixingMethodType)
+        {
+            MixingMethodButton mixingMethodButtonClone = GameObject.Instantiate<MixingMethodButton>(mixingMethodButtonPrefab, buttonRoot);
+            mixingMethodButtonClone.Setup(mixingMethodType);
+            mixingMethodButtonClone.onSelected.AddListener(OnSelectedMixingMethod);
+            mixingMethodButtons.Add(mixingMethodButtonClone);
+            return mixingMethodButtonClone;
         }
 
         private void OnSelectedMixingMethod(MixingMethodType mixingMethodType)
