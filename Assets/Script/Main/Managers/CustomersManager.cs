@@ -30,7 +30,8 @@ namespace DarkLordGame
         private int triggeringCustomerIndex = 0;
         private int entryNumbers = 0;
         private float trigerTimeCount = 0;
-        private float customersActionPerTime = 2;
+        private const float customersActionPerTime = 2;
+        private const float donatePeriod = 1;
         private int arrivedHomeCustomerNumbers = 0;
         private float currentDeltaTime = 0;
 
@@ -142,12 +143,13 @@ namespace DarkLordGame
             if (trigerTimeCount >= customersActionPerTime)
             {
                 triggeringCustomerIndex++;
+                trigerTimeCount = 0;
             }
         }
 
         private void UpdateEnumerator()
         {
-            for (int i = triggeringCustomerIndex - 1; i >= 0; i--)
+            for (int i = triggeringCustomerIndex - 1 - arrivedHomeCustomerNumbers; i >= 0; i--)
             {
                 if(entryEnumerator[i].MoveNext() == false)
                 {
@@ -168,11 +170,11 @@ namespace DarkLordGame
                 yield return null;
             }
 
-            int donatePeriod = Random.Range(pawn.minDonates, pawn.maxDonates);
-            onCustomerDonated.Invoke(donatePeriod);
+            int donated = Random.Range(pawn.minDonates, pawn.maxDonates);
+            onCustomerDonated.Invoke(donated);
 
             t = 0;
-            while (t <= customersActionPerTime)
+            while (t <= donatePeriod)
             {
                 t += currentDeltaTime;
                 yield return null;

@@ -20,6 +20,7 @@ namespace DarkLordGame
 
         public Communicator onFinishedAllEvent = new Communicator();
         public Communicator onUnlockingNewIngredient = new Communicator();
+        public Communicator onChangedShopName = new Communicator();
         #region setup
 
         public void Setup()
@@ -101,6 +102,7 @@ namespace DarkLordGame
             Singleton.instance.saveData.shopName = createNewShopUI.shopNameField.text;
             Singleton.instance.saveData.playername = createNewShopUI.playerNameField.text;
             Singleton.instance.SaveData();
+            onChangedShopName.Invoke();
         }
 
         private void OnFinishedEvent()

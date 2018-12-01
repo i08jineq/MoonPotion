@@ -68,6 +68,7 @@ namespace DarkLordGame
         {
             gameEventManager.Setup();
             gameEventManager.onUnlockingNewIngredient.AddListener(OnUnlockingNewIngredient);
+            gameEventManager.onChangedShopName.AddListener(OnChangedShopName);
         }
 
         private void SetupTopPanelUI()
@@ -79,6 +80,7 @@ namespace DarkLordGame
             topPanelUI.superFastButton.onClick.AddListener(OnPressSuperFastButton);
             topPanelUI.SetPlaySpeedActive(topPanelUI.normalSpeedButton);
             topPanelUI.gameObject.SetActive(true);
+            topPanelUI.SetName(Singleton.instance.saveData.shopName);
             UpdateDayUI();
         }
 
@@ -290,6 +292,11 @@ namespace DarkLordGame
         private void OnUnlockingNewIngredient()
         {
             soundManager.PlayMagicSound();
+        }
+
+        private void OnChangedShopName()
+        {
+            topPanelUI.SetName(Singleton.instance.saveData.shopName);
         }
     }
 }

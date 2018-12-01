@@ -11,6 +11,8 @@ namespace DarkLordGame
         public GameObject dayTextRoot;
         public TextMeshProUGUI dayText;
         public TextMeshProUGUI goldAmount;
+        public TextMeshProUGUI shopName;
+
         public Button pauseButton;
         public Button normalSpeedButton;
         public Button fastButton;
@@ -29,6 +31,10 @@ namespace DarkLordGame
             superFastButton.image.color = button == superFastButton ? superFastButton.colors.pressedColor : superFastButton.colors.normalColor;
         }
 
+        public void SetName(string _shopName)
+        {
+            shopName.SetText(_shopName);
+        }
         public void SetDay(int day)
         {
             dayTextRoot.SetActive(day != 0);
