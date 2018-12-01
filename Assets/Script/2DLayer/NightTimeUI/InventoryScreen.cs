@@ -25,6 +25,13 @@ namespace DarkLordGame
             }
             GameObject.Destroy(craftedItem.gameObject);
         }
+
+        public void OnAddedNewInventory(InventoryItemData inventoryItem)
+        {
+            CraftedItemUI cloned = GameObject.Instantiate<CraftedItemUI>(craftedItemUIPrefab, craftedItemRoot);
+            cloned.SetData(inventoryItem);
+        }
+
         #region ui event
 
         private void OnClickedCloseButton()

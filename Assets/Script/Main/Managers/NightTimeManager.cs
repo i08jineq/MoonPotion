@@ -114,6 +114,9 @@ namespace DarkLordGame
                     Singleton.instance.saveData.currentGold -= craftNewItemScreen.GetTotalPrice();
                     Singleton.instance.SaveData();
                     onGoldChanged.Invoke();
+
+                    inventoryScreen.OnAddedNewInventory(inventoryItem);
+
                     resultScreen.gameObject.SetActive(true);
                     resultScreen.StartCoroutine(resultScreen.ShowResultEnumerator(inventoryItem));
                     break;
@@ -153,6 +156,7 @@ namespace DarkLordGame
             inventoryItem.ability = Mathf.CeilToInt(universualScore);
             inventoryItem.totalScore = Mathf.CeilToInt(totalScore);
             inventoryItem.amount = 1;
+            
             return inventoryItem;
         }
 
