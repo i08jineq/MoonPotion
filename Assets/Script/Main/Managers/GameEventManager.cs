@@ -109,7 +109,6 @@ namespace DarkLordGame
 
         private void ExecuteCurrentUnlockDataEvent()
         {
-            int currentDay = Singleton.instance.saveData.currentDay;
             switch (unlockDatas[currentShowIndex].GetUnlockType())
             {
                 case UnlockDataType.CreateNewShop:
@@ -117,7 +116,7 @@ namespace DarkLordGame
                     break;
                 case UnlockDataType.Tutorial:
                     TutorialUnlockData tutorial = unlockDatas[currentShowIndex] as TutorialUnlockData;
-                    messageDialogueUI.Open(tutorial.tutorialMessages, "Day - " + (currentDay));
+                    messageDialogueUI.Open(tutorial.tutorialMessages, "-- Tips --");
                     break;
             }
         }
