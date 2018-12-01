@@ -10,7 +10,7 @@ namespace DarkLordGame
         public int amount = 0;
         public int baseIngredientID = 0;
         public List<int> ingredientIDs = new List<int>();
-        public MixingMethodType mixingMethod = MixingMethodType.Boil;
+        public MixingMethodType mixingMethod = MixingMethodType.None;
 
         public float effectiveScore = 0;
         public float tasteScore = 0;

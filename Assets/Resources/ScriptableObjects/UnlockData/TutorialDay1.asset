@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 475b3d4f79665459aad3473cdee09fda, type: 3}
+  m_Name: Tutorial1
+  m_EditorClassIdentifier: 
+  tutorialMessages:
+  - Every end of the day you have to pay the bill (100 Gold).If you have not enough
+    gold for the bill, the game is over.
+  - Let's start crafting your first potion.

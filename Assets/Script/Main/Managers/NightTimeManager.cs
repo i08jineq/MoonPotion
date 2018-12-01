@@ -144,9 +144,9 @@ namespace DarkLordGame
                 universualScore += currentIngredients[i].baseAbilityScore;
             }
 
-            effectiveScore = Mathf.Clamp(effectiveScore, 0, 10);
-            tasteScore = Mathf.Clamp(tasteScore, 0, 10);
-            universualScore = Mathf.Clamp(universualScore, 0, 10);
+            effectiveScore = Mathf.Clamp(effectiveScore, 1, 10);
+            tasteScore = Mathf.Clamp(tasteScore, 1, 10);
+            universualScore = Mathf.Clamp(universualScore, 1, 10);
 
             float totalScore = (tasteScore + effectiveScore + universualScore) / 3;
 
