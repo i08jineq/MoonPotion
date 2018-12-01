@@ -13,7 +13,7 @@ namespace DarkLordGame
 
         public TopPanelUI topPanelUI;
         public PauseScreenUI pauseScreen;
-
+        private float playSpeed = 1;
         private bool shouldExecuteDay = false;
 
         #region initialization
@@ -62,6 +62,10 @@ namespace DarkLordGame
         {
             topPanelUI.SetGoldAmount(Singleton.instance.currentSelectedSaveData.currentGold);
             topPanelUI.pauseButton.onClick.AddListener(OnPauseGame);
+            topPanelUI.normalSpeedButton.onClick.AddListener(OnPressNormalButton);
+            topPanelUI.fastButton.onClick.AddListener(OnPressFastButton);
+            topPanelUI.superFastButton.onClick.AddListener(OnPressSuperFastButton);
+            topPanelUI.SetPlaySpeedActive(topPanelUI.normalSpeedButton);
             topPanelUI.gameObject.SetActive(true);
         }
 
@@ -138,7 +142,7 @@ namespace DarkLordGame
 
         private void Update()
         {
-            float deltaTime = Time.deltaTime;
+            float deltaTime = Time.deltaTime * playSpeed;
             UpdateDay(deltaTime);
         }
 
@@ -153,6 +157,24 @@ namespace DarkLordGame
         private void UpdateGoldAmount()
         {
             topPanelUI.SetGoldAmount(Singleton.instance.currentSelectedSaveData.currentGold);
+        }
+
+        private void OnPressNormalButton()
+        {
+            playSpeed = 1;
+            topPanelUI.SetPlaySpeedActive(topPanelUI.normalSpeedButton);
+        }
+
+        private void OnPressFastButton()
+        {
+            playSpeed = 3;
+            topPanelUI.SetPlaySpeedActive(topPanelUI.fastButton);
+        }
+
+        private void OnPressSuperFastButton()
+        {
+            playSpeed = 5;
+            topPanelUI.SetPlaySpeedActive(topPanelUI.superFastButton);
         }
     }
 }

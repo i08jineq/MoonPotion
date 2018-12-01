@@ -10,11 +10,21 @@ namespace DarkLordGame
     {
         public TextMeshProUGUI goldAmount;
         public Button pauseButton;
+        public Button normalSpeedButton;
+        public Button fastButton;
+        public Button superFastButton;
 
         public void SetGoldAmount(int gold)
         {
             goldAmount.SetText(gold.ToString());
             goldAmount.ForceMeshUpdate();
+        }
+
+        public void SetPlaySpeedActive(Button button)
+        {
+            normalSpeedButton.image.color = button == normalSpeedButton ? normalSpeedButton.colors.pressedColor : normalSpeedButton.colors.normalColor;
+            fastButton.image.color = button == fastButton ? fastButton.colors.pressedColor : fastButton.colors.normalColor;
+            superFastButton.image.color = button == superFastButton ? superFastButton.colors.pressedColor : superFastButton.colors.normalColor;
         }
     }
 }
