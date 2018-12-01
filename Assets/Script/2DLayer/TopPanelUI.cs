@@ -8,6 +8,8 @@ namespace DarkLordGame
 {
     public class TopPanelUI : MonoBehaviour
     {
+        public GameObject dayTextRoot;
+        public TextMeshProUGUI dayText;
         public TextMeshProUGUI goldAmount;
         public Button pauseButton;
         public Button normalSpeedButton;
@@ -25,6 +27,13 @@ namespace DarkLordGame
             normalSpeedButton.image.color = button == normalSpeedButton ? normalSpeedButton.colors.pressedColor : normalSpeedButton.colors.normalColor;
             fastButton.image.color = button == fastButton ? fastButton.colors.pressedColor : fastButton.colors.normalColor;
             superFastButton.image.color = button == superFastButton ? superFastButton.colors.pressedColor : superFastButton.colors.normalColor;
+        }
+
+        public void SetDay(int day)
+        {
+            dayTextRoot.SetActive(day != 0);
+            dayText.SetText(day.ToString());
+            dayText.ForceMeshUpdate();
         }
     }
 }

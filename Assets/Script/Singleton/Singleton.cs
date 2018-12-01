@@ -26,7 +26,6 @@ namespace DarkLordGame
                 yield return instance.resourceData.LoadResources();
 
                 instance.LoadSaveData();
-
             }
 
             instance.mainCanvas = GameObject.FindObjectOfType<Canvas>();

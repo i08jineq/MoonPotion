@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: Tutorial1
   m_EditorClassIdentifier: 
   tutorialMessages:
-  - Every end of the day you have to pay the bill (100 Gold). Make sure you the gold
-    for the bills.If you have not enough money, the game is over.
+  - Every end of the day you have to pay the bill (100 Gold).If you have not enough
+    gold for the bill, the game is over.
   - Let's start crafting your first potion.

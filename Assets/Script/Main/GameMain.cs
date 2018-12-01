@@ -78,6 +78,7 @@ namespace DarkLordGame
             topPanelUI.superFastButton.onClick.AddListener(OnPressSuperFastButton);
             topPanelUI.SetPlaySpeedActive(topPanelUI.normalSpeedButton);
             topPanelUI.gameObject.SetActive(true);
+            UpdateDayUI();
         }
 
         private void SetupPauseScreen()
@@ -127,7 +128,7 @@ namespace DarkLordGame
         private void StartDay()
         {
             Singleton.instance.saveData.currentDay++;
-            Singleton.instance.SaveData();
+            UpdateDayUI();
             customersManager.StandbyCustomers();
             soundManager.StopBGM();
 
@@ -161,8 +162,10 @@ namespace DarkLordGame
             {
                 return;
             }
-            if(PayTownFee())
+
+            if (PayTownFee())
             {
+                Singleton.instance.SaveData();
                 CheckEvent();
                 return;
             }
@@ -264,8 +267,16 @@ namespace DarkLordGame
 
         private IEnumerator GameOver()
         {
+            Singleton.instance.saveData.isBackroupted = true;
+            Singleton.instance.SaveData();
+
             yield return fadeLayer.FadeOut(Color.black);
             SceneManager.LoadScene("GameOver");
+        }
+
+        private void UpdateDayUI()
+        {
+            topPanelUI.SetDay(Singleton.instance.saveData.currentDay);
         }
     }
 }

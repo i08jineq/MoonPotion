@@ -10,8 +10,8 @@ namespace DarkLordGame
     {
         public string playername = "-";
         public string shopName = "-";
-
-        public int currentDay = 1;
+        public bool isBackroupted = false;
+        public int currentDay = 0;
         public int currentGold = 0;
         public int totalSell = 0;
         public List<InventoryItemData> inventoryItemDatas = new List<InventoryItemData>();

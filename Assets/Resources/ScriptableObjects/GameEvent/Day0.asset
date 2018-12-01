@@ -9,11 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7cee69b0d8974ac3b4c24d292841be1, type: 3}
-  m_Name: Day2
+  m_Name: Day0
   m_EditorClassIdentifier: 
-  eventID: 2
+  eventID: 1
   condition:
     unlockConditionType: 0
-    conditionValue: 2
+    conditionValue: 0
   unlockDataList:
-  - {fileID: 11400000, guid: a4785e39832c54f368da8f1367bdc60d, type: 2}
+  - {fileID: 11400000, guid: 6ab0df155ca90445f829b1e735203bcb, type: 2}
+  - {fileID: 11400000, guid: 15846683598b14b55b334fe52a3811ca, type: 2}
+  - {fileID: 11400000, guid: 41bc801f7e36b402caba4a7a0d69dba3, type: 2}
